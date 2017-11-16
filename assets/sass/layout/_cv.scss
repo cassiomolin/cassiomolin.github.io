@@ -1,0 +1,42 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+/* CV */
+
+	#cv {
+
+		text-align: justify;
+
+		h3::after,
+		h4::after {
+			content: none;
+		}
+
+		h3,
+		h4 {
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
+		h4 + h4 {
+			padding-bottom: 1em;
+		}
+
+		h4 + h2 {
+			margin-top: 1.5em;
+		}
+
+		h4 + h3 {
+			margin-top: 1.5em;
+		}
+
+		h4 {
+			text-transform: none;
+			font-size: 0.9em;
+	    }
+
+		*:last-child {
+    		margin-bottom: 1.5em;
+		}
+	}

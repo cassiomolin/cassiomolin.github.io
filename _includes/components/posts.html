@@ -1,0 +1,50 @@
+{% comment %}
+
+	Slate by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+
+	Name:
+
+		Posts
+
+	Description:
+
+		Generates a grid of post-like content.
+
+	Example:
+
+		---
+		my_posts_arrray:
+		- image: /images/pic-01.jpg
+			title: Praesent sed donec
+			excerpt: Proin consequat luctus elit.
+			url: "#"
+		- image: /images/pic-02.jpg
+			title: Commodo mollis
+			excerpt: Pellentesque, ornare sapien quis.
+			url: "#"
+		---
+
+		{% include components/posts.html posts=page.my_posts_array %}
+
+{% endcomment %}
+
+<!-- Posts -->
+	<div class="posts">
+		{% assign limitPosts = site.limitPosts %}
+		{% assign offsetPosts = site.offsetPosts %}
+		{% for post in include.posts offset:offsetPosts limit:limitPosts %}
+			<section class="post">
+				<span class="image">
+					<a href="{{ site.baseurl }}{{ post.url }}">
+						<img src="{{ site.baseurl }}{{ post.image }}" alt="" />
+					</a>
+				</span>
+				<div class="content">
+					<h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+					<p><i>{{ post.excerpt }}</i></p>
+				</div>
+			</section>
+		{% endfor %}
+	</div>

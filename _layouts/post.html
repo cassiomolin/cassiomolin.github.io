@@ -1,0 +1,42 @@
+---
+layout: no-sidebar
+---
+
+{% comment %}
+
+	Slate by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+
+	Name:
+
+		Blog Post layout
+
+	Description:
+
+		A layout for individual Blog Posts.
+
+	Example:
+
+		---
+		layout: post
+		---
+
+{% endcomment %}
+
+{% if page.image %}
+	<span class="image fit">
+		<img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}">
+	</span>
+{% endif %}
+
+<header class="major">
+	<h2>{{ page.title }}</h2>
+	<p>
+		<span>{{ page.author}}</span>
+		<span> | </span>
+		<span>{{ page.date | date: "%B %-d, %Y" }}</span>
+	</p>
+</header>
+
+{{ content }}

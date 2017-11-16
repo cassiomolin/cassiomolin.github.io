@@ -1,0 +1,41 @@
+{% comment %}
+
+	Slate by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+
+	Name:
+
+		Banner
+
+	Description:
+
+		Generates a slideshow banner.
+
+	Example:
+
+		---
+		my_slides_array:
+		- image: /images/slide01.jpg
+			title: Magna tempus. Sed feugiat.
+			url: "#"
+		- image: /images/slide02.jpg
+			title: Aliquam veroeros nullam.
+			url: "#"
+		---
+
+		{% include layout/banner.html slides=page.my_slides_array %}
+
+{% endcomment %}
+
+<!-- Banner -->
+	<section id="banner">
+		{% for slide in include.slides %}
+			<article>
+				<img src="{{ site.baseurl }}{{ slide.image }}" alt="" />
+				<div class="inner">
+					<h2><a href="{{ slide.url }}">{{ slide.title }}</a></h2>
+				</div>
+			</article>
+		{% endfor %}
+	</section>

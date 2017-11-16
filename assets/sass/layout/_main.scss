@@ -1,0 +1,145 @@
+@import '../libs/vars';
+@import '../libs/functions';
+@import '../libs/mixins';
+
+///
+/// Slate by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Main */
+
+	#main {
+
+		> .inner {
+			> header.major:first-child {
+				margin-bottom: 6em;
+			}
+		}
+
+		@include breakpoint(large) {
+			@include padding(4em, 0);
+
+			> .inner {
+				> header.major:first-child {
+					margin-bottom: 4em;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			@include padding(2.5em, 0);
+
+			> .inner {
+				> header.major:first-child {
+					margin-bottom: 2.5em;
+				}
+			}
+		}
+
+		/* Google Prettify theme (https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow.css) */
+	    .prettyprint code {
+	        font-family: _font(family-fixed);
+	        border: 0 !important;
+	    }
+
+	    .prettyprint .pln {
+	        color: #4d4d4c;
+	    }
+
+	    /* Specify class=linenums on a pre to get line numbering */
+	    .prettyprint ol.linenums {
+	        margin-top: 0;
+	        margin-bottom: 0;
+	        color: #8e908c;
+	    }
+
+	    .prettyprint li.L0,
+	    .prettyprint li.L1,
+	    .prettyprint li.L2,
+	    .prettyprint li.L3,
+	    .prettyprint li.L4,
+	    .prettyprint li.L5,
+	    .prettyprint li.L6,
+	    .prettyprint li.L7,
+	    .prettyprint li.L8,
+	    .prettyprint li.L9 {
+	        padding-left: 1em;
+	        background-color: #ffffff;
+	        list-style-type: decimal;
+	    }
+
+	    @media screen {
+
+	        /* string content */
+	        .prettyprint .str {
+	            color: #718c00;
+	        }
+
+	        /* keyword */
+	        .prettyprint .kwd {
+	            color: #8959a8;
+	        }
+
+	        /* comment */
+	        .prettyprint .com {
+	            color: #8e908c;
+	        }
+
+	        /* type name */
+	        .prettyprint .typ {
+	            color: #4271ae;
+	        }
+
+	        /* literal value */
+	        .prettyprint .lit {
+	            color: #f5871f;
+	        }
+
+	        /* punctuation */
+	        .prettyprint .pun {
+	            color: #4d4d4c;
+	        }
+
+	        /* lisp open bracket */
+	        .prettyprint .opn {
+	            color: #4d4d4c;
+	        }
+
+	        /* lisp close bracket */
+	        .prettyprint .clo {
+	            color: #4d4d4c;
+	        }
+
+	        /* markup tag name */
+	        .prettyprint .tag {
+	            color: #c82829;
+	        }
+
+	        /* markup attribute name */
+	        .prettyprint .atn {
+	            color: #f5871f;
+	        }
+
+	        /* markup attribute value */
+	        .prettyprint .atv {
+	            color: #3e999f;
+	        }
+
+	        /* declaration */
+	        .prettyprint .dec {
+	            color: #f5871f;
+	        }
+
+	        /* variable name */
+	        .prettyprint .var {
+	            color: #c82829;
+	        }
+
+	        /* function name */
+	        .prettyprint .fun {
+	            color: #4271ae;
+	        }
+	    }
+	}

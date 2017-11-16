@@ -1,0 +1,35 @@
+{% comment %}
+
+	Slate by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+
+	Name:
+
+		Site header
+
+	Description:
+
+		Site header and navigation.
+		Set "header_class" to "alt" in the page frontmatter
+		to blend the header with the page.
+
+	Example:
+
+		{% include layout/header.html %}
+
+{% endcomment %}
+
+<!-- Header -->
+	<header id="header" class="{{ include.class }}">
+		<h1><a href="{{ site.baseurl }}/">
+			{{ site.title }} <span>{{ site.tagline }}</span>
+		</a></h1>
+		<nav id="nav">
+			<ul>
+				<li><a href="{{ site.baseurl }}/archive">Archive</a></li>
+				<li><a href="{{ site.baseurl }}/cv">CV</a></li>
+				<li><a href="{{ site.baseurl }}/about">About Me</a></li>				
+			</ul>
+		</nav>
+	</header>
