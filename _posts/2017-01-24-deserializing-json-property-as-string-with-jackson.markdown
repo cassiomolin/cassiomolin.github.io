@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Deserializing JSON property as String with Jackson
-author:  Cássio Mazzochi Molin
-date:    2017-01-24 15:04:58Z
-excerpt: Writing a custom deserializer to read a JSON property as String with Jackson.
-tags:    [java, json, jackson]
-image:   /images/deserializing-json-property-as-string-with-jackson.jpg
+layout:       post
+title:        Deserializing JSON property as String with Jackson
+author:       Cássio Mazzochi Molin
+date:         2017-01-24 15:04:58Z
+excerpt:      Writing a custom deserializer to read a JSON property as String with Jackson.
+tags:         [java, json, jackson]
+image:        /images/deserializing-json-property-as-string-with-jackson.jpg
+imageSource:  https://unsplash.com/photos/Ytlkb3fETZM
 ---
 
 A while ago I faced a situation that it was necessary to parse a JSON like this:

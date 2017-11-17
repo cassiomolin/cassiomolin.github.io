@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Using Jackson as JSON provider in Jersey 2.x
-author:  Cássio Mazzochi Molin
-date:    2016-08-10 12:58:15Z
-excerpt: Using Jackson, a popular JSON parser for Java, in Jersey applications.
-tags:    [jackson, java, jersey, json]
-image:   /images/using-jackson-as-json-provider-in-jersey-2x.jpg
+layout:       post
+title:        Using Jackson as JSON provider in Jersey 2.x
+author:       Cássio Mazzochi Molin
+date:         2016-08-10 12:58:15Z
+excerpt:      Using Jackson, a popular JSON parser for Java, in Jersey applications.
+tags:         [jackson, java, jersey, json]
+image:        /images/using-jackson-as-json-provider-in-jersey-2x.jpg
+imageSource:  https://unsplash.com/photos/s5WyoKsayo0
 ---
 
 When producing and consuming JSON in a Jersey application, will need a JSON provider, otherwise you'll see an error like this:
@@ -89,7 +90,7 @@ If you need to register other features, resources or providers, separate their f
 
 Just in case you are interested in having a look at the implementation, the [`MessageBodyWriter`][11] provided by Jackson is [`JacksonJsonProvider`][12].
 
---------------------------------------------------------------------------------
+---
 
 For more details, check the Jersey [documentation][13] about support for common media type representations.
 
@@ -97,12 +98,12 @@ For more details, check the Jersey [documentation][13] about support for common 
 [10]: https://jersey.java.net/project-info/2.23.1/jersey/project/jersey-media-json-jackson1/dependencies.html
 [11]: http://docs.oracle.com/javaee/7/api/javax/ws/rs/ext/MessageBodyWriter.html
 [12]: http://fasterxml.github.io/jackson-jaxrs-providers/javadoc/2.8/com/fasterxml/jackson/jaxrs/json/JacksonJsonProvider.html
-[13]: https://jersey.java.net/documentation/latest/media.html
-[2]: https://jersey.java.net/documentation/latest/media.html#json.json-p
-[3]: https://jersey.java.net/documentation/latest/media.html#json.jackson
-[4]: https://jersey.java.net/documentation/latest/media.html#json.jettison
-[5]: https://jersey.java.net/project-info/2.23.1/jersey/project/jersey-media-json-jackson/dependencies.html
-[6]: https://jersey.java.net/apidocs/2.23.1/jersey/org/glassfish/jersey/jackson/JacksonFeature.html
-[7]: https://jersey.java.net/apidocs/2.23.1/jersey/org/glassfish/jersey/jackson1/Jackson1Feature.html
-[8]: https://jersey.java.net/apidocs/2.23.1/jersey/javax/ws/rs/core/Application.html
-[9]: https://jersey.java.net/apidocs/2.23.1/jersey/org/glassfish/jersey/server/ResourceConfig.html
+[13]: https://jersey.github.io/documentation/latest/media.html
+[2]: https://jersey.github.io/documentation/latest/media.html#json.json-p
+[3]: https://jersey.github.io/documentation/latest/media.html#json.jackson
+[4]: https://jersey.github.io/documentation/latest/media.html#json.jettison
+[5]: https://jersey.github.io/project-info/2.23.1/jersey/project/jersey-media-json-jackson/dependencies.html
+[6]: https://jersey.github.io/apidocs/2.23.1/jersey/org/glassfish/jersey/jackson/JacksonFeature.html
+[7]: https://jersey.github.io/apidocs/2.23.1/jersey/org/glassfish/jersey/jackson1/Jackson1Feature.html
+[8]: https://jersey.github.io/apidocs/2.23.1/jersey/javax/ws/rs/core/Application.html
+[9]: https://jersey.github.io/apidocs/2.23.1/jersey/org/glassfish/jersey/server/ResourceConfig.html

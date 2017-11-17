@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Types that can be injected with @Context in JAX-RS 2.0
-author:  Cássio Mazzochi Molin
-date:    2016-03-08 13:25:08Z
-excerpt: A summary of all types that can be injected with @Context in JAX-RS resources and providers.
-tags:    [java, jax-rs]
-image:   /images/types-that-can-be-injected-with-context-in-jaxrs-20.jpg
+layout:       post
+title:        Types that can be injected with @Context in JAX-RS 2.0
+author:       Cássio Mazzochi Molin
+date:         2016-03-08 13:25:08Z
+excerpt:      A summary of all types that can be injected with @Context in JAX-RS resources and providers.
+tags:         [java, jax-rs]
+image:        /images/types-that-can-be-injected-with-context-in-jaxrs-20.jpg
+imageSource:  https://unsplash.com/photos/kDppwO0MUQA
 ---
 
 The following list summarizes all the types that can be injected using the [`@Context`][1] annotation, according to the [JAX-RS 2.0 specification][2]:

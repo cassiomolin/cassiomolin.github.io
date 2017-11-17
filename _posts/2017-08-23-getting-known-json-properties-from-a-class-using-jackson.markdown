@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Getting known JSON properties from a class using Jackson
-author:  Cássio Mazzochi Molin
-date:    2017-08-23 11:58:08Z
-excerpt: Using the Jackson API to introspect a Java class and extract the available JSON properties from it.
-tags:    [java, jackson, json]
-image:   /images/getting-known-json-properties-from-a-class-using-jackson.jpg
+layout:       post
+title:        Getting known JSON properties from a class using Jackson
+author:       Cássio Mazzochi Molin
+date:         2017-08-23 11:58:08Z
+excerpt:      Using the Jackson API to introspect a Java class and extract the available JSON properties from it.
+tags:         [java, jackson, json]
+image:        /images/getting-known-json-properties-from-a-class-using-jackson.jpg
+imageSource:  https://unsplash.com/photos/qr7tsSwDOg0
 ---
 
 With Jackson, you can [introspect an arbitrary class][1] to get the available JSON properties:

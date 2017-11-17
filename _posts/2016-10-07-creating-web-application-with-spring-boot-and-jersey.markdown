@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Creating web application with Spring Boot and Jersey
-author:  Cássio Mazzochi Molin
-date:    2016-10-07 08:33:30Z
-excerpt: Example of how to create a standalone application with Jersey with Spring Boot.
-tags:    [java, jersey, spring-boot]
-image:   /images/creating-web-application-with-spring-boot-and-jersey.jpg
+layout:       post
+title:        Creating web application with Spring Boot and Jersey
+author:       Cássio Mazzochi Molin
+date:         2016-10-07 08:33:30Z
+excerpt:      Example of how to create a standalone application with Jersey with Spring Boot.
+tags:         [java, jersey, spring-boot]
+image:        /images/creating-web-application-with-spring-boot-and-jersey.jpg
+imageSource:  https://unsplash.com/photos/8oPubUm97Cc
 ---
 
 Spring Boot helps you accelerate the application development and makes it easy to create standalone applications that you can "_just run_". Spring Boot embeds a web server, such as Tomcat or Jetty, in the application. So there's no need to deploy a WAR file. It's packed as a JAR and, to run it, you just need `java -jar`.

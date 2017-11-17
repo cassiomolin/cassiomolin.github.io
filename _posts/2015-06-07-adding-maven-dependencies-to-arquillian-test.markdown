@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Adding Maven dependencies to Arquillian test
-author:  Cássio Mazzochi Molin
-date:    2015-06-07 14:57:56Z
-excerpt: Using ShrinkWrap resolvers to add Maven dependencies to Arquillian tests.
-tags:    [java, test, arquillian]
-image:   /images/adding-maven-dependencies-to-arquillian-test.jpg
+layout:       post
+title:        Adding Maven dependencies to Arquillian test
+author:       Cássio Mazzochi Molin
+date:         2015-06-07 14:57:56Z
+excerpt:      Using ShrinkWrap resolvers to add Maven dependencies to Arquillian tests.
+tags:         [java, test, arquillian]
+image:        /images/adding-maven-dependencies-to-arquillian-test.jpg
+imageSource:  https://unsplash.com/photos/YLSwjSy7stw
 ---
 
 By default, Arquillian won't pack the Maven dependencies into the micro deployment files.

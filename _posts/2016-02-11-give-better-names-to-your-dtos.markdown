@@ -1,11 +1,12 @@
 ---
-layout:  post
-title:   Give better names to your DTOs
-author:  Cássio Mazzochi Molin
-date:    2016-02-11 14:14:09Z
-excerpt: Some ideas of meaningful names for your DTOs.
-tags:    [java, dto]
-image:   /images/give-better-names-to-your-dtos.jpg
+layout:       post
+title:        Give better names to your DTOs
+author:       Cássio Mazzochi Molin
+date:         2016-02-11 14:14:09Z
+excerpt:      Some ideas of meaningful names for your DTOs.
+tags:         [java, dto]
+image:        /images/give-better-names-to-your-dtos.jpg
+imageSource:  https://unsplash.com/photos/0gkw_9fy0eQ
 ---
 
 The [Java Language Specification][1] states the following regarding the [name convention for classes][2]:
