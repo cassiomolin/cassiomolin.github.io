@@ -19,6 +19,12 @@
 			margin-bottom: 0;
 		}
 
+		h4 {
+			text-transform: none;
+			font-size: 0.9em;
+			font-weight: normal;
+	    }
+
 		h4 + h4 {
 			padding-bottom: 1em;
 		}
@@ -30,11 +36,6 @@
 		h4 + h3 {
 			margin-top: 1.5em;
 		}
-
-		h4 {
-			text-transform: none;
-			font-size: 0.9em;
-	    }
 
 		*:last-child {
     		margin-bottom: 1.5em;
