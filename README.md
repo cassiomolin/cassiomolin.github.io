@@ -14,9 +14,9 @@ Here are some facts about it:
 
 Some stuff I still need to work on:
 
- - Allow comments (probably using [Disqus][disqus])
- - Search posts (probably using the approach described [here][search-approach] with [AlgoliaSearch for Jekyll][algoliasearch-jekyll] or try [Simple-Jekyll-Search][simple-jekyll-search])
- - Improve performance using responsive images (approach described [here][responsive-images-approach])
+ - Allow comments (probably using [Disqus][disqus]).
+ - Search posts (probably using the approach described [here][search-approach] with [AlgoliaSearch for Jekyll][algoliasearch-jekyll] or try [Simple-Jekyll-Search][simple-jekyll-search]).
+ - Improve performance using responsive images (approach described [here][responsive-images-approach]).
 
 
   [cassiomolin]: http://cassiomolin.com
