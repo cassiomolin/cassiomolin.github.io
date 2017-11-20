@@ -32,9 +32,9 @@
 
 <!-- Posts -->
 	<div class="posts">
-		{% assign limitPosts = site.limitPosts %}
-		{% assign offsetPosts = site.offsetPosts %}
-		{% for post in include.posts offset:offsetPosts limit:limitPosts %}
+		{% assign recentPostsLimit = site.recentPosts.limit %}
+		{% assign recentPostsOffset = site.recentPosts.offset %}
+		{% for post in include.posts offset:recentPostsOffset limit:recentPostsLimit %}
 			<section class="post">
 				<span class="image">
 					<a href="{{ site.baseurl }}{{ post.url }}">

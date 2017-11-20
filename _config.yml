@@ -10,7 +10,7 @@ collections:
     output: true
 tagline: by cassiomolin
 author: Cassio Mazzochi Molin
-description: Programming insights by Cassio Molin
+description: A collection of programming insights by Cassio Molin
 baseurl: ''
 url: http://cassiomolin.com
 lang: en_GB
@@ -34,5 +34,6 @@ kramdown:
 paginate: 5
 paginate_path: "/archive/page-:num/"
 permalink: pretty
-limitPosts: 12
-offsetPosts: 1
+recentPosts:
+  limit: 12
+  offset: 1
