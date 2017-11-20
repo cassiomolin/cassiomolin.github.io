@@ -72,6 +72,11 @@
 			  });
 			  prettyPrint();
 			</script>
+			<script>
+			  [].forEach.call(document.querySelectorAll('.post a'), function(el) {
+			    el.setAttribute('target', '_blank');
+			  });	
+			</script>
 			<script src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 	</body>
 </html>

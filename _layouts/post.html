@@ -30,13 +30,19 @@ layout: no-sidebar
 	</span>
 {% endif %}
 
-<header class="major">
-	<h2>{{ page.title }}</h2>
-	<p>
-		<span>{{ page.author}}</span>
-		<span> | </span>
-		<span>{{ page.date | date: "%B %-d, %Y" }}</span>
-	</p>
-</header>
+<article class="post">
 
-{{ content }}
+	<header class="major">
+		<h2>{{ page.title }}</h2>
+		<p>
+			<span>{{ page.author}}</span>
+			<span> | </span>
+			<span>{{ page.date | date: "%B %-d, %Y" }}</span>
+		</p>
+	</header>
+
+	<section>
+		{{ content }}
+	</section>
+
+</section>
