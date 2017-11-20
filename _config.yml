@@ -17,7 +17,7 @@ social:
     - https://stackoverflow.com/u/1426227
 
 # Plugins
-gems: ["jekyll-paginate", "jekyll-seo-tag", "jekyll-sitemap"]
+gems: ["jekyll-paginate", "jekyll-seo-tag", "jekyll-sitemap", "jekyll-redirect-from"]
 
 # Build settings
 markdown: kramdown
