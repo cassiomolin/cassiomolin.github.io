@@ -3,7 +3,8 @@
 This is the source code of my [website][cassiomolin], where I publish some insights about software development.
 
 - It is built on the top of [GitHub Pages][github-pages] with [Jekyll][jekyll].
-- It uses a customised version of the [Slate][slate] template from [Pixelarity][pixelarity].
+- Sometimes I use [plain Git commands][git-cheat-sheet] to manage the content. Sometime I use [Siteleaf][siteleaf].
+- This website uses a customised version of the [Slate][slate] template from [Pixelarity][pixelarity].
 - The beautiful images that illustrate my posts come from [Unsplash][unsplash].
 - Images have been cropped using [Croppola][croppola] and resized and compressed using [ImageResize.org][imageresize-org].
 - Most of the content is based on my answers from [Stack Overflow][stack-overflow].
@@ -20,3 +21,5 @@ This is the source code of my [website][cassiomolin], where I publish some insig
   [form-instructions]: https://github.com/dwyl/html-form-send-email-via-google-script-without-server
   [croppola]: https://croppola.com/
   [imageresize-org]: https://imageresize.org/
+  [git-cheat-sheet]: https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
+  [siteleaf]: https://www.siteleaf.com/
