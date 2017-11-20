@@ -1,6 +1,6 @@
 ---
+title: About me
 layout: about
-title:  About me
 ---
 
 Hey, I'm Cassio, a sofware enginner living, working and drinking in Ireland.
