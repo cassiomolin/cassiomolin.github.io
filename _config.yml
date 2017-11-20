@@ -1,37 +1,37 @@
-# Site settings
+---
 title: Insights
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
 tagline: by cassiomolin
 author: Cassio Mazzochi Molin
 description: Programming insights by Cassio Molin
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://cassiomolin.com" # the base hostname & protocol for your site
+baseurl: ''
+url: http://cassiomolin.com
 lang: en_GB
-
-# Social links for SEO
 social:
   name: Cassio Mazzochi Molin
   links:
-    - https://www.linkedin.com/in/cassiomolin
-    - https://github.com/cassiomolin
-    - https://instagram.com/cassiomolin
-    - https://stackoverflow.com/u/1426227
-
-# Plugins
-gems: ["jekyll-paginate", "jekyll-seo-tag", "jekyll-sitemap"]
-
-# Build settings
+  - https://www.linkedin.com/in/cassiomolin
+  - https://github.com/cassiomolin
+  - https://instagram.com/cassiomolin
+  - https://stackoverflow.com/u/1426227
+gems:
+- jekyll-paginate
+- jekyll-seo-tag
+- jekyll-sitemap
 markdown: kramdown
 sass:
   sass_dir: assets/sass
-
-# Kramdown settings
 kramdown:
   input: GFM
-
-# Pagination
 paginate: 5
 paginate_path: "/archive/page-:num/"
 permalink: pretty
-
 limitPosts: 12
 offsetPosts: 1

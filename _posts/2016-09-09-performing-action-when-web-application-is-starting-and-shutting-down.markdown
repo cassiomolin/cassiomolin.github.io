@@ -1,12 +1,17 @@
 ---
-layout:       post
-title:        Performing action when web application is starting and shutting down
-author:       Cássio Mazzochi Molin
-date:         2016-09-09 12:35:19Z
-excerpt:      Examples of how to execute operations when the application starts up or shuts down using Servlets, CDI and EJB.
-tags:         [cdi, ejb, java, servlet]
-image:        /images/performing-action-when-web-application-is-starting-and-shutting-down.jpg
-imageSource:  https://unsplash.com/photos/RkJF2BMrLJc
+title: Performing action when web application is starting and shutting down
+date: 2016-09-09 12:35:19 Z
+tags:
+- cdi
+- ejb
+- java
+- servlet
+layout: post
+author: Cássio Mazzochi Molin
+excerpt: Examples of how to execute operations when the application starts up or shuts
+  down using Servlets, CDI and EJB.
+image: "/images/performing-action-when-web-application-is-starting-and-shutting-down.jpg"
+imageSource: https://unsplash.com/photos/RkJF2BMrLJc
 ---
 
 There are at least three ways to perform actions when a web application is starting and shutting down:

@@ -1,12 +1,15 @@
 ---
-layout:       post
-title:        Converting POJO to Map and vice versa with Jackson
-author:       Cássio Mazzochi Molin
-date:         2016-09-17 08:21:54Z
-excerpt:      Jackson API makes it easy to covert Java objects to a map instance and vice versa.
-tags:         [java, jackson]
-image:        /images/converting-pojo-map-vice-versa-with-jackson.jpg
-imageSource:  https://unsplash.com/photos/IClZBVw5W5A
+title: Converting POJO to Map and vice versa with Jackson
+date: 2016-09-17 08:21:54 Z
+tags:
+- java
+- jackson
+layout: post
+author: Cássio Mazzochi Molin
+excerpt: Jackson API makes it easy to covert Java objects to a map instance and vice
+  versa.
+image: "/images/converting-pojo-map-vice-versa-with-jackson.jpg"
+imageSource: https://unsplash.com/photos/IClZBVw5W5A
 ---
 
 A quick look at how to convert a POJO from/to a [`Map<K, V>`][1] with Jackson:
