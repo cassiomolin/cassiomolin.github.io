@@ -5,7 +5,7 @@ tags:
 - java
 - jackson
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Jackson API makes it easy to covert Java objects to a map instance and vice
   versa.
 image: "/images/converting-pojo-map-vice-versa-with-jackson.jpg"

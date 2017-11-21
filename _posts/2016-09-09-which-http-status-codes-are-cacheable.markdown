@@ -4,7 +4,7 @@ date: 2016-09-09 08:19:32 Z
 tags:
 - http
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: A summary of the HTTP status codes defined as cacheable, according to the
   RFC 7231.
 image: "/images/which-http-status-codes-are-cacheable.jpg"

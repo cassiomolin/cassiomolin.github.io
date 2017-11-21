@@ -7,7 +7,7 @@ tags:
 - jersey
 - json
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Using Jackson, a popular JSON parser for Java, in Jersey applications.
 image: "/images/using-jackson-as-json-provider-in-jersey-2x.jpg"
 imageSource: https://unsplash.com/photos/s5WyoKsayo0

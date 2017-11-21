@@ -5,7 +5,7 @@ tags:
 - java
 - bean-validation
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Writing a custom validator to validate multiple fields.
 image: "/images/cross-field-validation-with-bean-validation.jpg"
 imageSource: https://unsplash.com/photos/xcrI6CPkkJs

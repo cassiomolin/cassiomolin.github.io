@@ -6,7 +6,7 @@ tags:
 - jersey
 - spring-boot
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Example of how to create a standalone application with Jersey with Spring
   Boot.
 image: "/images/creating-web-application-with-spring-boot-and-jersey.jpg"

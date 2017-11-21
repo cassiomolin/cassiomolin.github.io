@@ -6,7 +6,7 @@ tags:
 - jackson
 - json
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Using the Jackson API to introspect a Java class and extract the available
   JSON properties from it.
 image: "/images/getting-known-json-properties-from-a-class-using-jackson.jpg"

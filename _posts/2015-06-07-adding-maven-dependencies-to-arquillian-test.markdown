@@ -6,7 +6,7 @@ tags:
 - test
 - arquillian
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Using ShrinkWrap resolvers to add Maven dependencies to Arquillian tests.
 image: "/images/adding-maven-dependencies-to-arquillian-test.jpg"
 imageSource: https://unsplash.com/photos/YLSwjSy7stw

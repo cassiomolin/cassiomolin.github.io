@@ -5,7 +5,7 @@ tags:
 - java
 - jax-rs
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: A summary of all types that can be injected with @Context in JAX-RS resources
   and providers.
 image: "/images/types-that-can-be-injected-with-context-in-jaxrs-20.jpg"

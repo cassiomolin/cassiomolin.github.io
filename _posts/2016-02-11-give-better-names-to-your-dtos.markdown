@@ -5,7 +5,7 @@ tags:
 - java
 - dto
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Some ideas of meaningful names for your DTOs.
 image: "/images/give-better-names-to-your-dtos.jpg"
 imageSource: https://unsplash.com/photos/0gkw_9fy0eQ

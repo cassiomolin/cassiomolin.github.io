@@ -6,7 +6,7 @@ tags:
 - jackson
 - json
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Example of how to use JSON Path with Jackson.
 image: "/images/using-jackson-and-json-path-to-query-and-parse-an-arbitrary-json-node.jpg"
 imageSource: https://unsplash.com/photos/IoY8fvDGCNs

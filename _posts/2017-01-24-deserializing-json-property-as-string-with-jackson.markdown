@@ -6,7 +6,7 @@ tags:
 - json
 - jackson
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Writing a custom deserializer to read a JSON property as String with Jackson.
 image: "/images/deserializing-json-property-as-string-with-jackson.jpg"
 imageSource: https://unsplash.com/photos/Ytlkb3fETZM

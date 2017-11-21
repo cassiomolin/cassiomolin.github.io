@@ -6,7 +6,7 @@ tags:
 - java
 - dto
 layout: post
-author: Cássio Mazzochi Molin
+author: Cassio Mazzochi Molin
 excerpt: Why you should consider using Data Transfer Objects instead of persistence
   models in your REST API.
 image: "/images/why-you-should-use-dtos-in-your-rest-api.jpg"
