@@ -1,6 +1,6 @@
 ---
 title: Customizing ObjectMapper in a JAX-RS application
-date: 2017-11-21 00:00:00 Z
+date: 2017-11-21 13:15:59 Z
 tags:
 - java
 - jackson
@@ -10,8 +10,8 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: Using Jackson with JAX-RS? See how to define a ContextResolver for 
   ObjectMapper to customize serialization and deserialization.
-image: 
-imageSource: 
+image: "/images/customizing-objectmapper-in-a-jaxrs-application.jpg"
+imageSource: https://unsplash.com/photos/uf4oyaimWwg
 ---
 
 If you use Jackson as the JSON provider in your JAX-RS application, you may want to redefine the default Jackson behaviour or even fine-tune the serializarion and deserialization processes. 
@@ -25,7 +25,7 @@ public class ObjectMapperContextResolver implements ContextResolver<ObjectMapper
     private final ObjectMapper mapper;
 
     public ObjectMapperContextResolver() {
-        mapper = createObjectMapper();
+        this.mapper = createObjectMapper();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ObjectMapperContextResolver implements ContextResolver<ObjectMapper
         return mapper;
     }
 
-    private static ObjectMapper createObjectMapper() {
+    private ObjectMapper createObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         return mapper;
@@ -76,7 +76,7 @@ mapper.registerModule(new JavaTimeModule());
 mapper.registerModule(new ParameterNamesModule());
 ```
 
-Don't forget to add the following dependencies:
+Don't forget to add the following dependencies to your project:
 
 ```xml
 <dependency>
