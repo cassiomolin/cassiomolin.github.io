@@ -8,8 +8,8 @@ tags:
 - jax-rs
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: Using Jackson with JAX-RS? See how to define a ContextResolver for 
-  ObjectMapper to customize serialization and deserialization.
+excerpt: Using Jackson with JAX-RS? See how to define a ContextResolver for ObjectMapper
+  to customize serialization and deserialization.
 image: 
 imageSource: 
 ---
