@@ -1,6 +1,7 @@
 ---
 title: About me
 layout: about
+description: Want to know more about me?
 ---
 
 Hey, I'm Cassio, a sofware enginner living, working and drinking in Ireland.

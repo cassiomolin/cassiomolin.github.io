@@ -5,7 +5,7 @@ This is the source code of my [website][cassiomolin], where I publish some insig
 Here are some facts about it:
 
 - It is built on the top of [GitHub Pages][github-pages] with [Jekyll][jekyll].
-- Sometimes I use [plain Git commands][git-cheat-sheet] to manage the content. Sometimes I use [Siteleaf][siteleaf].
+- I usually use [plain Git commands][git-cheat-sheet] to manage the content. Sometimes I use [Siteleaf][siteleaf].
 - This website uses a customised version of the [Slate][slate] template from [Pixelarity][pixelarity].
 - The beautiful images that illustrate my posts come from [Unsplash][unsplash].
 - Images have been cropped using [Croppola][croppola] and resized and compressed using [ImageResize.org][imageresize-org].
@@ -15,8 +15,8 @@ Here are some facts about it:
 Some stuff I still need to work on:
 
  - Allow comments (probably using [Disqus][disqus]).
- - Search posts (probably using the approach described [here][search-approach] with [AlgoliaSearch for Jekyll][algoliasearch-jekyll] or try [Simple-Jekyll-Search][simple-jekyll-search]).
- - Improve performance using responsive images (approach described [here][responsive-images-approach]).
+ - Search posts (probably using a [Google Custom Search][]).
+ - Improve performance by using responsive images (approach described [here][responsive-images-approach]).
 
 
   [cassiomolin]: http://cassiomolin.com
@@ -32,8 +32,6 @@ Some stuff I still need to work on:
   [imageresize-org]: https://imageresize.org/
   [git-cheat-sheet]: https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf
   [siteleaf]: https://www.siteleaf.com/
-  [search-approach]: https://blog.algolia.com/instant-search-blog-documentation-jekyll-plugin/
   [disqus]: https://disqus.com/
   [responsive-images-approach]: https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/
-  [algoliasearch-jekyll]: https://github.com/algolia/algoliasearch-jekyll
-  [simple-jekyll-search]: https://github.com/christian-fei/Simple-Jekyll-Search
+  [google-custom-search]: https://developers.google.com/custom-search/
