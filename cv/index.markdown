@@ -63,7 +63,7 @@ Currently based in Dublin, holds an EU citizenship and no visas are required to 
 - Active member of the largest and most trusted online community for professional and enthusiast programmers. 
 - Sitting on the top 1% users, summing up more than 600 posts related to Java, JAX-RS, Jersey and REST architecture.
 
-### Personal Website
+### Blog
 #### http://cassiomolin.com
 - Writing content related to software development, focused on Java technologies and REST architecture.
 
