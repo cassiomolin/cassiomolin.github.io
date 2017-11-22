@@ -15,7 +15,7 @@ Here are some facts about it:
 Some stuff I still need to work on:
 
  - Allow comments (probably using [Disqus][disqus]).
- - Search posts (probably using a [Google Custom Search][]).
+ - Search posts (probably using a [Google Custom Search][google-custom-search]).
  - Improve performance by using responsive images (approach described [here][responsive-images-approach]).
 
 
