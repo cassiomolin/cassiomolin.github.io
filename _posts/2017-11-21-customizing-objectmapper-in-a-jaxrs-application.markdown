@@ -41,7 +41,11 @@ public class ObjectMapperContextResolver implements ContextResolver<ObjectMapper
 }
 ```
 
-If you need to access the [`ObjectMapper`][ObjectMapper] directly, use the [`@Context`][Context] annotation to inject [`Providers`][Providers] in your JAX-RS resource or provider classes:
+Under the hood, the [`ObjectMapper`][ObjectMapper] instance created above will be picked by the [`JacksonJsonProvider`][JacksonJsonProvider] class, the Jackson implementation for [`MessageBodyReader`][MessageBodyReader] and [`MessageBodyWriter`][MessageBodyWriter] that binds JSON content to and from Java objects in JAX-RS.
+
+---
+
+If, for some reason, you need to access the [`ObjectMapper`][ObjectMapper] directly, use the [`@Context`][Context] annotation to inject [`Providers`][Providers] in your JAX-RS resource or provider classes:
 
 ```java
 @Context
@@ -101,3 +105,6 @@ Don't forget to add the following dependencies to your project:
   [Providers]: https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/ext/Providers.html
   [Context]: https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/core/Context.html
   [ContextResolver]: https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/ext/ContextResolver.html
+  [JacksonJsonProvider]: http://fasterxml.github.io/jackson-jaxrs-providers/javadoc/2.9/com/fasterxml/jackson/jaxrs/json/JacksonJsonProvider.html
+  [MessageBodyReader]: https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/ext/MessageBodyReader.html
+  [MessageBodyWriter]: https://javaee.github.io/javaee-spec/javadocs/javax/ws/rs/ext/MessageBodyWriter.html
