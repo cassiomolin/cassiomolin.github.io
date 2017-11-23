@@ -1,12 +1,12 @@
 ---
-title: Please stop using the RFC 2616!
+title: Stop using the RFC 2616
 date: 2017-11-22 09:32:24 Z
 tags:
 - http
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Still using the RFC 2616 as reference for the HTTP/1.1 protocol? Please stop!
-image: "/images/please-stop-using-the-rfc-2616.jpg"
+image: "/images/stop-using-the-rfc-2616.jpg"
 imageSource: https://unsplash.com/photos/63JKK67yGUE
 ---
 

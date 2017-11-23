@@ -20,9 +20,13 @@
 
 		h2 {
 			font-size: 2.25em;
-			/*font-weight: _font(weight-heading-extrabold);*/
+			/* font-weight: _font(weight-heading-extrabold); */
 			margin: 0;
-			padding-bottom: 0.75em;
+			/* padding-bottom: 0.75em; */
+		}
+
+		p > time {
+			font-size: 0.8em;
 		}
 
 		.image {

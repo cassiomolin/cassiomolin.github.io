@@ -26,6 +26,7 @@ layout: default
 				<div class="content">
 		            {% assign latest_post = site.posts.first %}
 					<h2><a href="{{ site.baseurl }}{{ latest_post.url }}">{{ latest_post.title }}</a></h2>
+					<p><time>{{ latest_post.date | date: "%B %-d, %Y" }}</time></p>
 					<p><i>{{ latest_post.excerpt }}</i></p>
 				</div>
 				<span class="image">

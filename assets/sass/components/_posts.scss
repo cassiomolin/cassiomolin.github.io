@@ -36,6 +36,11 @@
 
 
 		h3 {
-			margin: 0 0 .5em 0;
+			/* margin: 0 0 .5em 0; */
+			margin: 0;
+		}
+
+		p > time {
+			font-size: 0.8em;
 		}
 	}
