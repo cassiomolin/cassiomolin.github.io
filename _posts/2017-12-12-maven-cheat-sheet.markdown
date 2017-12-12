@@ -61,8 +61,8 @@ Use `mvn <phase name>` to execute a phase.
 
 ## Command line options
 
-- `-DskipTests`: Compile the tests but skip running them.
-- `-Dmaven.test.skip=true`: Skips compiling the tests and do not run them.
+- `-DskipTests`: Compile the tests but don't run them.
+- `-Dmaven.test.skip=true`: Don't compile the tests and don't run them.
 - `-X` or `--debug`: Enable debug output.
 - `-U` or `--update-snapshots`: Forces a check for updated releases and snapshots on remote repositories.
 - `-o` or `--offline`: Work offline (run as if no network connection is available).
@@ -73,13 +73,13 @@ Use `mvn <phase name>` to execute a phase.
 
 ### Project properties
 
-- `${project.groupId}`: Project’s group id.
-- `${project.artifactId}`: Project’s artifact id.
-- `${project.version}`: Project’s version.
-- `${project.name}`: Project’s name.
-- `${project.description}`: Project’s description.
+- `${project.groupId}`: Project's group id.
+- `${project.artifactId}`: Project's artifact id.
+- `${project.version}`: Project's version.
+- `${project.name}`: Project's name.
+- `${project.description}`: Project's description.
 - `${project.basedir}`: Directory containing the `pom.xml` file.
-- `${project.baseUri}`: Directory containing the pom.xml file as URI.
+- `${project.baseUri}`: Directory containing the `pom.xml` file as URI.
 - `${project.build.sourceDirectory}`: Project source directory.
 - `${project.build.testSourceDirectory}`: Project test source directory.
 - `${project.build.outputDirectory}`: Project output directory.
