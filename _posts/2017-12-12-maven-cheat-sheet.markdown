@@ -91,7 +91,7 @@ Use `mvn <phase name>` to execute a phase.
 
 - `${maven.build.timestamp}`: The UTC timestamp of build start, in `yyyy-MM-dd'T'HH:mm:ss'Z'` default format.
 - `${build.timestamp}`: Same as ${maven.build.timestamp}.
-- `${maven.build.timestamp.format}`: Can be used to overrid the default format for the build timestamp.
+- `${maven.build.timestamp.format}`: Can be used to override the default format for the build timestamp.
 
 ### Java system properties
 
