@@ -69,7 +69,7 @@ Use `mvn <phase name>` to execute a phase.
 - `-l <file path>` or `--log-file <file path>`: Writes the build output to a file.
 - `-v` or `--version`: Display Maven version.
 
-## Maven properties
+## Useful properties
 
 ### Project properties
 
