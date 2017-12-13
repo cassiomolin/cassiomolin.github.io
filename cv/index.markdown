@@ -57,12 +57,12 @@ Currently based in Dublin, holds an EU citizenship and no visas are required to 
 
 ### GitHub
 #### http://github.com/cassiomolin
-- Creating open source applications using several technologies such as Java, Maven, Spring (including Boot, Data and Security), CDI, Jersey, JPA with Hibernate, JUnit, Arquillian, WebSockets, Angular with TypeScript and Travis CI for continuous integration.
+- Creating open source applications using several technologies such as Java, Maven, Spring (including Boot, Data, Cloud and Security), CDI with Weld, JAX-RS with Jersey, JPA with Hibernate, JUnit, Arquillian, WebSockets, Angular with TypeScript, Travis CI for continuous integration and microservices (with Spring Boot, Zuul, Eureka, MongoDB and RabbitMQ).
 
 ### Stack Overflow  
 #### http://stackoverflow.com/u/1426227
-- Active member of the largest and most trusted online community for professional and enthusiast programmers. 
-- Sitting on the top 1% users, summing up more than 600 posts related to Java, JAX-RS, Jersey and REST architecture.
+- Active member of the targest and most trusted online community for professional and enthusiast programmers.
+- Currently sitting on the top 1% users, summing up more than 650 posts related to Java, JAX-RS, Jersey and REST architecture.
 
 ### Blog
 #### http://cassiomolin.com
