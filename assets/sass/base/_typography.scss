@@ -34,6 +34,16 @@
 		&:hover {
 			border-bottom-color: transparent;
 		}
+
+		code {
+			border-bottom: dotted 1px;
+			text-decoration: none;
+			@include vendor('transition', 'border-bottom-color #{_duration(transition)} ease-in-out');
+
+			&:hover {
+				border-bottom-color: transparent;
+			}
+		}
 	}
 
 	strong, b {
@@ -144,7 +154,7 @@
 		font-family: _font(family-fixed);
 		font-size: 0.9em;
 		text-transform: none;
-	    padding: 0 0.25em;
+	    padding: 0.2em 0.4em;
 	    word-break: break-word;
 	    background-color: #f6f6f6;
 	}
@@ -158,7 +168,7 @@
 		code {
 			display: block;
 			line-height: 1.75em;
-			padding: 1em 1.5em;
+		    padding: 1em 1.5em;
 			overflow-x: auto;
 			background-color: _palette(accent2, bg);
 		}

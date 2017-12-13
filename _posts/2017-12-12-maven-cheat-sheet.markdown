@@ -11,7 +11,7 @@ image: "/images/maven-cheat-sheet.jpg"
 imageSource: https://unsplash.com/photos/mDOao83l1iU
 ---
 
-## Creating a project (JAR)
+## Creating a project (jar)
 
 ```bash
 mvn archetype:generate 
@@ -19,7 +19,7 @@ mvn archetype:generate
     -DartifactId=application
 ```
 
-## Creating a project (WAR)
+## Creating a project (war)
 
 ```bash
 mvn archetype:generate
@@ -28,7 +28,7 @@ mvn archetype:generate
     -DarchetypeArtifactId=maven-archetype-webapp
 ```
 
-## Setting the source encoding
+## Setting the source code encoding
 
 ```xml
 <properties>
@@ -59,7 +59,7 @@ The `default` lifecycle consist of the following phases:
 
 Use `mvn <phase name>` to execute a phase.
 
-## Command line options
+## Useful command line options
 
 - `-DskipTests`: Compile the tests but don't run them.
 - `-Dmaven.test.skip=true`: Don't compile the tests and don't run them.
@@ -130,6 +130,7 @@ Use `mvn <phase name>` to execute a phase.
 ## Resources
 
 - [Maven: The Complete Reference][Maven: The Complete Reference]
+
 - [Introduction to the Build Lifecycle][Lifecycle]
 
 
