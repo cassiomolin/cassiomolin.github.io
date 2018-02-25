@@ -1,7 +1,7 @@
 ---
 title: Cassio Mazzochi Molin
 layout: cv
-description: Want to wire me? Check my CV.
+description: Want to hire me? Check my CV.
 ---
 
 Software engineer with more than seven years of experience in commercial software development. Focused on web applications and REST APIs, has completed several successful projects using Java EE technologies for different industry segments. Besides the solid experience on server side, can develop client side applications using Angular with TypeScript. 
