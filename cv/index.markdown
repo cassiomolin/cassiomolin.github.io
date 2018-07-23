@@ -17,7 +17,7 @@ Currently living in Dublin, holds an EU citizenship and no visas are required to
 - Designing and implementing REST APIs with JAX-RS and Spring allowing integration with external systems.
 - Working in a Scrum-based environment with teams based in Ireland, US and India to deliver working software at the end of each iteration.
 
-### Senior Software Engineer (contractor)
+### Senior Software Engineer (contract)
 #### IDEMIA (formerly Morpho) – Dublin, Ireland
 #### March 2017 – Present
 - Designed, implemented, tested and documented REST APIs for providing biometric-related services.
@@ -32,7 +32,7 @@ Currently living in Dublin, holds an EU citizenship and no visas are required to
 - Collaborated with other team members to introduce responsive design in the application UI, focusing on usability, accessibility and compatibility with multiple browsers and screen resolutions.
 - Worked with a range of technologies including SASS, JSP, EJB, JUnit, Apache Tomcat, IBM WebSphere, JDBC, DB2 and Oracle databases, and IBM proprietary frameworks.
 
-### Software Engineer | Architect
+### Software Engineer
 #### Keyworks TI – Caxias do Sul, Brazil
 #### March 2010 – July 2015
 - Key member in a software team, worked on several successful projects for different industry segments, including public transport and urban cleaning companies, health insurance providers, and automotive manufacturers.
