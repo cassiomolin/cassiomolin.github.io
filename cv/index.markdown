@@ -10,7 +10,7 @@ Currently living in Dublin, holds an EU citizenship and no visas are required to
 
 ## Work Experience
 
-## Senior Software Engineer (contract)
+### Senior Software Engineer (contract)
 #### Citi – Dublin, Ireland
 #### February 2018 – Present
 - Maintaining and adding features to Citi's request management system that streamlines the request, approval and fulfilment processes for orders of goods and services to over 240,000 employees, processing over 3 million transactions each month.
