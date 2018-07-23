@@ -9,7 +9,7 @@ tags:
 - guava
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: My insights on comparing JSON documents in Java
+excerpt: My insights on comparing JSON documents in Java.
 image: "/images/comparing-json-documents-in-java.jpg"
 imageSource: https://unsplash.com/photos/SQM0sS0htzw
 ---
@@ -40,7 +40,7 @@ Then I used [Guava]'s [`Maps.difference(Map<K, V>, Map<K, V>)`][Maps.difference]
 MapDifference<String, Object> difference = Maps.difference(left, right);
 ```
 
-Everything was good until I compared complex JSON documents, with nested objects and arrays. A JSON document with nested objects is represented as a map of maps and [`Maps.difference(Map<K, V>, Map<K, V>)`][Maps.difference] doesn't give nice comparison results for that.
+Everything was good until I had to compare complex JSON documents, with nested objects and arrays. A JSON document with nested objects is represented as a map of maps and [`Maps.difference(Map<K, V>, Map<K, V>)`][Maps.difference] doesn't give nice comparison results for that.
 
 My next approach was to flat the maps and then compare them. It provided me with better comparison results especially for complex JSON documents.
 
