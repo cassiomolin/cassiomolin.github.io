@@ -30,7 +30,7 @@ Currently living in Dublin, holds an EU citizenship and no visas are required to
 #### July 2015 – February 2017
 - As member of the IBM Watson Health team, collaborated with other engineers based in Ireland and India to create and maintain solutions for social program management, supporting the ObamaCare program in US and other government agencies all over the world.
 - Collaborated with other team members to introduce responsive design in the application UI, focusing on usability, accessibility and compatibility with multiple browsers and screen resolutions.
-- Worked with a range of technologies including SASS, JSP, EJB, JUnit, Apache Tomcat, IBM WebSphere, JDBC, DB2 and Oracle databases, and IBM proprietary frameworks.
+- Worked with a range of technologies including JSP, EJB, JUnit, Apache Tomcat, IBM WebSphere, JDBC, DB2 and Oracle databases, and IBM proprietary frameworks.
 
 ### Software Engineer
 #### Keyworks TI – Caxias do Sul, Brazil
