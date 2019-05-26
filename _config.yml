@@ -6,7 +6,6 @@ logo: null
 favicon: 'assets/images/favicon.ico'
 baseurl: ''
 url: https://cassiomolin.com/
-production_url: https://cassiomolin.com/
 ## disqus: 'justgoodthemes'
 cover_image: bc_1.jpg
 ga_analytics: UA-69796629-3
