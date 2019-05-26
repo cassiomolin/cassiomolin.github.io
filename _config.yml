@@ -4,7 +4,7 @@ description: 'A collection of programming insights by Cassio Molin.'
 meta_description: 'A collection of programming insights by Cassio Molin.'
 logo: null
 favicon: 'assets/images/favicon.ico'
-baseurl: 
+baseurl: ''
 production_url: https://cassiomolin.com/
 ## disqus: 'justgoodthemes'
 ## mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
