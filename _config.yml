@@ -25,7 +25,7 @@ author:
 
 # Contact form setings
 contact:
-  description: "Want to drop me a line? Just fill the form below and I'll get get to you soon."
+  description: "Want to drop me a line? Just fill the form below and I will get back to you soon."
   google_script_url: https://script.google.com/macros/s/AKfycbyAI7Dn1yJGgeyVzJSTrHtWN0UPbno1IqtkGs_dNw/exec
   message_sent: 'Thanks for getting in touch!'
   contact_you_soon: 'I will get back to you soon!'
