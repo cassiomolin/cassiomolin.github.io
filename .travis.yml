@@ -4,8 +4,7 @@ branches:
   only:
   - release
 script:
-  - gem install bundler
-  - bundle update --bundler
+  - gem install bundle
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
   provider: pages
