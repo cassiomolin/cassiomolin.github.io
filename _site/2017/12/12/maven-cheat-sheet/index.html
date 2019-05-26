@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Maven cheat sheet | cassiomolin</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Maven cheat sheet" />
+<meta name="author" content="Cassio Mazzochi Molin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A compilation of some Maven commands for quick reference." />
+<meta property="og:description" content="A compilation of some Maven commands for quick reference." />
+<link rel="canonical" href="http://localhost:4000/2017/12/12/maven-cheat-sheet/" />
+<meta property="og:url" content="http://localhost:4000/2017/12/12/maven-cheat-sheet/" />
+<meta property="og:site_name" content="cassiomolin" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-12T13:27:30+00:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/2017/12/12/maven-cheat-sheet/","headline":"Maven cheat sheet","dateModified":"2017-12-12T13:27:30+00:00","datePublished":"2017-12-12T13:27:30+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2017/12/12/maven-cheat-sheet/"},"author":{"@type":"Person","name":"Cassio Mazzochi Molin"},"description":"A compilation of some Maven commands for quick reference.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <h1 class="site-title"><a href="/" rel="home">cassiomolin</a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2017-12-12">December 12,
+                        2017</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Maven cheat sheet</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="/assets/images/posts/james-traf-1152925-unsplash.jpg"
+                    alt="Maven cheat sheet"></div>
+            
+            <div class="post-content">
+                <h2 id="creating-a-project-jar">Creating a project (jar)</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn archetype:generate <span class="se">\</span>
+    <span class="nt">-DgroupId</span><span class="o">=</span>com.example.project <span class="se">\</span>
+    <span class="nt">-DartifactId</span><span class="o">=</span>application
+</code></pre></div></div>
+
+<h2 id="creating-a-project-war">Creating a project (war)</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn archetype:generate <span class="se">\</span>
+    <span class="nt">-DgroupId</span><span class="o">=</span>com.example.project <span class="se">\</span>
+    <span class="nt">-DartifactId</span><span class="o">=</span>application <span class="se">\</span>
+    <span class="nt">-DarchetypeArtifactId</span><span class="o">=</span>maven-archetype-webapp
+</code></pre></div></div>
+
+<h2 id="setting-the-source-code-encoding">Setting the source code encoding</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></div></div>
+
+<h2 id="setting-the-java-version">Setting the Java version</h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>1.8<span class="nt">&lt;/maven.compiler.source&gt;</span>
+    <span class="nt">&lt;maven.compiler.target&gt;</span>1.8<span class="nt">&lt;/maven.compiler.target&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></div></div>
+
+<h2 id="default-lifecycle">Default lifecycle</h2>
+
+<p>The <code class="highlighter-rouge">default</code> lifecycle consist of the following phases:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">validate</code>: Validate the project, checking if everything is correct.</li>
+  <li><code class="highlighter-rouge">compile</code> Compile source code of the project and store classes in <code class="highlighter-rouge">target/classes</code>.</li>
+  <li><code class="highlighter-rouge">test</code>: Run the tests.</li>
+  <li><code class="highlighter-rouge">package</code>: Take the compiled code and package it in its distributable format, sucg as JAR or WAR.</li>
+  <li><code class="highlighter-rouge">verify</code>: Run any checks to verify the package is valid and meets quality criteria.</li>
+  <li><code class="highlighter-rouge">install</code>: Install the package into the local repository, or use as a dependency in other projects locally.</li>
+  <li><code class="highlighter-rouge">deploy</code>: Copies the final package to the remote repository.</li>
+</ul>
+
+<p>Use <code class="highlighter-rouge">mvn &lt;phase name&gt;</code> to execute a phase.</p>
+
+<h2 id="useful-command-line-options">Useful command line options</h2>
+
+<ul>
+  <li><code class="highlighter-rouge">-DskipTests</code>: Compile the tests but don’t run them.</li>
+  <li><code class="highlighter-rouge">-Dmaven.test.skip=true</code>: Don’t compile the tests and don’t run them.</li>
+  <li><code class="highlighter-rouge">-X</code> or <code class="highlighter-rouge">--debug</code>: Enable debug output.</li>
+  <li><code class="highlighter-rouge">-U</code> or <code class="highlighter-rouge">--update-snapshots</code>: Forces a check for updated releases and snapshots on remote repositories.</li>
+  <li><code class="highlighter-rouge">-o</code> or <code class="highlighter-rouge">--offline</code>: Work offline (run as if no network connection is available).</li>
+  <li><code class="highlighter-rouge">-l &lt;file path&gt;</code> or <code class="highlighter-rouge">--log-file &lt;file path&gt;</code>: Writes the build output to a file.</li>
+  <li><code class="highlighter-rouge">-v</code> or <code class="highlighter-rouge">--version</code>: Display Maven version.</li>
+</ul>
+
+<h2 id="useful-properties">Useful properties</h2>
+
+<h3 id="project-properties">Project properties</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">${project.groupId}</code>: Project’s group id.</li>
+  <li><code class="highlighter-rouge">${project.artifactId}</code>: Project’s artifact id.</li>
+  <li><code class="highlighter-rouge">${project.version}</code>: Project’s version.</li>
+  <li><code class="highlighter-rouge">${project.name}</code>: Project’s name.</li>
+  <li><code class="highlighter-rouge">${project.description}</code>: Project’s description.</li>
+  <li><code class="highlighter-rouge">${project.basedir}</code>: Directory containing the <code class="highlighter-rouge">pom.xml</code> file.</li>
+  <li><code class="highlighter-rouge">${project.baseUri}</code>: Directory containing the <code class="highlighter-rouge">pom.xml</code> file as URI.</li>
+  <li><code class="highlighter-rouge">${project.build.sourceDirectory}</code>: Project source directory.</li>
+  <li><code class="highlighter-rouge">${project.build.testSourceDirectory}</code>: Project test source directory.</li>
+  <li><code class="highlighter-rouge">${project.build.outputDirectory}</code>: Project output directory.</li>
+  <li><code class="highlighter-rouge">${project.build.testOutputDirectory}</code>: Project test output directory.</li>
+  <li><code class="highlighter-rouge">${project.build.directory}</code>: Directory which contains all of these output directories (<code class="highlighter-rouge">target</code>).</li>
+  <li><code class="highlighter-rouge">${project.build.finalName}</code>: Final name of the file created when the built project is packaged.</li>
+</ul>
+
+<h3 id="build-time-properties">Build time properties</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">${maven.build.timestamp}</code>: The UTC timestamp of build start, in <code class="highlighter-rouge">yyyy-MM-dd'T'HH:mm:ss'Z'</code> default format.</li>
+  <li><code class="highlighter-rouge">${build.timestamp}</code>: Same as ${maven.build.timestamp}.</li>
+  <li><code class="highlighter-rouge">${maven.build.timestamp.format}</code>: Can be used to override the default format for the build timestamp.</li>
+</ul>
+
+<h3 id="java-system-properties">Java system properties</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">${java.class.path}</code>: Java class path.</li>
+  <li><code class="highlighter-rouge">${java.home}</code>: Java installation directory.</li>
+  <li><code class="highlighter-rouge">${java.vendor}</code>: Java Runtime Environment vendor.</li>
+  <li><code class="highlighter-rouge">${java.version}</code>: Java Runtime Environment version.</li>
+  <li><code class="highlighter-rouge">${line.separator}</code>: Line separator.</li>
+  <li><code class="highlighter-rouge">${file.separator}</code>: File separator.</li>
+  <li><code class="highlighter-rouge">${os.name}</code>: Operating system name.</li>
+  <li><code class="highlighter-rouge">${os.arch}</code>: Operating system architecture.</li>
+  <li><code class="highlighter-rouge">${os.version}</code>: Operating system version.</li>
+  <li><code class="highlighter-rouge">${user.name}</code>: User’s account name.</li>
+  <li><code class="highlighter-rouge">${user.dir}</code>: User’s current working directory.</li>
+  <li><code class="highlighter-rouge">${user.home}</code>: User’s home directory.</li>
+</ul>
+
+<h2 id="useful-plugins">Useful plugins</h2>
+
+<ul>
+  <li><a href="http://maven.apache.org/plugins/maven-dependency-plugin/"><strong>Dependency plugin</strong></a>: Provides the capability to manipulate artifacts.
+    <ul>
+      <li><code class="highlighter-rouge">mvn dependency:tree</code>: Show dependency tree.</li>
+      <li><code class="highlighter-rouge">mvn dependency:resolve</code>: Resolve dependencies.</li>
+      <li><code class="highlighter-rouge">mvn dependency:resolve-plugins</code>: Resolve plugins.</li>
+    </ul>
+  </li>
+  <li><a href="http://www.mojohaus.org/versions-maven-plugin/"><strong>Versions plugin</strong></a>: Manage the versions of artifacts in a project’s POM.
+    <ul>
+      <li><code class="highlighter-rouge">mvn versions:set -DgenerateBackupPoms=false -DnewVersion=[new version]</code>: Set a new project version.</li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="http://maven.apache.org/plugins/maven-assembly-plugin/"><strong>Assembly plugin</strong></a>: Aggregate the project output along with its dependencies, modules and other files into a single distributable archive.</p>
+  </li>
+  <li>
+    <p><a href="http://maven.apache.org/maven-release/maven-release-plugin/"><strong>Release plugin</strong></a>: Plugin used to release a project.</p>
+  </li>
+  <li>
+    <p><a href="https://maven.apache.org/plugins/maven-shade-plugin/"><strong>Shade plugin</strong></a>: Package the artifact in an uber-jar, including its dependencies.</p>
+  </li>
+  <li><a href="http://maven.apache.org/plugins/maven-javadoc-plugin/"><strong>Javadoc plugin</strong></a>: Generate javadocs for a project.
+    <ul>
+      <li><code class="highlighter-rouge">mvn javadoc:javadoc</code>: Output javadocs HTML files in <code class="highlighter-rouge">target/site/apidocs</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+  <li>
+    <p><a href="http://books.sonatype.com/mvnref-book/reference/index.html">Maven: The Complete Reference</a></p>
+  </li>
+  <li>
+    <p><a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html">Introduction to the Build Lifecycle</a></p>
+
+  </li>
+</ul>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='/tag/java/'>java</a>
+                    
+                     
+                    <a href='/tag/maven/'>maven</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Maven+cheat+sheet&amp;url=http://localhost:40002017/12/12/maven-cheat-sheet/">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:40002017/12/12/maven-cheat-sheet/">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/authorimage.jpg" alt="Cassio Molin's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About Cassio Molin</h2>
+                    <p class="author-description">Cassio is a software engineer living, working and drinking in Ireland.<br>
+Has been using Java for many years and still loves it.
+</p>
+                </div>
+            </div>
+            
+
+        </article>
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="November 22, 2017">November 22, 2017</time>
+                    </div>
+                    <h3 class="post-title"><a href="/2017/11/22/stop-using-the-rfc-2616/">Stop using the RFC 2616</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/http/'>http</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                
+            </article>
+            
+            
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="July 23, 2018">July 23, 2018</time>
+                    </div>
+                    <h3 class="post-title"><a href="/2018/07/23/comparing-json-documents-in-java/">Comparing JSON documents in Java</a></h3>
+                    <p class="post-tags">
+                        
+                        
+                        
+                        <a href='/tag/java/'>java</a>
+                        
+                        
+                        
+                        <a href='/tag/json/'>json</a>
+                        
+                        
+                        
+                        <a href='/tag/jackson/'>jackson</a>
+                        
+                        
+                        
+                        <a href='/tag/gson/'>gson</a>
+                        
+                        
+                        
+                        <a href='/tag/guava/'>guava</a>
+                        
+                        
+                        
+                    </p>
+                </header>
+                
+                <a href="/2018/07/23/comparing-json-documents-in-java/" class="post-thumbnail">
+                    <img src="/assets/images/posts/rob-bates-701730-unsplash.jpg" alt="Comparing JSON documents in Java" />
+                </a>
+                
+            </article>
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/cassiomolin" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/cassiomolin" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+    
+    <a href="https://www.stackoverflow.com/u/1426227" target="_blank">
+        <span class="fa-stack-overflow fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">ProductHunt</span>
+    </a>
+    
+</p>
+                <p class="site-info">
+                    <a href="/">cassiomolin</a> &copy; 2019. Written with ♥ in Ireland. <br />
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/about/">About</a></li>
+					
+						<li class="menu-item"><a href="/contact/">Contact Me</a></li>
+					
+				</ul>
+			</nav>
+			
+<section class="widget widget-text">
+    <h2 class="widget-title">About cassiomolin</h2>
+    <p>A collection of programming insights by Cassio Molin.</p>
+</section>
+
+
+<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">July 23, 2018</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/2018/07/23/comparing-json-documents-in-java/">Comparing JSON documents in Java</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/2018/07/23/comparing-json-documents-in-java/">
+                <img src="http://localhost:4000/assets/images/posts/rob-bates-701730-unsplash.jpg"
+                    alt="Comparing JSON documents in Java">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">December 12, 2017</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/2017/12/12/maven-cheat-sheet/">Maven cheat sheet</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/2017/12/12/maven-cheat-sheet/">
+                <img src="http://localhost:4000/assets/images/posts/james-traf-1152925-unsplash.jpg"
+                    alt="Maven cheat sheet">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">November 22, 2017</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/2017/11/22/stop-using-the-rfc-2616/">Stop using the RFC 2616</a>
+                </div>
+            </div>
+            
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='/tag/arquillian/'>arquillian</a>
+        
+        <a href='/tag/authentication/'>authentication</a>
+        
+        <a href='/tag/bean-validation/'>bean-validation</a>
+        
+        <a href='/tag/cdi/'>cdi</a>
+        
+        <a href='/tag/dto/'>dto</a>
+        
+        <a href='/tag/ejb/'>ejb</a>
+        
+        <a href='/tag/gson/'>gson</a>
+        
+        <a href='/tag/guava/'>guava</a>
+        
+        <a href='/tag/http/'>http</a>
+        
+        <a href='/tag/jackson/'>jackson</a>
+        
+        <a href='/tag/java/'>java</a>
+        
+        <a href='/tag/jax-rs/'>jax-rs</a>
+        
+        <a href='/tag/jersey/'>jersey</a>
+        
+        <a href='/tag/json/'>json</a>
+        
+        <a href='/tag/maven/'>maven</a>
+        
+        <a href='/tag/rest/'>rest</a>
+        
+        <a href='/tag/servlet/'>servlet</a>
+        
+        <a href='/tag/spring-boot/'>spring-boot</a>
+        
+        <a href='/tag/test/'>test</a>
+        
+    </div>
+</section>
+
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-69796629-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-69796629-3', { 'anonymize_ip': true });
+  </script>
+
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>
