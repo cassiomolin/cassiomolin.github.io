@@ -24,6 +24,7 @@ GEM
       jekyll (>= 3.3, < 5.0)
     jekyll-sitemap (1.2.0)
       jekyll (~> 3.3)
+    jekyll-tagsgenerator (0.0.2)
     jekyll-watch (1.5.1)
       listen (~> 3.0)
     kramdown (1.17.0)
