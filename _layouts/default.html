@@ -1,78 +1,89 @@
-{% comment %}
+<!DOCTYPE html>
+<html lang="en">
 
-	Slate by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	Name:
+    {% if site.plugins_dir contains 'jekyll-seo-tag' %}
+        {% include head-seo.html %}
+    {% else %}
+        <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.name | escape }}{% endif %}</title>
+        <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+        <link rel="canonical" href="{{ page.url | replace:'index.html', '' | absolute_url }}">
+    {% endif %}
 
-		Default layout
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="{{ site.url }}/{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
 
-	Description:
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
 
-		Basic HTML foundation for all pages.
+    <!-- CSS Styles -->
+    <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
 
-	Example:
+</head>
 
-		---
-		layout: default
-		---
+{% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 
-{% endcomment %}
+<body class="{{ layout }}">
+    <div id="page" class="site">
 
-<!DOCTYPE HTML>
-<html>
-	<head>
+        {% if page.url == "/" %}
 
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-69796629-3"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		  gtag('config', 'UA-69796629-3');
-		</script>
+        <div class="hero-wrap">
+            {% if site.cover_image %}
+            <div class="hero-wrap-bg" style="background-image: url({{ site.baseurl }}/assets/images/{{ site.cover_image }})"></div>
+            {% endif %}
+            {% include header.html %}
+            <section class="hero outer fadeInDown delay_075s">
+                <div class="inner">
+                    {% include author.html %}
+                </div><!-- .inner -->
+            </section><!-- .hero -->
+        </div><!-- .hero-wrap -->
 
-		{% seo %}
+        {% else %}
+        {% include header.html %}
+        {% endif %}
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        {{ content }}
 
-		<!--[if lte IE 8]><script src="{{ site.baseurl }}/assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ie8.css" /><![endif]-->
-		<noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/noscript.css" /></noscript>
+        {% if paginator.total_posts > site.paginate %}
+        {% if page.class == 'tag-template' %}
+        {% include tag-pagination.html %}
+        {% endif %}
+        {% endif %}
 
-	</head>
-	<body>
+        {% if site.mailchimp_url and page.class == 'tag-template' %}
+        {% include newsletter-box.html %}
+        {% endif %}
 
-		{% include layout/header.html class=page.header_class %}
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                {% include social-links.html %}
+                <p class="site-info">
+                    <a href="/">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}. Written with ♥ in Ireland. <br />
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    {% include sidebar.html %}
+    {% include analytics.html %}
+    <!-- Javascript Assets -->
+    <script src="{{ site.baseurl }}/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/custom.js"></script>
 
-		{{ content }}
+</body>
 
-		{% include layout/footer.html %}
-
-		<!-- Scripts -->
-			<script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
-			<script src="{{ site.baseurl }}/assets/js/jquery.dropotron.min.js"></script>
-			<script src="{{ site.baseurl }}/assets/js/jquery.scrollex.min.js"></script>
-			<script src="{{ site.baseurl }}/assets/js/skel.min.js"></script>
-			<script src="{{ site.baseurl }}/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="{{ site.baseurl }}/assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="{{ site.baseurl }}/assets/js/main.js"></script>
-			<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js"></script>
-			<script>
-			  [].forEach.call(document.getElementsByTagName("pre"), function(el) {
-			    el.classList.add("prettyprint");
-			  });
-			  prettyPrint();
-			</script>
-			<script>
-			  [].forEach.call(document.querySelectorAll('.post-content a'), function(el) {
-			    el.setAttribute('target', '_blank');
-			  });	
-			</script>
-			<script src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
-	</body>
 </html>

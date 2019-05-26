@@ -8,8 +8,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Example of how to use JSON Path with Jackson.
-image: "/images/using-jackson-and-json-path-to-query-and-parse-an-arbitrary-json-node.jpg"
-imageSource: https://unsplash.com/photos/IoY8fvDGCNs
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 _JSON Pointer_ is a string syntax for identifying a specific value within a JSON document, defined by the [RFC 6901][1]. Consider the following JSON:

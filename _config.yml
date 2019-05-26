@@ -1,39 +1,66 @@
----
-title: Insights
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
-tagline: by cassiomolin
-author: Cassio Mazzochi Molin
-description: A collection of programming insights by Cassio Mazzochi Molin.
-baseurl: ''
-url: http://cassiomolin.com
-lang: en_GB
-social:
-  name: Cassio Mazzochi Molin
-  links:
-  - https://www.linkedin.com/in/cassiomolin
-  - https://github.com/cassiomolin
-  - https://instagram.com/cassiomolin
-  - https://stackoverflow.com/u/1426227
-gems:
-- jekyll-paginate
-- jekyll-seo-tag
-- jekyll-sitemap
-- jekyll-redirect-from
-markdown: kramdown
-sass:
-  sass_dir: assets/sass
-kramdown:
-  input: GFM
-paginate: 10
-paginate_path: "/archive/page-:num/"
+# Site setings
+name: 'cassiomolin'
+description: 'A collection of programming insights by Cassio Molin.'
+meta_description: 'A collection of programming insights by Cassio Molin.'
+logo: null
+favicon: 'assets/images/favicon.ico'
+baseurl: 
+production_url: https://cassiomolin.com/
+## disqus: 'justgoodthemes'
+## mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
+## cover_image: bc_1.jpg
+ga_analytics: 
+
+# Author
+author:
+  name: 'Cassio Molin'
+  image: 'authorimage.jpg'
+  greetings: null
+  description: |
+    Hey, I'm Cassio!<br>
+    I'm a software engineer living, working and drinking in Ireland.<br>
+    I've been using Java for many years and I still love it.
+  bio: |
+    Cassio is a software engineer living, working and drinking in Ireland.<br>
+    Has been using Java for many years and still loves it.
+
+# Contact form setings
+contact:
+  description: "Want to drop me a line? Just fill the form below and I'll get get to you soon."
+  google_script_url: https://script.google.com/macros/s/AKfycbyAI7Dn1yJGgeyVzJSTrHtWN0UPbno1IqtkGs_dNw/exec
+  message_sent: 'Thanks for getting in touch!'
+  contact_you_soon: 'I will get back to you soon!'
+
+# Social links
+github: 'cassiomolin'
+linkedin: 'cassiomolin'
+stackoverflow: '1426227'
+
+# Navigation
+navigation:
+  - text: About
+    url: /about/
+  - text: Contact Me
+    url: /contact/
+
+# Required Plugins
+plugins_dir:
+  - jekyll-paginate
+  - jekyll-tagsgenerator
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Pagination
+paginate: 5
+paginate_path: /page:num/
+
+# Permalinks
 permalink: pretty
-recentPosts:
-  limit: 12
-  offset: 1
+
+# Other
+markdown: kramdown
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed

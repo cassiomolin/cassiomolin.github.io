@@ -7,23 +7,24 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Some ideas of meaningful names for your DTOs.
-image: "/images/give-better-names-to-your-dtos.jpg"
-imageSource: https://unsplash.com/photos/0gkw_9fy0eQ
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 The [Java Language Specification][1] states the following regarding the [name convention for classes][2]:
 
+{: .long}
 > Names of class types should be descriptive nouns or noun phrases, not overly long, in mixed case with the first letter of each word capitalized.
 >
 > <!-- language: lang-java -->
 >
->     ClassLoader
->     SecurityManager
->     Thread
->     Dictionary
->     BufferedInputStream
->
-> [...]
+> ```java
+> ClassLoader
+> SecurityManager
+> Thread
+> Dictionary
+> BufferedInputStream
+> ```
 
 Your [**D**ata **T**ransfer **O**bject][3] class names should follow the convention mentioned above.
 

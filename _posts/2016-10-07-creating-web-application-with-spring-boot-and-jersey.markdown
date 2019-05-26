@@ -7,10 +7,9 @@ tags:
 - spring-boot
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: Example of how to create a standalone application with Jersey with Spring
-  Boot.
-image: "/images/creating-web-application-with-spring-boot-and-jersey.jpg"
-imageSource: https://unsplash.com/photos/8oPubUm97Cc
+excerpt: Example of how to create a standalone application with Jersey with Spring Boot.
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 Spring Boot helps you accelerate the application development and makes it easy to create standalone applications that you can "_just run_". Spring Boot embeds a web server, such as Tomcat or Jetty, in the application. So there's no need to deploy a WAR file. It's packed as a JAR and, to run it, you just need `java -jar`.

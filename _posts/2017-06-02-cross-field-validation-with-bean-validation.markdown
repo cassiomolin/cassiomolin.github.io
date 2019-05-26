@@ -7,8 +7,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Writing a custom validator to validate multiple fields.
-image: "/images/cross-field-validation-with-bean-validation.jpg"
-imageSource: https://unsplash.com/photos/xcrI6CPkkJs
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 [Bean Validation][2] provides a quite flexible API for writing your own validators, allowing cross field validation.

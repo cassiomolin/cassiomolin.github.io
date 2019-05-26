@@ -5,10 +5,9 @@ tags:
 - http
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: A summary of the HTTP status codes defined as cacheable, according to the
-  RFC 7231.
-image: "/images/which-http-status-codes-are-cacheable.jpg"
-imageSource: https://unsplash.com/photos/rL7BHmjUV50
+excerpt: A summary of the HTTP status codes defined as cacheable, according to the RFC 7231.
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 ## Short answer
@@ -31,12 +30,14 @@ According to the [RFC 7231][1], the current reference for content and semantics 
 
 The [RFC 7231][1] states the following regarding the HTTP status codes that are cacheable by default:
 
+{: .long}
 > [**6.1\. Overview of Status Codes**][15]
 >
 > [...] Responses with status codes that are defined as cacheable by default (e.g., `200`, `203`, `204`, `206`, `300`, `301`, `404`, `405`, `410`, `414`, and `501` in this specification) can be reused by a cache with heuristic expiration unless otherwise indicated by the [method definition][2] or [explicit cache controls][3]; all other status codes are not cacheable by default. [...]
 
 Once the HTTP status codes are extensible, recipient must note cache a response with an unrecognized status code:
 
+{: .long}
 > [**6\. Response Status Codes**][16]
 >
 > The status-code element is a three-digit integer code giving the result of the attempt to understand and satisfy the request.
@@ -44,12 +45,14 @@ Once the HTTP status codes are extensible, recipient must note cache a response 
 
 The cache also depends on the HTTP method:
 
+{: .long}
 > [**4.2.3\. Cacheable Methods**][17]
 >
 > Request methods can be defined as "cacheable" to indicate that responses to them are allowed to be stored for future reuse. In general, safe methods that do not depend on a current or authoritative response are defined as cacheable; this specification defines `GET`, `HEAD`, and `POST` as cacheable, although the overwhelming majority of cache implementations only support `GET` and `HEAD`.
 
 Regarding the `POST` method, there's an important detail:
 
+{: .long}
 > [**4.3.3\. POST**][18]
 >
 > [...] Responses to `POST` requests are only cacheable when they include [explicit freshness information][19] [...]

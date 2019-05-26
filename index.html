@@ -1,47 +1,34 @@
 ---
-title: Insights by cassiomolin
 layout: default
+title: Home
 ---
 
-{% comment %}
+{% if page.url == "/" %}
+<!-- Featured-->
+<div class="featured-posts outer">
+    {% for post in site.posts %}
+        {% if post.featured == true %}
+            {% include featuredbox.html %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<!-- Posts Index -->
+<div class="outer">
+    {% if page.url == "/" %}
+    <div class="post-feed-title inner">Latest Articles</div>
+    {% endif %}
+    <div class="post-feed inner-wide">
+        {% for post in paginator.posts %}
+            {% include postbox.html %}
+        {% endfor %}
+    </div>
+</div>
+<!-- Pagination-->
+{% include pagination.html %}
+{% if site.mailchimp_url %}
+    {% include newsletter-box.html %}
+{% endif %}
 
-	Slate by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
 
-	Name:
 
-		Home page
-
-	Description:
-
-		Site home page.
-
-{% endcomment %}
-
-<!-- One -->
-	<section id="one" class="wrapper">
-		<div class="inner">
-			<section class="spotlight">
-				<div class="content">
-		            {% assign latest_post = site.posts.first %}
-					<h2><a href="{{ site.baseurl }}{{ latest_post.url }}">{{ latest_post.title }}</a></h2>
-					<p><time>{{ latest_post.date | date: "%B %-d, %Y" }}</time></p>
-					<p><i>{{ latest_post.excerpt }}</i></p>
-				</div>
-				<span class="image">
-					<a href="{{ site.baseurl }}{{ latest_post.url }}">
-						<img src="{{ site.baseurl }}{{ latest_post.image }}" alt="" />
-					</a>
-				</span>
-			</section>
-		</div>
-	</section>
-
-<!-- Three -->
-	<section id="three" class="wrapper style2">
-		<div class="inner">
-			<h2>Recent Posts</h2>
-			{% include components/posts.html posts=site.posts %}
-		</div>
-	</section>

@@ -7,24 +7,24 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: A compilation of some Maven commands for quick reference.
-image: "/images/maven-cheat-sheet.jpg"
-imageSource: https://unsplash.com/photos/mDOao83l1iU
+featured_image: "/assets/images/posts/james-traf-1152925-unsplash.jpg"
+featured_image_thumbnail: "/assets/images/posts/james-traf-1152925-unsplash.jpg"
 ---
 
 ## Creating a project (jar)
 
 ```bash
-mvn archetype:generate 
-    -DgroupId=com.example.project
+mvn archetype:generate \
+    -DgroupId=com.example.project \
     -DartifactId=application
 ```
 
 ## Creating a project (war)
 
 ```bash
-mvn archetype:generate
-    -DgroupId=com.example.project
-    -DartifactId=application
+mvn archetype:generate \
+    -DgroupId=com.example.project \
+    -DartifactId=application \
     -DarchetypeArtifactId=maven-archetype-webapp
 ```
 

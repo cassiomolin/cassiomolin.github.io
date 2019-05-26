@@ -7,10 +7,9 @@ tags:
 - dto
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: Why you should consider using Data Transfer Objects instead of persistence
-  models in your REST API.
-image: "/images/why-you-should-use-dtos-in-your-rest-api.jpg"
-imageSource: https://unsplash.com/photos/VviFtDJakYk
+excerpt: Why you should consider using Data Transfer Objects instead of persistence models in your REST API.
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 **DTO** stands for [**D**ata **T**ransfer **O**bject][1]. 

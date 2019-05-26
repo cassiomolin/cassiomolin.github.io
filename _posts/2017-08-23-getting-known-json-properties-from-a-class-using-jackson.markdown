@@ -7,10 +7,9 @@ tags:
 - json
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: Using the Jackson API to introspect a Java class and extract the available
-  JSON properties from it.
-image: "/images/getting-known-json-properties-from-a-class-using-jackson.jpg"
-imageSource: https://unsplash.com/photos/qr7tsSwDOg0
+excerpt: Using the Jackson API to introspect a Java class and extract the available JSON properties from it.
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 [Jackson][7] is a (or probably the most) popular framework for parsing JSON in Java. The Jackson API makes it easy to [introspect an arbitrary class][1] to get the available JSON properties:

@@ -8,8 +8,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: How to perform authentication with tokens in JAX-RS applications.
-image: "/images/token-based-authentication-with-jaxrs-20.jpg"
-imageSource: https://unsplash.com/photos/DuBNA1QMpPA
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 In token-based authentication, the client exchanges *hard credentials* (such as username and password) for a piece of data called *token*. For each request, instead of sending the hard credentials, the client will send the token to the server to perform authentication and then authorization.

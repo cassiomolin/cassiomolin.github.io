@@ -10,8 +10,10 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: My insights on comparing JSON documents in Java.
-image: "/images/comparing-json-documents-in-java.jpg"
-imageSource: https://unsplash.com/photos/SQM0sS0htzw
+featured_image: "/assets/images/posts/rob-bates-701730-unsplash.jpg"
+featured_image_thumbnail: "/assets/images/posts/rob-bates-701730-unsplash.jpg"
+featured: true
+hidden: true
 ---
 
 I recently came across the challenge of comparing JSON documents in Java. Once JSON documents are a set of key/value pairs, my first approach was to read the JSON documents as [`Map<K, V>`][Map] instances and then compare them. 
@@ -156,7 +158,7 @@ difference.entriesDiffering().forEach((key, value) -> System.out.println(key + "
 
 It will produce the following output:
 
-```
+```none
 Entries only on the left
 --------------------------
 /address: null

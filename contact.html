@@ -1,0 +1,60 @@
+---
+layout: default
+title: Contact Me
+---
+
+<!--
+  To make this form work you have to:
+  1. defined "email: youremail@email.com" in _config.yml file.
+  2. verify your form on formspree.io.
+-->
+
+<div id="content" class="site-content fadeInDown delay_075s">
+  <main id="main" class="site-main outer">
+    <div class="inner">
+      <h1 class="post-title">Contact Me</h1>
+      {% if site.contact.description %}
+        <p>{{ site.contact.description }}</p>
+      {{else}}
+      {% endif %}
+      <section class="contact-form">
+
+        <form class="gform" action="{{ site.contact.google_script_url }}" method="post" id="contact-form">
+          
+          <div class="form-elements">
+
+            <div class="form-item">
+              <label class="form-label">Your e-mail <span>(required)</span></label>
+              <input type="text" name="email" placeholder="Your e-mail address..." class="form-input" required/>
+              <span class="email-invalid" style="display:none">Oops... It doesn't seem to be a valid e-mail address.</span>
+            </div>
+
+            <div class="form-item">
+              <label class="form-label">Your name <span>(required)</span></label>
+              <input type="text" name="name" placeholder="Your name..." class="form-input" required/>
+            </div>
+
+            <div class="form-item">
+              <label class="form-label">Your message <span>(required)</span></label>
+              <textarea name="message" placeholder="Your message..." class="form-textarea" required></textarea>
+            </div>
+
+            <div class="form-item">
+              <input type="submit" value="Send Message" class="button" />
+            </div>
+
+          </div><!-- .form-elements-->
+
+          <div style="display:none" class="thankyou_message">
+            <h2>{{ site.contact.message_sent }}</h2>
+            <p>{{ site.contact.contact_you_soon }}</p>
+          </div>
+
+        </form>
+
+      </section>
+    </div><!-- .inner-->
+  </main>
+</div>
+
+<script src="{{ site.baseurl }}/assets/js/form-submission-handler.js"></script>
