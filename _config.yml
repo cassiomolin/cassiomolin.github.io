@@ -7,9 +7,8 @@ favicon: 'assets/images/favicon.ico'
 baseurl: ''
 production_url: https://cassiomolin.com/
 ## disqus: 'justgoodthemes'
-## mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
-## cover_image: bc_1.jpg
-ga_analytics: 
+cover_image: bc_1.jpg
+ga_analytics: UA-69796629-3
 
 # Author
 author:
