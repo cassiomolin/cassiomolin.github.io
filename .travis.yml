@@ -4,6 +4,7 @@ branches:
   only:
   - release
 script:
+  - bundle update --bundler
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
   provider: pages
