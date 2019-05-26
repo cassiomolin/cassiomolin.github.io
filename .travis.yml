@@ -4,7 +4,6 @@ branches:
   only:
   - release
 script:
-  - rvmsudo gem install bundler
   - JEKYLL_ENV=production bundle exec jekyll build --destination site
 deploy:
   provider: pages
