@@ -1,6 +1,6 @@
 # Site setings
 name: 'cassiomolin'
-description: 'A collection of programming insights by Cassio Molin.'
+description: 'I am Cassio and this is my collection of programming insights.'
 meta_description: 'A collection of programming insights by Cassio Molin.'
 logo: null
 favicon: 'assets/images/favicon.ico'
@@ -39,7 +39,7 @@ stackoverflow: '1426227'
 navigation:
   - text: About
     url: /about/
-  - text: Contact me
+  - text: Contact
     url: /contact/
 
 # Required Plugins
