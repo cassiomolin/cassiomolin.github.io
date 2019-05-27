@@ -6,7 +6,12 @@
 
 	var $body = $('body');
 
-	$(document).ready(function(){
+	$(document).ready(function() {
+
+		// Ensure that links in the post body will open in a new tab
+		[].forEach.call(document.querySelectorAll('.post-full > .post-content a'), function(el) {
+			el.setAttribute('target', '_blank');
+		}); 
 
 		// Responsive video embeds
 		$('.post-content').fitVids();
