@@ -805,6 +805,10 @@
   transition: .3s;
 }
 
+.widget-tagcloud._404 a {
+  color: $gray-dark;
+} 
+
 .widget-tagcloud a:hover {
   border-color: $color-accent;
   color: $color-accent;
