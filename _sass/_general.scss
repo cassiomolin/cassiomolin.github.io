@@ -119,7 +119,7 @@ pre code {
 
 blockquote {
     color: $gray-darkest;
-    font-size: 1.88889rem;
+    font-size: 1.6rem;
     line-height: 1.25;
     margin: 0 0 0.88235em;
     position: relative;
@@ -187,6 +187,11 @@ blockquote.long:after {
     content: "";
     display: none;
     height: 0;
+}
+
+blockquote.long small,
+blockquote.long cite {
+    font-size: 0.66em;
 }
 
 dl {
