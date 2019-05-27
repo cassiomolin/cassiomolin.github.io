@@ -2,6 +2,7 @@
 layout: page
 title: About
 featured_image: null
+permalink: /about/
 ---
 
 Hey, I’m Cassio and this is my programming insights collection! 
