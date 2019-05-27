@@ -39,7 +39,7 @@ stackoverflow: '1426227'
 navigation:
   - text: About
     url: /about/
-  - text: Contact Me
+  - text: Contact me
     url: /contact/
 
 # Required Plugins
