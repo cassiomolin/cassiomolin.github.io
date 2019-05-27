@@ -169,6 +169,14 @@ blockquote.long {
     border-left: 3px solid $color-accent;
 }
 
+blockquote.long p {
+  margin: 0 0 1.66667em;
+}
+
+blockquote.long *:last-child {
+  margin-bottom: 0;
+}
+
 blockquote.long:before,
 blockquote.long:after {
     content: "";
