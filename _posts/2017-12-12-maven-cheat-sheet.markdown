@@ -7,8 +7,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: A compilation of some Maven commands for quick reference.
-featured_image: "/assets/images/posts/james-traf-1152925-unsplash.jpg"
-featured_image_thumbnail: "/assets/images/posts/james-traf-1152925-unsplash.jpg"
+featured_image: null
+featured_image_thumbnail: null
 ---
 
 ## Creating a project (jar)
