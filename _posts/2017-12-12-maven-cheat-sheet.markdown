@@ -49,64 +49,74 @@ mvn archetype:generate \
 
 The `default` lifecycle consist of the following phases:
 
-- `validate`: Validate the project, checking if everything is correct.
-- `compile` Compile source code of the project and store classes in `target/classes`.
-- `test`: Run the tests.
-- `package`: Take the compiled code and package it in its distributable format, sucg as JAR or WAR.
-- `verify`: Run any checks to verify the package is valid and meets quality criteria.
-- `install`: Install the package into the local repository, or use as a dependency in other projects locally.
-- `deploy`: Copies the final package to the remote repository.
+| Phase      | Description                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| `validate` | Validate the project, checking if everything is correct.                                         |
+| `compile`  | Compile source code of the project and store classes in `target/classes`.                        |
+| `test`     | Run the tests.                                                                                   |
+| `package`  | Take the compiled code and package it in its distributable format, sucg as JAR or WAR.           |
+| `verify`   | Run any checks to verify the package is valid and meets quality criteria.                        |
+| `install`  | Install the package into the local repository, or use as a dependency in other projects locally. |
+| `deploy`   | Copies the final package to the remote repository.                                               |
 
 Use `mvn <phase name>` to execute a phase.
 
 ## Useful command line options
 
-- `-DskipTests`: Compile the tests but don't run them.
-- `-Dmaven.test.skip=true`: Don't compile the tests and don't run them.
-- `-X` or `--debug`: Enable debug output.
-- `-U` or `--update-snapshots`: Forces a check for updated releases and snapshots on remote repositories.
-- `-o` or `--offline`: Work offline (run as if no network connection is available).
-- `-l <file path>` or `--log-file <file path>`: Writes the build output to a file.
-- `-v` or `--version`: Display Maven version.
+| Command line option                          | Description                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------------ |
+| `-DskipTests`                                | Compile the tests but don't run them                                     |
+| `-Dmaven.test.skip=true`                     | Don't compile the tests and don't run them                               |
+| `-X` or `--debug`                            | Enable debug output                                                      |
+| `-U` or `--update-snapshots`                 | Forces a check for updated releases and snapshots on remote repositories |
+| `-o` or `--offline`                          | Work offline (run as if no network connection is available)              |
+| `-l <file path>` or `--log-file <file path>` | Writes the build output to a file                                        |
+| `-v` or `--version`                          | Display Maven version                                                    |
 
 ## Useful properties
 
 ### Project properties
 
-- `${project.groupId}`: Project's group id.
-- `${project.artifactId}`: Project's artifact id.
-- `${project.version}`: Project's version.
-- `${project.name}`: Project's name.
-- `${project.description}`: Project's description.
-- `${project.basedir}`: Directory containing the `pom.xml` file.
-- `${project.baseUri}`: Directory containing the `pom.xml` file as URI.
-- `${project.build.sourceDirectory}`: Project source directory.
-- `${project.build.testSourceDirectory}`: Project test source directory.
-- `${project.build.outputDirectory}`: Project output directory.
-- `${project.build.testOutputDirectory}`: Project test output directory.
-- `${project.build.directory}`: Directory which contains all of these output directories (`target`).
-- `${project.build.finalName}`: Final name of the file created when the built project is packaged.
+| Property                               | Description                                                         |
+| -------------------------------------- | ------------------------------------------------------------------- |
+| `${project.groupId}`                   | Project's group id                                                  |
+| `${project.artifactId}`                | Project's artifact id                                               |
+| `${project.version}`                   | Project's version                                                   |
+| `${project.name}`                      | Project's name                                                      |
+| `${project.description}`               | Project's description                                               |
+| `${project.basedir}`                   | Directory containing the `pom.xml` file                             |
+| `${project.baseUri}`                   | Directory containing the `pom.xml` file as URI                      |
+| `${project.build.sourceDirectory}`     | Project source directory                                            |
+| `${project.build.testSourceDirectory}` | Project test source directory                                       |
+| `${project.build.outputDirectory}`     | Project output directory                                            |
+| `${project.build.testOutputDirectory}` | Project test output directory                                       |
+| `${project.build.directory}`           | Directory which contains all of these output directories (`target`) |
+| `${project.build.finalName}`           | Final name of the file created when the built project is packaged   |
 
 ### Build time properties
 
-- `${maven.build.timestamp}`: The UTC timestamp of build start, in `yyyy-MM-dd'T'HH:mm:ss'Z'` default format.
-- `${build.timestamp}`: Same as ${maven.build.timestamp}.
-- `${maven.build.timestamp.format}`: Can be used to override the default format for the build timestamp.
+| Property                          | Description                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------ |
+| `${maven.build.timestamp}`        | The UTC timestamp of build start, in `yyyy-MM-dd'T'HH:mm:ss'Z'` default format |
+| `${build.timestamp}`              | Same as `${maven.build.timestamp}`                                             |
+| `${maven.build.timestamp.format}` | Can be used to override the default format for the build timestamp             |
 
 ### Java system properties
 
-- `${java.class.path}`: Java class path.
-- `${java.home}`: Java installation directory.
-- `${java.vendor}`: Java Runtime Environment vendor.
-- `${java.version}`: Java Runtime Environment version.
-- `${line.separator}`: Line separator.
-- `${file.separator}`: File separator.
-- `${os.name}`: Operating system name.
-- `${os.arch}`: Operating system architecture.
-- `${os.version}`: Operating system version.
-- `${user.name}`: User’s account name.
-- `${user.dir}`: User’s current working directory.
-- `${user.home}`: User’s home directory.
+| Property             | Description                      |
+| -------------------- | -------------------------------- |
+| `${java.class.path}` | Java class path                  |
+| `${java.home}`       | Java installation directory      |
+| `${java.vendor}`     | Java Runtime Environment vendor  |
+| `${java.version}`    | Java Runtime Environment version |
+| `${line.separator}`  | Line separator                   |
+| `${file.separator}`  | File separator                   |
+| `${os.name}`         | Operating system name            |
+| `${os.arch}`         | Operating system architecture    |
+| `${os.version}`      | Operating system version         |
+| `${user.name}`       | User’s account name              |
+| `${user.dir}`        | User’s current working directory |
+| `${user.home}`       | User’s home directory            |
 
 ## Useful plugins
 
