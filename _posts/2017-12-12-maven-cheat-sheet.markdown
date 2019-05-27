@@ -140,7 +140,6 @@ Use `mvn <phase name>` to execute a phase.
 ## Resources
 
 - [Maven: The Complete Reference][Maven: The Complete Reference]
-
 - [Introduction to the Build Lifecycle][Lifecycle]
 
 
