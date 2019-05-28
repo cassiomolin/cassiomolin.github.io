@@ -7,11 +7,13 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: A compilation of some Maven commands for quick reference.
-featured_image: null
-featured_image_thumbnail: null
+featured_image: "/assets/images/posts/building_1.jpg"
+featured_image_thumbnail: "/assets/images/posts/building_1_small.jpg"
 ---
 
-## Creating a project (jar)
+I've put together some Maven commands, properties and command line options.
+
+Creating a project (jar):
 
 ```bash
 mvn archetype:generate \
@@ -19,7 +21,7 @@ mvn archetype:generate \
     -DartifactId=application
 ```
 
-## Creating a project (war)
+Creating a project (war):
 
 ```bash
 mvn archetype:generate \
@@ -28,7 +30,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=maven-archetype-webapp
 ```
 
-## Setting the source code encoding
+Setting the source code encoding:
 
 ```xml
 <properties>
@@ -36,7 +38,7 @@ mvn archetype:generate \
 </properties>
 ```
 
-## Setting the Java version
+Setting the Java version:
 
 ```xml
 <properties>

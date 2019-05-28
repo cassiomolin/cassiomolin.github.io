@@ -7,8 +7,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Writing a custom validator to validate multiple fields.
-featured_image: null
-featured_image_thumbnail: null
+featured_image: "/assets/images/posts/architecture_1.jpg"
+featured_image_thumbnail: "/assets/images/posts/architecture_1_small.jpg"
 ---
 
 [Bean Validation][2] provides a quite flexible API for writing your own validators, allowing cross field validation.
