@@ -5,7 +5,7 @@ featured_image: null
 permalink: /about/
 ---
 
-Hey! I’m Cassio and this is my programming insights collection. I'm a software engineer living, working and drinking in Ireland. I've been using Java for over 9 years now and I still love it.
+Welcome, I am Cassio Molin and I have been a software engineer in the past 9 years. I currently living in Dublin, Republic of Ireland.
 
 As a spare time activity, I am active on [Stack Overflow][stackoverflow] and most of posts you'll find here are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general.
 
