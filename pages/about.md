@@ -16,7 +16,7 @@ Would you like to get in touch? Feel free to [drop me a message][contact] :)
 <br/>
 
 >Any fool can write code that a computer can understand. <br />
->Good programmers write code that humans can understand. <cite>Martin Fowler</cite>
+>Good programmers write code that humans can understand. <cite>- Martin Fowler -</cite>
 
 
   [contact]: /contact
