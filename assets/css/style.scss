@@ -1176,7 +1176,7 @@
   .timeline-block {
     display: block;
     margin-bottom: 2em;
-    padding-left: 2em;
+    padding-left: 2.5em;
   }
  
   .marker {
@@ -1189,13 +1189,13 @@
     display: block;
     position: absolute;
     left: -1px;
-    margin-top: 3px;
+    margin-top: 2px;
   }
  
   .timeline-content h3 {
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: 500;
   }
  
@@ -1215,8 +1215,8 @@
 
   .timeline-content span.contractor:before {
     content: 'contractor';
-    border: 1px solid #535358;
-    background-color: #535358;
+    border: 1px solid $gray-dark;
+    background-color: $gray-dark;
     border-radius: 1em;
     padding: 0 6px;
   }
@@ -1233,6 +1233,13 @@
 
   .timeline-content ul li {
     margin-bottom: .4em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+
+  .cv .timeline-content h3 {
+    font-size: 1.3em;
   }
 }
 
