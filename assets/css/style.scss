@@ -22,6 +22,7 @@
  * 7. Widgets
  * 8. Site Footer
  * 9. Media Queries
+ * 10. CV
 */
 
 @import
@@ -1135,6 +1136,108 @@
   .contact-form {
     padding: 10px;
   }
+}
+
+/**
+ * 10. CV
+ * ----------------------------------------------------------------------------
+ */
+
+.cv {
+ 
+  .timeline {
+    position: relative;
+    margin: 2em 0;
+  }
+ 
+  .timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: 2px;
+    width: 2px;
+    height: 100%;
+    background: #CCD1D9;
+    z-index: 1;
+    margin-top: 1em;
+  }
+ 
+  .timeline-block {
+    display: block;
+    margin-bottom: 2em;
+    padding-left: 1em;
+  }
+ 
+  .marker {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 2px solid $gray-lightest;
+    background: $color-accent;
+    z-index: 9999;
+    display: block;
+    position: absolute;
+    left: -1px;
+    margin-top: 3px;
+  }
+ 
+  .timeline-content {
+    padding: 0 0 0 15px;
+  }
+ 
+  .timeline-content h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: 500;
+  }
+ 
+  .timeline-content span {
+    font-size: 1em;
+    display: block;
+  }
+
+  .timeline-content span.contractor {
+    display: inline;
+    color: #535358;
+    font-size: 0.6em;
+    margin-left: .3em;
+    position: relative;
+    top: -1px;
+  }
+
+  .timeline-content span.contractor:before {
+    content: '(contractor)';  
+  }
+
+  .timeline-content span.company-summary {
+    font-size: .9em;
+    margin-top: 1em;
+  }
+
+  .timeline-content ul {
+    margin: 1em 0;
+    font-size: .9em;
+  }
+
+  .timeline:before {
+    left: 8px;
+    width: 2px;
+ }
+ .timeline-block {
+    
+ }
+ .timeline-block-right {
+    float: none;
+ }
+
+ .timeline-block-left {
+    float: none;
+    direction: ltr;
+ }
+
+
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -39,6 +39,8 @@ stackoverflow: '1426227'
 navigation:
   - text: About
     url: /about/
+  - text: CV
+    url: /cv/
   - text: Contact
     url: /contact/
 
