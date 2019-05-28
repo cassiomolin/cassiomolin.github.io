@@ -16,7 +16,11 @@ featured: true
 hidden: true
 ---
 
-I recently came across the challenge of comparing JSON documents in Java. Once JSON documents are a set of key/value pairs, my first approach was to read the JSON documents as [`Map<K, V>`][Map] instances and then compare them. 
+I recently came across the challenge of comparing JSON documents in Java. This post describes in the details the approaches I have used to accomplish this task.
+
+<!--more-->
+
+Once JSON documents are a set of key/value pairs, my first approach was to read the JSON documents as [`Map<K, V>`][Map] instances and then compare them. 
 
 Reading the JSON documents as [`Map<K, V>`][Map] it's pretty straightforward with both [Jackson] and [Gson], the most popular JSON parsers for Java:
 
@@ -154,7 +158,7 @@ difference.entriesOnlyOnRight().forEach((key, value) -> System.out.println(key +
 
 System.out.println("\n\nEntries differing\n--------------------------");
 difference.entriesDiffering().forEach((key, value) -> System.out.println(key + ": " + value));
-```      
+```
 
 It will produce the following output:
 
