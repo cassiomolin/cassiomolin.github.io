@@ -1153,16 +1153,24 @@
   .timeline:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 4px;
     left: 50%;
     margin-left: 2px;
     width: 2px;
     height: 100%;
     background: #CCD1D9;
     z-index: 1;
-    margin-top: 1em;
     left: 8px;
     width: 2px;
+  }
+
+  .timeline:after {
+    content: '';
+    border-bottom: 2px solid #CCD1D9;
+    width: 21px;
+    display: block;
+    top: 5px;
+    position: relative;
   }
  
   .timeline-block {
@@ -1184,14 +1192,10 @@
     margin-top: 3px;
   }
  
-  .timeline-content {
-    padding: 0 0 0 15px;
-  }
- 
   .timeline-content h3 {
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 25px;
+    font-size: 1.3em;
     font-weight: 500;
   }
  
@@ -1202,15 +1206,19 @@
 
   .timeline-content span.contractor {
     display: inline;
-    color: #535358;
-    font-size: 0.6em;
+    color: #f9f9fb;
+    font-size: 0.5em;
     margin-left: .3em;
     position: relative;
-    top: -1px;
+    top: -3px;
   }
 
   .timeline-content span.contractor:before {
-    content: '(contractor)';  
+    content: 'contractor';
+    border: 1px solid #535358;
+    background-color: #535358;
+    border-radius: 1em;
+    padding: 0 6px;
   }
 
   .timeline-content span.company-summary {
@@ -1221,6 +1229,10 @@
   .timeline-content ul {
     margin: 1em 0;
     font-size: .9em;
+  }
+
+  .timeline-content ul li {
+    margin-bottom: .4em;
   }
 }
 
