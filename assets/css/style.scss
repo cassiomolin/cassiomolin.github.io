@@ -1161,6 +1161,8 @@
     background: #CCD1D9;
     z-index: 1;
     margin-top: 1em;
+    left: 8px;
+    width: 2px;
   }
  
   .timeline-block {
@@ -1220,20 +1222,6 @@
     margin: 1em 0;
     font-size: .9em;
   }
-
-  .timeline:before {
-    left: 8px;
-    width: 2px;
- }
-
- .timeline-block-right {
-    float: none;
- }
-
- .timeline-block-left {
-    float: none;
-    direction: ltr;
- }
 }
 
 /*# sourceMappingURL=style.css.map */
