@@ -1147,7 +1147,7 @@
  
   .timeline {
     position: relative;
-    margin: 2em 0;
+    margin: 3em 0;
   }
  
   .timeline:before {
@@ -1189,7 +1189,7 @@
     display: block;
     position: absolute;
     left: -1px;
-    margin-top: 2px;
+    margin-top: 4px;
   }
  
   .timeline-content h3 {
@@ -1218,7 +1218,8 @@
     border: 1px solid $gray-dark;
     background-color: $gray-dark;
     border-radius: 1em;
-    padding: 0 6px;
+    padding: 2px 7px;
+    vertical-align: middle;
   }
 
   .timeline-content span.company-summary {
@@ -1238,8 +1239,23 @@
 
 @media only screen and (max-width: 800px) {
 
-  .cv .timeline-content h3 {
-    font-size: 1.3em;
+  .cv {
+
+    .marker {
+      margin-top: 1px;
+    }
+
+    .timeline-block {
+      padding-left: 2em;
+    }
+
+    .timeline-content span.contractor {
+      font-size: 0.55em;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.3em;
+    }
   }
 }
 
