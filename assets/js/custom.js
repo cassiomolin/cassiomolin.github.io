@@ -9,7 +9,7 @@
 	$(document).ready(function() {
 
 		// Ensure that links in the post body will open in a new tab
-		[].forEach.call(document.querySelectorAll('.post-full:not(.page) > .post-content a, .post-featured > .post-content a'), function(el) {
+		[].forEach.call(document.querySelectorAll('.post-full:not(.page) > .post-content a'), function(el) {
 			el.setAttribute('target', '_blank');
 		}); 
 
