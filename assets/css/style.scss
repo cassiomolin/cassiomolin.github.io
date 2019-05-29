@@ -1158,7 +1158,7 @@
     margin-left: 2px;
     width: 2px;
     height: 100%;
-    background: #CCD1D9;
+    background: $gray-light;
     z-index: 1;
     left: 8px;
     width: 2px;
@@ -1166,8 +1166,8 @@
 
   .timeline:after {
     content: '';
-    border-bottom: 2px solid #CCD1D9;
-    width: 21px;
+    border-bottom: 2px solid $gray-light;
+    width: 22px;
     display: block;
     top: 5px;
     position: relative;
@@ -1183,7 +1183,7 @@
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    border: 2px solid $gray-lightest;
+    border: 2px solid $color-accent;
     background: $color-accent;
     z-index: 9999;
     display: block;
@@ -1206,7 +1206,7 @@
 
   .timeline-content span.contractor {
     display: inline;
-    color: #f9f9fb;
+    color: $gray-lightest;
     font-size: 0.5em;
     margin-left: .3em;
     position: relative;
