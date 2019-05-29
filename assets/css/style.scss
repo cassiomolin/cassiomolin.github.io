@@ -1249,12 +1249,26 @@
       padding-left: 2em;
     }
 
+    .timeline-content h3 {
+      font-size: 1.3em;
+    }
+    
     .timeline-content span.contractor {
       font-size: 0.55em;
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .cv {
 
     .timeline-content h3 {
-      font-size: 1.3em;
+      font-size: 1.25em;
+    }
+
+    .timeline-content span.contractor {
+      font-size: 0.5em;
     }
   }
 }
