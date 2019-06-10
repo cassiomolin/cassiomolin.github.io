@@ -326,7 +326,7 @@ public class JsonMergePatchHttpMessageConverter extends AbstractHttpMessageConve
 }
 ```
 
-## Creating the controller endpoints
+## Creating the controller methods
 
 With the HTTP message converters in place, we can receive [`JsonPatch`][javax.json.JsonPatch] and [`JsonMergePatch`][javax.json.JsonMergePatch] as method arguments in our controller methods, annotated with [`@RequestBody`][org.springframework.web.bind.annotation.RequestBody]:
 
