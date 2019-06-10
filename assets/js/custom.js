@@ -8,10 +8,12 @@
 
 	$(document).ready(function() {
 
-		// Ensure that links in the post body will open in a new tab
-		[].forEach.call(document.querySelectorAll('.post-full:not(.page) > .post-content a'), function(el) {
-			el.setAttribute('target', '_blank');
-		}); 
+		// Open external links in a new tab
+		[].forEach.call(document.links, function(el) {
+			if (el.hostname != window.location.hostname) {
+				el.target = '_blank';
+			} 
+		});
 
 		// Responsive video embeds
 		$('.post-content').fitVids();
