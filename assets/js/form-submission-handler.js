@@ -17,9 +17,7 @@
   function getFormData(form) {
     var elements = form.elements;
 
-    var fields = Object.keys(elements).filter(function(k) {
-          return (elements[k].name !== "honeypot");
-    }).map(function(k) {
+    var fields = Object.keys(elements).map(function(k) {
       if(elements[k].name !== undefined) {
         return elements[k].name;
       // special case for Edge's html collection
@@ -64,11 +62,10 @@
     var form = event.target;
     var data = getFormData(form);         // get the values submitted in the form
 
-    /* OPTION: Remove this comment to enable SPAM prevention, see README.md
-    if (validateHuman(data.honeypot)) {  //if form is filled, form will not be submitted
+    if (validateHuman(data.website)) {  //if form is filled, form will not be submitted
+      messageSent(form);
       return false;
     }
-    */
 
     if( data.email && !validEmail(data.email) ) {   // if email is not valid show error
       var invalidEmail = form.querySelector(".email-invalid");
@@ -86,15 +83,7 @@
       xhr.onreadystatechange = function() {
           console.log(xhr.status, xhr.statusText);
           console.log(xhr.responseText);
-          form.reset();
-          var formElements = form.querySelector(".form-elements")
-          if (formElements) {
-            formElements.style.display = "none"; // hide form
-          }
-          var thankYouMessage = form.querySelector(".thankyou_message");
-          if (thankYouMessage) {
-            thankYouMessage.style.display = "block";
-          }
+          messageSent(form);
           return;
       };
       // url encode form data for sending as post data
@@ -119,6 +108,18 @@
     var buttons = form.querySelectorAll("button");
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].disabled = true;
+    }
+  }
+
+  function messageSent(form) {
+    form.reset();
+    var formElements = form.querySelector(".form-elements")
+    if (formElements) {
+      formElements.style.display = "none"; // hide form
+    }
+    var thankYouMessage = form.querySelector(".thankyou_message");
+    if (thankYouMessage) {
+      thankYouMessage.style.display = "block";
     }
   }
 })();
