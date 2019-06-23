@@ -5,7 +5,7 @@ tags:
 - java
 - json
 - jackson
-- spring
+- spring-boot
 - javax-json
 - rest
 - http
