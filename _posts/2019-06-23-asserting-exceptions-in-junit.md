@@ -10,8 +10,8 @@ author: Cassio Mazzochi Molin
 excerpt: This post explores some techniques for asserting exceptions in Java with JUnit.
 featured_image: "/assets/images/posts/lightning.jpg"
 featured_image_thumbnail: "/assets/images/posts/lightning_small.jpg"
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 This post explores some techniques for asserting exceptions in Java with JUnit.
