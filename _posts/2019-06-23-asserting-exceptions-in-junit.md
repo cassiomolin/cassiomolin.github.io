@@ -172,7 +172,7 @@ public class UsingAssertThrowsFromJUnit5 {
 
     @Test
     @DisplayName("doStuff method should throw exception")
-    void doStuff_shouldThrowException() {
+    public void doStuff_shouldThrowException() {
 
         Throwable thrown = assertThrows(FooException.class, () -> foo.doStuff());
 
@@ -180,7 +180,6 @@ public class UsingAssertThrowsFromJUnit5 {
         assertThat(thrown.getCause(), instanceOf(IllegalStateException.class));
     }
 }
-
 ```
 
 ## Using AssertJ
@@ -277,7 +276,6 @@ public class UsingAssertJWithJava7 {
         }
     }
 }
-
 ```
 
 ## Bottom line and my thoughts
