@@ -17,6 +17,8 @@ featured_image: "/assets/images/posts/field_1.jpg"
 featured_image_thumbnail: "/assets/images/posts/field_1_small.jpg"
 featured: false
 hidden: false
+redirect_from:
+  - /using-http-patch-in-spring/
 ---
 
 This post demonstrates an approach to support HTTP `PATCH` with _JSON Patch_ and _JSON Merge Patch_ for performing partial modifications to resources in Spring. As I have seen lots of misunderstanding on how `PATCH` works, I aim to clarify its usage before diving into the actual solution.
