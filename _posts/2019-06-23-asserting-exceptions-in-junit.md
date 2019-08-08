@@ -12,17 +12,25 @@ featured_image: "/assets/images/posts/lightning.jpg"
 featured_image_thumbnail: "/assets/images/posts/lightning_small.jpg"
 featured: false
 hidden: false
+redirect_from:
+  - /asserting-exceptions-in-junit/
 ---
+
+
 
 This post explores some techniques for asserting exceptions in Java with JUnit.
 
 <!--more-->
+
+
 
 ##### Table of contents 
 {:.no_toc}
 
 * TOC 
 {:toc} 
+
+
 
 ## Using `try`-`catch` with `fail()`
 
@@ -62,6 +70,8 @@ public class UsingTryCatchWithFail {
 }
 ```
 
+
+
 ## Using `@Test` with `expected`
 
 In this approach, the [`@Test`][org.junit.Test] annotation is used to indicate the [`expected`][org.junit.Test.expected] exception to be thrown in the test:
@@ -96,6 +106,8 @@ public void prepareToDoStuff_shouldSucceed_doStuff_shouldThrowException() {
     foo.doStuff();
 }
 ```
+
+
 
 ## Using `@Rule` with `ExpectedException`
 
@@ -147,6 +159,8 @@ public void prepareToDoStuff_shouldSucceed_doStuff_shouldThrowException() {
 
 Finally, if the test follows [Behaviour-driven Development][wikipedia.bdd] (BDD), you'll find that [`ExpectedException`][org.junit.rules.ExpectedException] doesn't use such writing style.
 
+
+
 ## Using `assertThrows` from JUnit 5
 
 JUnit 5 aims to solve some problems of JUnit 4 and also takes advantage of Java 8 features, such as lambdas.
@@ -181,6 +195,8 @@ public class UsingAssertThrowsFromJUnit5 {
     }
 }
 ```
+
+
 
 ## Using AssertJ
 
@@ -225,6 +241,16 @@ public class UsingAssertJWithJava8 {
 
         assertThat(thrown)
                 .isInstanceOf(Exception.class)
+                .hasMessage("An exception has occurred")
+                .hasCauseExactlyInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    public void doStuff_shouldThrowException_4() {
+
+        FooException thrown = catchThrowableOfType(() -> foo.doStuff(), FooException.class);
+
+        assertThat(thrown)
                 .hasMessage("An exception has occurred")
                 .hasCauseExactlyInstanceOf(IllegalStateException.class);
     }
@@ -278,6 +304,8 @@ public class UsingAssertJWithJava7 {
 }
 ```
 
+
+
 ## Bottom line and my thoughts
 
 After evaluating the approaches for asserting exceptions described above, I would avoid both [`@Test`][org.junit.Test] with [`expected`][org.junit.Test.expected] and [`@Rule`][org.junit.Rule] with [`ExpectedException`][org.junit.rules.ExpectedException] approaches, as they may lead to _false positive results_.
@@ -285,6 +313,7 @@ After evaluating the approaches for asserting exceptions described above, I woul
 For Java 7, simply stick to the `try`-`catch` with [`fail()`][org.junit.Assert.fail] approach, even if the test look a bit clumsy.
 
 If you are using at least Java 8 (which I really hope you are), then you can leverage the power of lambdas for assertions. And I strongly encourage you to consider using AssertJ, as it provides a fluent API and the assertions are very close to plain English, which boosts the readability of your tests.
+
 
 
   [assertj]: https://assertj.github.io/doc/
