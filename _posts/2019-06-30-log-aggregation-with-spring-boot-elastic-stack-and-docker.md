@@ -29,7 +29,7 @@ redirect_from:
 
 In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls, which can be pretty challenging to debug. Things, however, can be easier when the logs of all microservices are centralized and each log event contains details that allow us to trace the interactions between the applications.
 
-This post demonstrates how to perform logging to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.
+This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.
 
 An example of the approach described in this post is available on [GitHub][repo].
 
