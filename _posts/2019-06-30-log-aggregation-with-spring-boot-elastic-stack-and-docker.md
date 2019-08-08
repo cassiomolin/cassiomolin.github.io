@@ -25,11 +25,17 @@ redirect_from:
   - /log-aggregation-with-spring-boot-elastic-stack-and-docker/
 ---
 
+
+
 In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls, which can be pretty challenging to debug. Things, however, can be easier when the logs of all microservices are centralized and each log event contains details that allow us to trace the interactions between the applications.
 
 This post demonstrates how to perform logging to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.
 
+An example of the approach described in this post is available on [GitHub][repo].
+
 <!--more-->
+
+
 
 ##### Table of contents 
 {:.no_toc}
@@ -37,19 +43,27 @@ This post demonstrates how to perform logging to use Elastic Stack along with Do
 * TOC 
 {:toc} 
 
+
+
 ## What is Elastic Stack?
 
 Elastic Stack is a group of open source applications from Elastic designed to take data from any source and in any format and then search, analyze, and visualize that data in real time. It was formerly known as [_ELK Stack_][elk-stack], in which the letters in the name stood for the applications in the group: [_Elasticsearch_][elasticsearch], [_Logstash_][logstash] and [_Kibana_][kibana]. A fourth application, [_Beats_][beats], was subsequently added to the stack, rendering the potential acronym to be unpronounceable. So ELK Stack became Elastic Stack.
 
 So let's have a quick look at each component of Elastic Stack.
 
+
+
 ### Elasticsearch
 
 [Elasticsearch][elasticsearch] is a real-time, distributed storage, JSON-based search, and analytics engine designed for horizontal scalability, maximum reliability, and easy management. It can be used for many purposes, but one context where it excels is indexing streams of semi-structured data, such as logs or decoded network packets.
 
+
+
 ### Kibana
 
 [Kibana][kibana] is an open source analytics and visualization platform designed to work with Elasticsearch. Kibana can be used to search, view, and interact with data stored in Elasticsearch indices, allowing advanced data analysis and visualizing data in a variety of charts, tables, and maps.
+
+
 
 ### Beats
 
@@ -63,9 +77,13 @@ So let's have a quick look at each component of Elastic Stack.
 
 As we intend to ship log files, [Filebeat][filebeat] will be our choice.
 
+
+
 ### Logstash
 
 [Logstash][logstash] is a powerful tool that integrates with a wide variety of deployments. It offers a large selection of plugins to help you parse, enrich, transform, and buffer data from a variety of sources. If the data requires additional processing that is not available in Beats, then Logstash can be added to the deployment.
+
+
 
 ### Putting the pieces together
 
@@ -80,6 +98,8 @@ In a few words:
 - Elasticsearch stores and indexes the data.
 - Kibana displays the data stored in Elasticsearch.
 
+
+
 ## Logs as streams of events
 
 The [Twelve-Factor App methodology][12factor], a set of best practices for building _software as a service_ applications, define logs as _a stream of aggregated, time-ordered events collected from the output streams of all running processes and backing services_ which _provide visibility into the behavior of a running app._ This set of best practices recommends that [logs should be treated as _event streams_][12factor.logs]:
@@ -90,6 +110,8 @@ The [Twelve-Factor App methodology][12factor], a set of best practices for build
 > In staging or production deploys, each process’ stream will be captured by the execution environment, collated together with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival. These archival destinations are not visible to or configurable by the app, and instead are completely managed by the execution environment.
 
 With that in mind, the log event stream for an application can be routed to a file, or watched via realtime `tail` in a terminal or, preferably, sent to a log indexing and analysis system such as Elastic Stack.
+
+
 
 ## Logging with Logback and SLF4J
 
@@ -130,6 +152,8 @@ log.debug("Found {} results", list.size());
 
 In Spring Boot applications, Logback can be [configured][spring-boot.configure-logback] in the `logback-spring.xml` file, located under the `resources` folder. In this configuration file, we can take advantage of Spring profiles and the templating features provided by Spring Boot.
 
+
+
 ### Enhancing log events with tracing details
 
 In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls and such interactions between the services can be challenging to debug. To make things easier, we can use [Spring Cloud Sleuth][spring-cloud-sleuth] to enhance the application logs with tracing details. 
@@ -163,6 +187,8 @@ Once the Spring Cloud Sleuth dependency is added to the classpath, all interacti
     </dependency>
 </dependencies>
 ```
+
+
 
 ### Logging in JSON format
 
@@ -288,6 +314,8 @@ Find below a sample of the log output for the above configuration. Again, the ac
 }
 ```
 
+
+
 ## Running on Docker
 
 We'll run Elastic Stack applications along with our Spring Boot microservices in [Docker][docker] containers:
@@ -373,6 +401,8 @@ output {
 
 Elasticsearch will store and index the log events and, finally, we will be able to visualize the logs in Kibana, which exposes a UI in the port `5601`.
 
+
+
 ## Example
 
 For this example, let's consider we are creating a blog engine and we have the following microservices:
@@ -394,6 +424,8 @@ Before starting, ensure you at least Java 11, Maven 3.x and Docker set up. Then 
 git clone https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack.git
 ```
 
+
+
 ### Building the applications and creating Docker images
 
 Both post and comment services use the [`dockerfile-maven`][dockerfile-maven] plugin from Spotify to make the Docker build process integrate with the Maven build process. So when we build a Spring Boot artifact, we'll also build a Docker image for it. For more details, check the `Dockerfile` and the `pox.xml` of each service.
@@ -408,9 +440,13 @@ To build the Spring Boot applications and their Docker images:
 - Build the application and create a Docker image: `mvn clean install`
 - Change back to the parent folder: `cd ..`
 
+
+
 ### Spinning up the containers
 
 In the root folder of our project, where the `docker-compose.yml` resides, spin up the Docker containers running `docker-compose up`.
+
+
 
 ### Visualizing logs in Kibana
 
@@ -455,6 +491,8 @@ In the root folder of our project, where the `docker-compose.yml` resides, spin 
 ![Filtering logs by trace id][img.screenshot-07]
 
 To stop the containers, use `docker-compose down`. It's important to highlight that both Elasticsearch indices and the Filebeat tracking data are stored in the host, under the `./elasticseach/data` and `./filebeat/data` folders. It means that, if you destroy the containers, the data will be lost.
+
+
 
   [img.services]: /assets/images/posts/log-aggregation/diagrams/services.png
   [img.elastic-stack]: /assets/images/posts/log-aggregation/diagrams/elastic-stack.png
