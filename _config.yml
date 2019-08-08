@@ -16,16 +16,16 @@ author:
   image: 'cassiomolin.jpg'
   greetings: null
   description: |
-    Welcome, I'm Cassio Molin!<br>
+    Hey! I'm Cassio Molin!<br>
     I'm a software engineer living, working and drinking in Ireland.<br>
     I've been using Java for many years and I still love it.
   bio: |
-    Cassio is a software engineer living, working and drinking in Ireland.<br>
-    Has been using Java for many years and still loves it.
+    Cassio Molin is a software engineer living, working and drinking in Ireland.<br>
+    He has been using Java for many years and still loves it.
 
 # Contact form setings
 contact:
-  description: "Want to drop me a line? Just fill the form below and I will get back to you soon."
+  description: "Would you like to drop me a line? Suggest me a new post? Or simply say hello? So fill the form below and I will get back to you soon."
   google_script_url: https://script.google.com/macros/s/AKfycbzunPZvyXcwHWULmwejUDULxBviv6NqWcIX6KZAupX_MsySK9rQ/exec
   message_sent: 'Thanks for getting in touch!'
   contact_you_soon: 'I will get back to you soon!'
