@@ -10,8 +10,8 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: My insights on comparing JSON documents in Java.
-featured_image: "/assets/images/posts/abstract_1.jpg"
-featured_image_thumbnail: "/assets/images/posts/abstract_1_small.jpg"
+featured_image: "/assets/images/posts/penguin.jpg"
+featured_image_thumbnail: "/assets/images/posts/penguin_small.jpg"
 featured: false
 hidden: false
 ---
