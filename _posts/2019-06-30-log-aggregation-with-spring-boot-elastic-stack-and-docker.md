@@ -49,7 +49,7 @@ An example of the approach described in this post is available on [GitHub][repo]
 
 Elastic Stack is a group of open source applications from Elastic designed to take data from any source and in any format and then search, analyze, and visualize that data in real time. It was formerly known as [_ELK Stack_][elk-stack], in which the letters in the name stood for the applications in the group: [_Elasticsearch_][elasticsearch], [_Logstash_][logstash] and [_Kibana_][kibana]. A fourth application, [_Beats_][beats], was subsequently added to the stack, rendering the potential acronym to be unpronounceable. So ELK Stack became Elastic Stack.
 
-So let's have a quick look at each component of Elastic Stack.
+Let's have a quick look at each component of Elastic Stack.
 
 
 
