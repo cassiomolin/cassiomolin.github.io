@@ -210,13 +210,13 @@ Entries differing
 This comparison method doesn't take into account the order of the properties of objects, but it does take into account the order of the elements in arrays. Quoting the [RFC 8259][rfc8259], the document that defines the JSON format (highlights are mine):
 
 {: .long}
-> An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, _null_, object, or array.
+> An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, `null`, object, or array.
 >
 > An **array** is an ordered sequence of zero or more values.
 
 ---
 
-I recently put together [another post][post.using-jsonp] describing how to compare JSON documents using [JSON-P][json-p]. It's worth a read.
+I recently put together [another post][post.using-jsonp] describing how to compare JSON documents using [JSON-P][json-p]. It's worth a read!
 
 The approach described in the other post focus in producing a JSON document that represents the differences between the two documents that have been compared. And the great thing about this is that the diff document can then be merged with the first JSON document that has been compared, yielding the second JSON document that has been compared.
 
