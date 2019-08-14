@@ -16,7 +16,6 @@ featured: false
 hidden: false
 ---
 
-
 I recently came across the challenge of comparing JSON documents in Java. This post describes in the details the approaches I have used to accomplish this task.
 
 <!--more-->
@@ -29,7 +28,7 @@ Reading the JSON documents as [`Map<K, V>`][Map] it's pretty straightforward wit
 
 ```java
 ObjectMapper mapper = new ObjectMapper();
-TypeReference<HashMap<String, Object>> type = new TypeReference<HashMap<String, Object>>() {};
+TypeReference<Map<String, Object>> type = new TypeReference<Map<String, Object>>() {};
 
 Map<String, Object> leftMap = mapper.readValue(leftJson, type);
 Map<String, Object> rightMap = mapper.readValue(rightJson, type);
@@ -169,20 +168,23 @@ Map<String, Object> rightFlatMap = FlatMapUtil.flatten(rightMap);
 
 MapDifference<String, Object> difference = Maps.difference(leftFlatMap, rightFlatMap);
 
-System.out.println("Entries only on the left\n--------------------------");
+System.out.println("Entries only on left\n--------------------------");
 difference.entriesOnlyOnLeft().forEach((key, value) -> System.out.println(key + ": " + value));
 
-System.out.println("\n\nEntries only on the right\n--------------------------");
+System.out.println("\n\nEntries only on right\n--------------------------");
 difference.entriesOnlyOnRight().forEach((key, value) -> System.out.println(key + ": " + value));
 
 System.out.println("\n\nEntries differing\n--------------------------");
 difference.entriesDiffering().forEach((key, value) -> System.out.println(key + ": " + value));
+
+System.out.println("\n\nEntries in common\n--------------------------");
+difference.entriesInCommon().forEach((key, value) -> System.out.println(key + ": " + value));
 ```
 
 It will produce the following output:
 
 ```none
-Entries only on the left
+Entries only on left
 --------------------------
 /address: null
 /phones/1/number: 999999999
@@ -190,7 +192,7 @@ Entries only on the left
 /company: Acme
 
 
-Entries only on the right
+Entries only on right
 --------------------------
 /name/nickname: Jenny
 /groups/0: close-friends
@@ -205,6 +207,11 @@ Entries differing
 /name/first: (John, Jane)
 /phones/0/number: (000000000, 111111111)
 /phones/0/type: (home, mobile)
+
+
+Entries in common
+--------------------------
+/name/last: Doe
 ```
 
 This comparison method doesn't take into account the order of the properties of objects, but it does take into account the order of the elements in arrays. Quoting the [RFC 8259][rfc8259], the document that defines the JSON format (highlights are mine):
@@ -213,6 +220,8 @@ This comparison method doesn't take into account the order of the properties of 
 > An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, `null`, object, or array.
 >
 > An **array** is an **ordered** sequence of zero or more values.
+
+
 
 ---
 
