@@ -212,7 +212,7 @@ This comparison method doesn't take into account the order of the properties of 
 {: .long}
 > An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, `null`, object, or array.
 >
-> An **array** is an ordered sequence of zero or more values.
+> An **array** is an **ordered** sequence of zero or more values.
 
 ---
 
