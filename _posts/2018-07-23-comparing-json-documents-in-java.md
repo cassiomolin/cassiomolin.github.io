@@ -207,7 +207,7 @@ Entries differing
 /phones/0/type: (home, mobile)
 ```
 
-This comparison method doesn't take into account the order of the properties of objects, but it does take into account the order of the elements in arrays. Quoting the [RFC 8259][rfc8259] which defines the JSON format (highlights are mine):
+This comparison method doesn't take into account the order of the properties of objects, but it does take into account the order of the elements in arrays. Quoting the [RFC 8259][rfc8259], the document that defines the JSON format (highlights are mine):
 
 {: .long}
 > An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, _null_, object, or array.
