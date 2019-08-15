@@ -4,6 +4,7 @@ date: 2019-08-08 23:00:00 Z
 tags:
 - java
 - json
+- javax-json
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates how to compare JSON documents in Java with JSON-P.
