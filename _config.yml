@@ -1,7 +1,7 @@
 # Site setings
 name: 'cassiomolin'
-description: 'A collection of programming insights by Cassio Molin.'
-meta_description: 'A collection of programming insights by Cassio Molin.'
+description: 'A collection of programming insights by Cassio Mazzochi Molin.'
+meta_description: 'A collection of programming insights by Cassio Mazzochi Molin.'
 logo: null
 favicon: 'assets/images/favicon.ico'
 baseurl: ''
@@ -12,15 +12,15 @@ ga_analytics: UA-69796629-3
 
 # Author
 author:
-  name: 'Cassio Molin'
+  name: 'Cassio Mazzochi Molin'
   image: 'cassiomolin.jpg'
   greetings: null
   description: |
-    Hey! I'm Cassio Molin!<br>
+    Hey! I'm Cassio Mazzochi Molin!<br>
     I'm a software engineer living, working and drinking in Ireland.<br>
     I've been using Java for many years and I still love it.
   bio: |
-    Cassio Molin is a software engineer living, working and drinking in Ireland.<br>
+    Cassio Mazzochi Molin is a software engineer living, working and drinking in Ireland.<br>
     He has been using Java for many years and still loves it.
 
 # Contact form setings

@@ -20,13 +20,15 @@ I recently came across the challenge of comparing JSON documents in Java. This p
 
 <!--more-->
 
+
+
 Once JSON documents are a set of key/value pairs, my first approach was to read the JSON documents as [`Map<K, V>`][Map] instances and then compare them. 
 
 Reading the JSON documents as [`Map<K, V>`][Map] it's pretty straightforward with both [Jackson] and [Gson], the most popular JSON parsers for Java:
 
 ```java
 ObjectMapper mapper = new ObjectMapper();
-TypeReference<HashMap<String, Object>> type = new TypeReference<>() {};
+TypeReference<Map<String, Object>> type = new TypeReference<Map<String, Object>>() {};
 
 Map<String, Object> leftMap = mapper.readValue(leftJson, type);
 Map<String, Object> rightMap = mapper.readValue(rightJson, type);
@@ -50,11 +52,22 @@ Everything was good until I had to compare complex JSON documents, with nested o
 
 My next approach was to flat the maps and then compare them. It provided me with better comparison results especially for complex JSON documents.
 
+
+
+
 ## Creating flat Maps for the comparison
 
 To flat the map, I wrote this utility class:
 
 ```java
+import java.util.AbstractMap.SimpleEntry;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public final class FlatMapUtil {
 
     private FlatMapUtil() {
@@ -62,26 +75,29 @@ public final class FlatMapUtil {
     }
 
     public static Map<String, Object> flatten(Map<String, Object> map) {
-        return map.entrySet().stream()
+        return map.entrySet()
+                .stream()
                 .flatMap(FlatMapUtil::flatten)
                 .collect(LinkedHashMap::new, (m, e) -> m.put("/" + e.getKey(), e.getValue()), LinkedHashMap::putAll);
     }
 
-    private static Stream<Map.Entry<String, Object>> flatten(Map.Entry<String, Object> entry) {
+    private static Stream<Entry<String, Object>> flatten(Entry<String, Object> entry) {
 
         if (entry == null) {
             return Stream.empty();
         }
 
         if (entry.getValue() instanceof Map<?, ?>) {
-            return ((Map<?, ?>) entry.getValue()).entrySet().stream()
-                    .flatMap(e -> flatten(new AbstractMap.SimpleEntry<>(entry.getKey() + "/" + e.getKey(), e.getValue())));
+            Map<?, ?> properties = (Map<?, ?>) entry.getValue();
+            return properties.entrySet()
+                    .stream()
+                    .flatMap(e -> flatten(new SimpleEntry<>(entry.getKey() + "/" + e.getKey(), e.getValue())));
         }
 
         if (entry.getValue() instanceof List<?>) {
             List<?> list = (List<?>) entry.getValue();
             return IntStream.range(0, list.size())
-                    .mapToObj(i -> new AbstractMap.SimpleEntry<String, Object>(entry.getKey() + "/" + i, list.get(i)))
+                    .mapToObj(i -> new SimpleEntry<String, Object>(entry.getKey() + "/" + i, list.get(i)))
                     .flatMap(FlatMapUtil::flatten);
         }
 
@@ -90,7 +106,9 @@ public final class FlatMapUtil {
 }
 ```
 
-It uses the _JSON Pointer_ notation defined in the [RFC 6901] for the keys, so I can easily locate the values.
+It uses the _JSON Pointer_ notation defined in the [RFC 6901][rfc6901] for the keys, so I can easily locate the values.
+
+
 
 ## Example
 
@@ -150,20 +168,23 @@ Map<String, Object> rightFlatMap = FlatMapUtil.flatten(rightMap);
 
 MapDifference<String, Object> difference = Maps.difference(leftFlatMap, rightFlatMap);
 
-System.out.println("Entries only on the left\n--------------------------");
+System.out.println("Entries only on left\n--------------------------");
 difference.entriesOnlyOnLeft().forEach((key, value) -> System.out.println(key + ": " + value));
 
-System.out.println("\n\nEntries only on the right\n--------------------------");
+System.out.println("\n\nEntries only on right\n--------------------------");
 difference.entriesOnlyOnRight().forEach((key, value) -> System.out.println(key + ": " + value));
 
 System.out.println("\n\nEntries differing\n--------------------------");
 difference.entriesDiffering().forEach((key, value) -> System.out.println(key + ": " + value));
+
+System.out.println("\n\nEntries in common\n--------------------------");
+difference.entriesInCommon().forEach((key, value) -> System.out.println(key + ": " + value));
 ```
 
 It will produce the following output:
 
 ```none
-Entries only on the left
+Entries only on left
 --------------------------
 /address: null
 /phones/1/number: 999999999
@@ -171,7 +192,7 @@ Entries only on the left
 /company: Acme
 
 
-Entries only on the right
+Entries only on right
 --------------------------
 /name/nickname: Jenny
 /groups/0: close-friends
@@ -186,12 +207,36 @@ Entries differing
 /name/first: (John, Jane)
 /phones/0/number: (000000000, 111111111)
 /phones/0/type: (home, mobile)
+
+
+Entries in common
+--------------------------
+/name/last: Doe
 ```
 
-  [Map]: https://docs.oracle.com/javase/10/docs/api/java/util/Map.html
+This comparison method doesn't take into account the order of the properties of objects, but it does take into account the order of the elements in arrays. Quoting the [RFC 8259][rfc8259], the document that defines the JSON format (highlights are mine):
+
+{: .long}
+> An **object** is an **unordered** collection of zero or more name/value pairs, where a name is a string and a value is a string, number, boolean, `null`, object, or array.
+>
+> An **array** is an **ordered** sequence of zero or more values.
+
+
+
+---
+
+I recently put together [another post][post.using-jsonp] describing how to compare JSON documents using [JSON-P][json-p]. It's worth a read!
+
+The approach described in the other post focus in producing a JSON document that represents the differences between the two documents that have been compared. And the great thing about this is that the diff document can then be merged with the first JSON document that has been compared, yielding the second JSON document that has been compared.
+
+
+  [Map]: https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Map.html
   [Jackson]: https://github.com/FasterXML/jackson
   [Gson]: https://github.com/google/gson
   [Guava]: https://github.com/google/guava
-  [Maps.difference]: https://google.github.io/guava/releases/23.0/api/docs/com/google/common/collect/Maps.html#difference-java.util.Map-java.util.Map-
-  [MapDifference]: https://google.github.io/guava/releases/23.0/api/docs/com/google/common/collect/MapDifference.html
-  [RFC 6901]: https://tools.ietf.org/html/rfc6901
+  [Maps.difference]: https://guava.dev/releases/28.0-jre/api/docs/com/google/common/collect/Maps.html#difference-java.util.Map-java.util.Map-
+  [MapDifference]: https://guava.dev/releases/28.0-jre/api/docs/com/google/common/collect/MapDifference.html
+  [rfc6901]: https://tools.ietf.org/html/rfc6901
+  [rfc8259]: https://tools.ietf.org/html/rfc8259
+  [post.using-jsonp]: https://cassiomolin.com/comparing-json-documents-in-java-with-jsonp/
+  [json-p]: https://javaee.github.io/jsonp/
