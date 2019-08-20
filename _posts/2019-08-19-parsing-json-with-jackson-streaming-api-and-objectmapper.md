@@ -91,18 +91,25 @@ List<Contact> contacts = mapper.readValue(json, new TypeReference<List<Contact>>
 
 However, in situations where we may have a couple of millions of elements in the array, we may not be able to hold all data in memory so we need to fallback to the Jackson Streaming API.
 
-The Jackson Streaming API includes the following types that can be instantiated with a [`JsonFactory`][com.fasterxml.jackson.core.JsonFactory]:
+The Jackson Streaming API was inspired in [StAX][stax], an event-based API for processing XML documents. Unlike StAX, it uses the term _token_ instead of _event_, which better reflects the JSON structure.
 
-- [`JsonParser`][com.fasterxml.jackson.core.JsonParser]: Low level JSON reader
-- [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator]: Low level JSON writer
+The main types of the Jackson Streaming API are:
 
-Let's see examples of how to use each of them.
+| Type | Description |
+|------|-------------|
+| [`JsonParser`][com.fasterxml.jackson.core.JsonParser] | Logical cursor for iterating over tokens, providing low level JSON reader capabilities |
+| [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] | Low level JSON writer |
+| [`JsonFactory`][com.fasterxml.jackson.core.JsonFactory] | Factory for creating instances of [`JsonParser`][com.fasterxml.jackson.core.JsonParser] and [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] |
 
 
 
 ## `JsonParser`
 
 [`JsonParser`][com.fasterxml.jackson.core.JsonParser] is used to parse JSON content into tokens along with its associated data. It is the lowest level of read access to JSON content in Jackson.
+
+To iterate the stream of tokens, the application advances the cursor by calling the [`nextToken()`][com.fasterxml.jackson.core.JsonParser.nextToken] method. And to access data and properties of the token cursor points to, the application calls one of accessors which will refer to property of the currently pointed-to token.
+
+The [`JsonParser`][com.fasterxml.jackson.core.JsonParser] only keeps track of the data that the cursor currently points to (and just a little bit of context information for nesting, input line numbers and such).
 
 
 
@@ -373,6 +380,8 @@ private void writeContact(ObjectMapper mapper, JsonGenerator jsonGenerator, Cont
 
   [com.fasterxml.jackson.core.JsonFactory]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonFactory.html
   [com.fasterxml.jackson.core.JsonParser]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonParser.html
+  [com.fasterxml.jackson.core.JsonParser.nextToken]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonParser.html#nextToken--
   [com.fasterxml.jackson.core.JsonGenerator]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonGenerator.html
   [com.fasterxml.jackson.databind.ObjectMapper]: https://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html
   [repo]: https://github.com/cassiomolin/using-jackson-streaming-api-with-objectmapper.git
+  [stax]: https://docs.oracle.com/javase/tutorial/jaxp/stax/api.html
