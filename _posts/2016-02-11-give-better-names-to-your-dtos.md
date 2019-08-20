@@ -39,15 +39,20 @@ Suffixing a class name with **DTO** or **Dto** is not really meaningful and does
 - _SomeSortOf_**Element**
 - _SomeSortOf_**Event**
 - _SomeSortOf_**Header**
+- _SomeSortOf_**Input**
 - _SomeSortOf_**Instruction**
 - _SomeSortOf_**Item**
 - _SomeSortOf_**Message**
 - _SomeSortOf_**Metadata**
 - _SomeSortOf_**Operation**
+- _SomeSortOf_**Output**
+- _SomeSortOf_**Payload**
+- _SomeSortOf_**Projection**
 - _SomeSortOf_**QueryParameter**
 - _SomeSortOf_**QueryResult**
 - _SomeSortOf_**Representation**
 - _SomeSortOf_**Request**
+- _SomeSortOf_**Resource**
 - _SomeSortOf_**Response**
 - _SomeSortOf_**Result**
 - _SomeSortOf_**Row**
@@ -55,13 +60,12 @@ Suffixing a class name with **DTO** or **Dto** is not really meaningful and does
 - _SomeSortOf_**Specification**
 - _SomeSortOf_**Status**
 - _SomeSortOf_**Summary**
-- _SomeSortOf_**View**
 
 ---
 
-<sup>**Note 1:** Whether acronyms will be handled as words or not, I guess it's up to you. Check the [Java API][4] and you will find some stumbles like [`ZipInputStream`][5] / [`GZIPInputStream`][6]. Both classes are in the [same package][7] and the name convention is not consistent. [`HttpURLConnection`][8] doesn't show any consistency with acronyms either.</sup>
+<sup>**Note 1:** Whether acronyms or all capitalized words should be handled as words or not, I guess it's up to you. Check the [Java API][4] and you will find some stumbles like [`ZipInputStream`][5] / [`GZIPInputStream`][6]. Both classes are in the [same package][7] and the name convention is not consistent. [`HttpURLConnection`][8] doesn't show any consistency with acronyms either.</sup>
 
-<sup>**Note 2:** Some names listed above were borrowed from this [article][9] written by [Richard Dingwall][10].</sup>
+<sup>**Note 2:** Some names listed above were borrowed from this [article][9] written by [Richard Dingwall][10] (the original article seems to be no longer available, so [here's a cached copy][11] from Web Archive).</sup>
 
 
   [1]: https://docs.oracle.com/javase/specs/index.html
@@ -74,3 +78,4 @@ Suffixing a class name with **DTO** or **Dto** is not really meaningful and does
   [8]: https://docs.oracle.com/javase/9/docs/api/java/net/HttpURLConnection.html
   [9]: http://rdingwall.com/2010/04/17/try-not-to-call-your-objects-dtos/
   [10]: https://stackoverflow.com/users/91551/richard-dingwall
+  [11]: https://web.archive.org/web/20170614081139/http://rdingwall.com/2010/04/17/try-not-to-call-your-objects-dtos/
