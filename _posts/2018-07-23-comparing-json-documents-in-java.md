@@ -225,7 +225,7 @@ This comparison method doesn't take into account the order of the properties of 
 
 ---
 
-I recently put together [another post][post.using-jsonp] describing how to compare JSON documents using [JSON-P][json-p]. It's worth a read!
+I recently put together [another post][post.using-jsonp] describing how to compare JSON documents using [JSON-P][json-p]. It's worth reading!
 
 The approach described in the other post focus in producing a JSON document that represents the differences between the two documents that have been compared. And the great thing about this is that the diff document can then be merged with the first JSON document that has been compared, yielding the second JSON document that has been compared.
 
