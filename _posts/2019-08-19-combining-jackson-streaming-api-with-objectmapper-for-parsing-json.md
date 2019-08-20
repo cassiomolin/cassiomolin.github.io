@@ -1,5 +1,5 @@
 ---
-title: Parsing JSON with Jackson Streaming API and ObjectMapper
+title: Combining the Jackson Streaming API with ObjectMapper for parsing JSON
 date: 2019-08-19 17:00:00 Z
 tags:
 - java
@@ -13,7 +13,8 @@ featured_image_thumbnail: "/assets/images/posts/river_small.jpg"
 featured: false
 hidden: false
 redirect_from:
-  - /parsing-json-with-jackson-streaming-api-and-objectmapper/
+  - /2019/08/19/parsing-json-with-jackson-streaming-api-and-objectmapper/
+  - /combining-jackson-streaming-api-with-objectmapper-for-parsing-json/
 ---
 
 
@@ -85,11 +86,10 @@ In most of applications, we can take advantage of the data binding capabilities 
 ```java
 ObjectMapper mapper = new ObjectMapper();
 mapper.registerModule(new JavaTimeModule());
-
 List<Contact> contacts = mapper.readValue(json, new TypeReference<List<Contact>>() {});
 ```
 
-However, in situations where we may have a couple of millions of elements in the array, we may not be able to hold all data in memory so we need to fallback to the Jackson Streaming API.
+However, in situations where we may have a couple of millions of elements in the array, we may not be able to hold all data in memory. So we need to fallback to the Jackson Streaming API.
 
 The Jackson Streaming API was inspired in [StAX][stax], an event-based API for processing XML documents. Unlike StAX, it uses the term _token_ instead of _event_, which better reflects the JSON structure.
 
@@ -100,6 +100,9 @@ The main types of the Jackson Streaming API are:
 | [`JsonParser`][com.fasterxml.jackson.core.JsonParser] | Logical cursor for iterating over tokens, providing low level JSON reader capabilities |
 | [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] | Low level JSON writer |
 | [`JsonFactory`][com.fasterxml.jackson.core.JsonFactory] | Factory for creating instances of [`JsonParser`][com.fasterxml.jackson.core.JsonParser] and [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] |
+
+When using streaming, the content to read (and write) has to be processed in the _exact same order_ as input comes in (or output is to go out). having said that, it's important to mention that  _random access_ is only provided by [data binding][com.fasterxml.jackson.databind.ObjectMapper] and [tree model][com.fasterxml.jackson.core.TreeNode] APIs, which both actually use the streaming API under the hood for reading and writing JSON documents.
+
 
 
 
@@ -367,5 +370,9 @@ private void generateJson(List<Contact> contacts, OutputStream os) throws IOExce
   [com.fasterxml.jackson.core.JsonParser.nextToken]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonParser.html#nextToken--
   [com.fasterxml.jackson.core.JsonGenerator]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonGenerator.html
   [com.fasterxml.jackson.databind.ObjectMapper]: https://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html
+  [com.fasterxml.jackson.core.TreeNode]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/TreeNode.html
+  
   [repo]: https://github.com/cassiomolin/using-jackson-streaming-api-with-objectmapper.git
+  
   [stax]: https://docs.oracle.com/javase/tutorial/jaxp/stax/api.html
+  
