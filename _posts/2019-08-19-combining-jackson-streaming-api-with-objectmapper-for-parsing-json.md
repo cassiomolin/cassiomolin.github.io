@@ -23,7 +23,7 @@ The _Jackson Streaming API_ allows us to parse huge JSON documents without loadi
 
 In this post we'll see how to take advantage of the Jackson Streaming API without losing the powerful capabilities of data binding provided by [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper].
 
-This post in heavy on examples and the code is available on [GitHub][repo].
+This post in heavy on examples and the whole code is available on [GitHub][repo].
 
 
 
@@ -91,7 +91,7 @@ List<Contact> contacts = mapper.readValue(json, new TypeReference<List<Contact>>
 
 However, in situations where we may have a couple of millions of elements in the array, we may not be able to hold all data in memory. So we need to fallback to the Jackson Streaming API.
 
-The Jackson Streaming API was inspired in [StAX][stax], an event-based API for processing XML documents. Unlike StAX, it uses the term _token_ instead of _event_, which better reflects the JSON structure.
+The Jackson Streaming API was inspired in [StAX][stax], an event-based API for processing XML documents. Unlike StAX, Jackson uses the term _token_ instead of _event_, which better reflects the JSON structure.
 
 The main types of the Jackson Streaming API are:
 
@@ -101,8 +101,7 @@ The main types of the Jackson Streaming API are:
 | [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] | Low level JSON writer |
 | [`JsonFactory`][com.fasterxml.jackson.core.JsonFactory] | Factory for creating instances of [`JsonParser`][com.fasterxml.jackson.core.JsonParser] and [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator] |
 
-When using streaming, the content to read (and write) has to be processed in the _exact same order_ as input comes in (or output is to go out). having said that, it's important to mention that  _random access_ is only provided by [data binding][com.fasterxml.jackson.databind.ObjectMapper] and [tree model][com.fasterxml.jackson.core.TreeNode] APIs, which both actually use the streaming API under the hood for reading and writing JSON documents.
-
+When using streaming, the content to read (and write) has to be processed in the _exact same order_ as input comes in (or output is to go out). Having said that, it's important to mention that _random access_ is only provided by [data binding][com.fasterxml.jackson.databind.ObjectMapper] and [tree model][com.fasterxml.jackson.core.TreeNode] APIs, which both actually use the streaming API under the hood for reading and writing JSON documents.
 
 
 
