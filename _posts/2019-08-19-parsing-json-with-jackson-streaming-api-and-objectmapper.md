@@ -237,25 +237,16 @@ private void parseJson(InputStream is) throws IOException {
         // Iterate over the tokens until the end of the array
         while (jsonParser.nextToken() != JsonToken.END_ARRAY) {
 
-            // Read contact and do something with it
-            Contact contact = readContact(mapper, jsonParser);
+            // Read a contact instance using ObjectMapper and do something with it
+            Contact contact = mapper.readValue(jsonParser, Contact.class);
             doSomethingWithContact(contact);
         }
     }
 }
 ```
 
-Here comes the interesting part! [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] can read a value directly from [`JsonParser`][com.fasterxml.jackson.core.JsonParser], so we can mix streaming with data binding and we don't need to deal with all that verbose code:
+[`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] can read a value directly from [`JsonParser`][com.fasterxml.jackson.core.JsonParser], so we can mix streaming with data binding, taking full advantage of the [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] configuration, such as modules, deserialization features and custom deserializers.
 
-```java
-private Contact readContact(ObjectMapper mapper, JsonParser jsonParser) throws IOException {
-
-    // Read a contact instance using ObjectMapper
-    return mapper.readValue(jsonParser, Contact.class);
-}
-```
-
-This approach takes full advantage of the [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] configuration, such as modules, deserialization features and custom deserializers.
 
 
 ## `JsonGenerator`
@@ -356,7 +347,9 @@ private void generateJson(List<Contact> contacts, OutputStream os) throws IOExce
 
         // Iterate over the contacts and write each contact as a JSON object
         for (Contact contact : contacts) {
-            writeContact(mapper, jsonGenerator, contact);
+            
+             // Write a contact instance as JSON using ObjectMapper
+             mapper.writeValue(jsonGenerator, contact);
         }
 
         // Write the end array token
@@ -365,17 +358,8 @@ private void generateJson(List<Contact> contacts, OutputStream os) throws IOExce
 }
 ```
 
-[`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] can write a value directly to [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator], allowing us to combine streaming with data binding to significantly reduce the amount of code we need to write.
+[`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper] can write a value directly to [`JsonGenerator`][com.fasterxml.jackson.core.JsonGenerator], allowing us to combine streaming with data binding to significantly reduce the amount of code we need to write. This approach takes advantage of modules, serialization features and custom serializers defined in the [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper].
 
-This approach takes advantage of modules, serialization features and custom serializers defined in the [`ObjectMapper`][com.fasterxml.jackson.databind.ObjectMapper]:
-
-```java
-private void writeContact(ObjectMapper mapper, JsonGenerator jsonGenerator, Contact contact) throws IOException {
-
-    // Write a contact instance as JSON using ObjectMapper
-    mapper.writeValue(jsonGenerator, contact);
-}
-```
 
 
   [com.fasterxml.jackson.core.JsonFactory]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonFactory.html
