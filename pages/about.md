@@ -17,7 +17,9 @@ My skills include:
 
 If you would like to check my professional experience, please have a look at [CV][cv]. I'm also open to freelancing, feel free to [get in touch][contact] and let's build something awesome!
 
-Ah! I'm active on [Stack Overflow][stackoverflow] and some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general. And if you feel generous enough to reward me for my contributions, check my [Amazon wish list][amazon.wish-list] or simply [buy me a coffee][paypal].<br>
+I'm active on [Stack Overflow][stackoverflow], currently sitting on the top 0.2% users. Some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general. And if you feel generous enough to reward me for my contributions, check my [Amazon wish list][amazon.wish-list] or simply [buy me a coffee][paypal].
+
+And, in case you are wondering, I currently live in Dublin, Republic of Ireland.
 
 <br/>
 
