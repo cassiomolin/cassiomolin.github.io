@@ -5,9 +5,17 @@ featured_image: null
 permalink: /about/
 ---
 
-I am Cassio Mazzochi Molin and I have been a software engineer for over 10 years, currently focused in financial services. I live in Dublin, Republic of Ireland.
+Hey! I'm Cassio Mazzochi Molin and this is my coding blog.
 
-I am active on [Stack Overflow][stackoverflow] and some posts you will find here are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general.
+I'm a software engineer with over ten years of experience in analysis, architecture and software development. I'm familiar with agile methodologies and I have the expertise to design, implement, test and deploy web applications in Java and JavaScript with React.
+
+My skills include:
+
+- Strong understanding of the REST architectural style with HTTP, microservices and containers with Docker.
+- Experience with relational databases.
+- Solid background in systems architecture definition, best practices of software development, design patterns and testing.
+
+I'm active on [Stack Overflow][stackoverflow] and some posts you will find here are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general.
 
 If you would like to check my professional experience, please have a look at [CV][cv]. In case you would like to get in touch for any reason, feel free to [drop me a message][contact].<br>
 
