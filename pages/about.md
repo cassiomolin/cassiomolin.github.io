@@ -12,12 +12,12 @@ I'm a software engineer with over ten years of experience in analysis, architect
 My skills include:
 
 - Strong understanding of the REST architectural style with HTTP, microservices and containers with Docker.
-- Experience with relational databases.
 - Solid background in systems architecture definition, best practices of software development, design patterns and testing.
+- Experience with relational databases.
 
-If you would like to check my professional experience, please have a look at [CV][cv]. I'm also open to freelancing. Feel free to [get in touch][contact] and let's build something awesome!
+If you would like to check my professional experience, please have a look at [CV][cv]. I'm also open to freelancing, feel free to [get in touch][contact] and let's build something awesome!
 
-I'm active on [Stack Overflow][stackoverflow] and some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general. And if you feel generous enough to reward me for my contributions, check my [Amazon wish list][amazon.wish-list] or simply [buy me a coffee][paypal].<br>
+Ah! I'm active on [Stack Overflow][stackoverflow] and some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general. And if you feel generous enough to reward me for my contributions, check my [Amazon wish list][amazon.wish-list] or simply [buy me a coffee][paypal].<br>
 
 <br/>
 
