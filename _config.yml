@@ -1,68 +1,95 @@
-# Site setings
-name: 'cassiomolin'
-description: 'A collection of programming insights by Cassio Mazzochi Molin.'
-meta_description: 'A collection of programming insights by Cassio Mazzochi Molin.'
-logo: null
-favicon: 'assets/images/favicon.ico'
-baseurl: ''
-url: https://cassiomolin.com
-disqus: 'cassiomolin'
-cover_image: bc_1.jpg
-ga_analytics: UA-69796629-3
+#-------------------------------
+# General Site Settings
+title: Norlin
+logo: # You can add own logo. For example '/images/logo.png'.
+description: Norlin – A Beautiful Dark Blog Theme for Jekyll.
+baseurl: "" # The subpath of your site, e.g. /blog
+url: "" # The base hostname & protocol for your site, e.g. http://example.com
 
-# Author
+
+#-------------------------------
+# Author Settings
 author:
-  name: 'Cassio Mazzochi Molin'
-  image: 'cassiomolin.jpg'
-  greetings: null
-  description: |
-    Hey! I'm Cassio Mazzochi Molin!<br>
-    I'm a software engineer living, working and drinking in Ireland.<br>
-    I've been using Java for many years and I still love it.
-  bio: |
-    Cassio Mazzochi Molin is a software engineer living, working and drinking in Ireland.<br>
-    He has been using Java for many years and still loves it.
+  name: Robert Wilson
+  avatar: '/images/15.jpg'
 
-# Contact form setings
+
+#-------------------------------
+# Hero Settings
+hero:
+  title: Robert Wilson
+  description: Thoughts, stories and ideas.
+  image: '/images/01.jpg'
+
+
+#-------------------------------
+# Contact Settings
 contact:
-  description: "Would you like to drop me a line? Suggest me a new post? Or simply say hello? So fill the form below and I will get back to you soon."
-  google_script_url: https://script.google.com/macros/s/AKfycbzunPZvyXcwHWULmwejUDULxBviv6NqWcIX6KZAupX_MsySK9rQ/exec
-  message_sent: 'Thanks for getting in touch!'
-  contact_you_soon: 'I will get back to you soon!'
+  email: your@email.com # Add your email for contact form
+  description: Norlin comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
 
-# Social links
-github: 'cassiomolin'
-linkedin: 'cassiomolin'
-stackoverflow: '1426227'
+# NOTE
+# Norlin theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
 
-# Navigation
-navigation:
-  - text: About
-    url: /about/
-  - text: CV
-    url: /cv/
-  - text: Contact
-    url: /contact/
 
-# Required Plugins
-plugins_dir:
-  - jekyll-paginate
-  - jekyll-tagsgenerator
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-redirect-from
+#-------------------------------
+# Footer section
+# Example of adding a new link to the footer - {icon: "ion-logo-github", link: "https://github.com"}
+# Other icons can be found at https://ionicons.com/v4/
+social:
+- {icon: "ion-logo-twitter", link: "https://twitter.com"}
+- {icon: "ion-logo-facebook", link: "https://facebook.com"}
+- {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
+- {icon: "ion-logo-instagram", link: "https://instagram.com"}
+- {icon: "ion-logo-pinterest", link: "https://pinterest.com"}
+- {icon: "ion-logo-youtube", link: "https://youtube.com"}
+- {icon: "ion-logo-github", link: "https://github.com"}
+- {icon: "ion ion-logo-vimeo", link: "https://vimeo.com/"}
 
-# Pagination
-paginate: 5
-paginate_path: /page:num/
 
-# Permalinks
-permalink: pretty
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: anvodstudio-demo # Add your shortname for Disqus Comment. For example anvodstudio-demo
 
-# Other
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Newsletter
+mailchimp: enable # To enable the mailchimp form, use the value 'enable'. To disable the form, leave the field blank.
+mailchimp-identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+
+
+#-------------------------------
+# Build settings
 markdown: kramdown
+permalink: pretty
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
 
-# Sass
+paginate: 8
+paginate_path: "/page/:num"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
 sass:
   sass_dir: _sass
   style: compressed
