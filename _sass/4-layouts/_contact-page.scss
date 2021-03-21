@@ -25,3 +25,33 @@
 textarea {
   resize: vertical;
 }
+
+button[type="submit"] {
+	border-radius: 10px;
+	will-change: transform;
+	transition: all .1s ease;
+	cursor: pointer;
+	color: $white;
+	outline: none;
+	text-align: center;
+	&.submitting {
+    font-size: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: transparent;
+		border: 2px solid $brand-color;
+    border-right: 2px solid $white;
+		animation: loader .4s linear infinite;
+	}
+}
+
+@keyframes loader {
+	0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}

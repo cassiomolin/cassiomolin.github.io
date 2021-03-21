@@ -34,6 +34,9 @@ body {
     border: 1px solid $light-gray;
     outline: none;
   }
+  &.overlay-active {
+    overflow: hidden;
+  }
   
   @media only screen and (max-width: $mobile) {
     font-size: 16px;
@@ -89,19 +92,16 @@ h6 {
 
 blockquote {
   position: relative;
-  padding: 34px 20px 34px 64px;
+  padding: 50px 0px 30px 70px;
   margin-bottom: 0;
-  font-size: 28px;
-  line-height: 36px;
-  font-weight: 900;
   color: $white;
   
   &:before {
     content: '\201C';
     position: absolute;
-    top: 0.59em;
-    left: -0.01em;
-    font-size: 4em;
+    left: 0;
+    font-size: 8em;
+    line-height: 0;
     color: $brand-color;
   }
 
@@ -120,9 +120,7 @@ blockquote {
   }
 
   @media only screen and (max-width: $mobile) {
-    padding: 20px 20px 20px 48px;
-    font-size: 20px;
-    line-height: 28px;
+    padding: 50px 0px 30px 60px;
   }
 }
 
@@ -133,12 +131,6 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   word-break: break-all;
-}
-
-code[class*=language-], pre[class*=language-] {
-  white-space: pre-wrap;
-  word-break: break-all;
-  line-height: inherit;
 }
 
 img, 
@@ -170,10 +162,14 @@ a {
 hr {
   display: block;
   width: 100%;
-  height: 1px;
-  margin: 64px 0;
+  margin: 40px 0 80px 0;
   border: 0;
-  background: $dark;
+  text-align: center;
+
+  &:after {
+    content: "* * *";
+    font-size: 2em;
+  }
 }
 
 .table-container {
@@ -189,33 +185,32 @@ table {
   border-width: 1px;
   border-color: $dark;
   border-collapse: collapse;
-}
 
-table th {
-  padding: 12px;
-  font-size: 16px;
-  text-align: left;
-  border: 1px solid $dark;
-  color: $white;
-  background-color: $blue-dark;
-}
-
-table tr {
-  background-color: $dark;
-  transition: all .3s ease;
-  &:nth-child(even) {
-    background-color: transparent;
+  th {
+    padding: 12px;
+    font-size: 16px;
+    text-align: left;
+    border: 1px solid $dark;
+    color: $white;
+    background-color: $blue-dark;
   }
-}
 
-table td {
-  padding: 12px;
-  font-size: 14px;
-  border: 1px solid $dark;
-}
+  tr {
+    background-color: $dark;
+    transition: all .3s ease;
+    &:nth-child(even) {
+      background-color: transparent;
+    }
+    &:hover {
+      color: $white;
+    }
+  }
 
-table tr:hover {
-  color: $white;
+  td {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid $dark;
+  }
 }
 
 .gallery-box {

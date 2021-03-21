@@ -1,7 +1,8 @@
 $(document).ready(function() {
   'use strict';
 
-  var menuOpenIcon = $(".nav__icon-menu"),
+  var body = $("body"),
+    menuOpenIcon = $(".nav__icon-menu"),
     menuCloseIcon = $(".nav__icon-close"),
     menuList = $(".menu-overlay"),
     searchOpenIcon = $(".search-button"),
@@ -9,7 +10,15 @@ $(document).ready(function() {
     searchInput = $(".search__text"),
     searchBox = $(".search");
 
-
+  /* =======================
+  // Open external links in a new tab
+  ======================= */
+  [].forEach.call(document.links, function(el) {
+    if (el.hostname != window.location.hostname) {
+      el.target = '_blank';
+    } 
+  });
+    
   /* =======================
   // Menu and Search
   ======================= */
@@ -31,14 +40,17 @@ $(document).ready(function() {
 
   function menuOpen() {
     menuList.addClass("is-open");
+    body.addClass("overlay-active");
   }
 
   function menuClose() {
     menuList.removeClass("is-open");
+    body.removeClass("overlay-active");
   }
 
   function searchOpen() {
     searchBox.addClass("is-visible");
+    body.addClass("overlay-active");
     setTimeout(function () {
       searchInput.focus();
     }, 300);
@@ -46,11 +58,12 @@ $(document).ready(function() {
 
   function searchClose() {
     searchBox.removeClass("is-visible");
+    body.removeClass("overlay-active");
   }
 
   $('.search, .search__box').on('click keyup', function (event) {
     if (event.target == this || event.keyCode == 27) {
-      $('.search').removeClass('is-visible');
+      searchClose();
     }
   });
 
@@ -71,7 +84,8 @@ $(document).ready(function() {
     resultsContainer: document.getElementById("js-results-container"),
     json: "/search.json",
     searchResultTemplate: '{article}',
-    noResultsText: '<li class="no-results"><h3>No results found</h3></li>'
+    noResultsText: '<li class="no-results"><h3>No results found</h3></li>',
+    debounceTime: 400
   });
 
 

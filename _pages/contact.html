@@ -2,30 +2,39 @@
 layout: page
 title: Contact Me
 permalink: /contact/
-image: '/images/45.jpg'
+image: '/images/pages/contact/cover.jpg'
 ---
 <div class="form-container">
-  {% if site.contact.description %}
-  <p class="contact-description">{{site.contact.description}}</p>
-  {% endif %}
-  <form class="form"
-    action="{% if site.contact.email %}https://formspree.io/{{site.contact.email}}{% else %}#{% endif %}" method="POST">
+  <form class="contact-form" action="javascript:void(0);">
+    <div style="display:none" class="message-sent">
+      <h2>Your message has been sent.</h2>
+      <p>I will get back to you shortly.</p>
+    </div>
+    {% if site.contact.description %}
     <div class="form__group">
-      <label class="form__label screen-reader-text" for="form-name">Your Name</label>
+      <p class="contact-description">{{site.contact.description}}</p>
+    </div>
+    {% endif %}
+    <div class="form__group">
+      <label class="form__label screen-reader-text" for="form-name">Your name</label>
       <input class="form__input" id="form-name" type="text" name="name" placeholder="Name" required>
     </div>
     <div class="form__group">
-      <label class="form__label screen-reader-text" for="form-email">Your Email</label>
-      <input class="form__input" id="form-email" type="email" name="_replyto" placeholder="Email" required>
+      <label class="form__label screen-reader-text" for="form-email">Your email</label>
+      <input class="form__input" id="form-email" type="email" name="email" placeholder="Email" required>
     </div>
     <div class="form__group">
-      <label class="form__label screen-reader-text" for="form-text">Your Message</label>
+      <label class="form__label screen-reader-text" for="form-text" style="display:none !important">Your website</label>
+      <input class="form__input" id="form-website" type="text" name="website" placeholder="Website" style="display:none !important" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="form__group">
+      <label class="form__label screen-reader-text" for="form-text">Your message</label>
       <textarea class="form__input" id="form-text" name="text" rows="10" placeholder="Message" required></textarea>
     </div>
     <div class="form__group">
       <button class="button button--primary" type="submit">Send Message</button>
     </div>
-    <input type="hidden" name="_next" value="{{ site.baseurl }}/contact/thanks/" />
   </form>
-  <hr>
 </div>
+
+<script src="{{ site.baseurl }}/js/contact-form.js"></script>

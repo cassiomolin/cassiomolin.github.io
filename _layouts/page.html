@@ -10,7 +10,7 @@ layout: default
       <img class="lazy" data-src="{{site.baseurl}}{{page.image}}" alt="{{page.title}}">
     </div>
     <div class="hero__content">
-      <h1 class="hero__title">{{page.title}}</h1>
+        <h1 class="hero__title">{{page.title_for_content | default: page.title}}</h1>
     </div>
   </div>
 </section>
@@ -18,7 +18,7 @@ layout: default
 <section class="hero-without-image">
   <div class="hero-inner">
     <div class="hero-content">
-      <h1 class="hero__title">{{page.title}}</h1>
+      <h1 class="hero__title">{{page.title_for_content | default: page.title}}</h1>
     </div>
   </div>
 </section>

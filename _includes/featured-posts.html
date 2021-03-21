@@ -19,7 +19,7 @@
               <div class="article__inner">
 
                 {% if post.featured %}
-                <span class="featured-post ion ion-ios-star-outline"></span>
+                <span class="featured-post lni lni-star-filled"></span>
                 {% endif %}
 
                 {% if post.image %}
@@ -34,13 +34,13 @@
                     <span class="article__minutes">
                       {% assign words = post.content | number_of_words %}
                       {% if words < 360 %}
-                        1 min read
+                        1 min read •
                       {% else %}
-                        {{ words | divided_by:180 }} min read
+                        {{ words | divided_by:180 }} min read •
                       {% endif %}
                     </span>
                     <time class="article__date"
-                      datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}{{ post.date | date: date_format }}</time>
+                      datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.date_format | default: "%b %-d, %Y" %}{{ post.date | date: date_format }}</time>
                   </div>
 
                   <h2 class="article__title">

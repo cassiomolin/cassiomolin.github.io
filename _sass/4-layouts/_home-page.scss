@@ -12,10 +12,6 @@
     padding-top: 25%;
   }
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-
   &--big {
     &::after {
       padding-top: 35%;
@@ -43,9 +39,9 @@
   .featured-post {
     position: absolute;
     top: 20px;
-    right: 32px;
+    right: 20px;
     z-index: 10;
-    padding: 2px 4px;
+    padding: 4px 6px;
     font-size: 20px;
     border-radius: 4px;
     color: $gray;
@@ -96,11 +92,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba($background-color, 0.6);
+    background: linear-gradient(0deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.02) 100%, rgba(255,255,255,0.7259278711484594) 100%);
     pointer-events: none;
   }
 
-  img {
+  a, img {
     position: absolute;
     top: 0;
     width: 100%;
@@ -124,24 +120,19 @@
 }
 
 .article__meta {
-  line-height: 12px;
+  line-height: 14px;
 
   .article__date,
   .article__minutes {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1;
     font-weight: 500;
-  }
-
-  .article__date {
-    color: $gray;
   }
 }
 
 .article__bottom {
   display: flex;
-  align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
   font-weight: 500;
   color: $white;
@@ -149,18 +140,22 @@
   a {
     pointer-events: all;
   }
+
+  &-meta {
+    padding-top: 2px;
+  }
 }
 
 .article-tags {
 
   .article__tag {
     display: inline-block;
-    padding: 4px 8px;
+    padding: 6px 9px;
     margin: 2px 0;
-    font-size: 12px;
-    line-height: 10px;
+    font-size: 14px;
+    line-height: 12px;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: lowercase;
     letter-spacing: -0.5px;
     border: 2px solid rgba($white, 0.4);
     border-radius: 24px;
@@ -171,6 +166,7 @@
     }
   }
 }
+
 
 .article__author {
   float: left;
@@ -195,7 +191,7 @@
     }
   }
   &-link {
-    font-size: 12px;
+    font-size: 14px;
     color: $white;
     &:hover {
       color: $white;

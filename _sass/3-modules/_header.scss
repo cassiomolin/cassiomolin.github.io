@@ -32,7 +32,6 @@
   font-weight: 900;
   vertical-align: middle;
   color: $text-color;
-  text-transform: uppercase;
   text-decoration: none;
   letter-spacing: -1px;
   &:hover {
@@ -60,15 +59,13 @@
 
   .nav__icon-close {
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 32px;
+    right: 20px;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    width: 40px;
-    height: 40px;
     text-align: center;
     line-height: 40px;
     color: rgba($white, .5);
@@ -83,8 +80,8 @@
     padding-top: 100px;
 
     .nav__icon-close {
-      top: 22px;
-      right: 42px;
+      top: 32px;
+      right: 20px;
     }
   }
 
@@ -109,7 +106,7 @@
   
       .nav__link {
         position: relative;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -182,7 +179,7 @@
     span {
       display: block;
       margin-left: 8px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -194,7 +191,7 @@
 
   .nav__icon-menu {
     display: none;
-    margin-right: 16px;
+    margin-left: 20px;
     @media only screen and (max-width: $desktop) {
       display: block;
     }

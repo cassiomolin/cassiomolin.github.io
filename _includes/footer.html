@@ -4,7 +4,6 @@
     <div class="row">
       {% include footer-widgets/widget-recent-posts.html %}
       {% include footer-widgets/widget-tag-cloud.html %}
-      {% include footer-widgets/widget-subscribe.html %}
     </div>
   </div>
 </section>
@@ -16,7 +15,10 @@
     <div class="row">
       <div class="col col-12">
       <div class="footer__inner">
-        <div class="copyright">{{site.time | date: '%Y'}} &copy; <a href="/">{{site.title}}</a>. Crafted & Designed by <a href="https://jekyllthemes.io/developers/artem-sheludko">Artem Sheludko</a>.</div>
+        <div class="copyright">
+          {{site.time | date: '%Y'}} &copy; <a href="/">{{site.title}}</a>. Written with <i class="lni lni-heart-filled"></i> in Ireland.<br/>
+          Powered by <a target="_blank" href="https://jekyllrb.com">Jekyll</a> and hosted on <a target="_blank" href="https://pages.github.com">GitHub Pages</a>.
+        </div>
         {% include social-links.html %}
         </div>
       </div>

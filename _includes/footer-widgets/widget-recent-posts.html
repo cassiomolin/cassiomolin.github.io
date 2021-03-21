@@ -1,4 +1,4 @@
-<div class="col col-4 col-d-6 col-t-12">
+<div class="col col-6 col-d-6 col-t-12">
   <div class="widget widget-recent">
 
     <div class="widget__head">
@@ -15,13 +15,13 @@
           <span class="article__minutes">
             {% assign words = post.content | number_of_words %}
             {% if words < 360 %}
-              1 min read
+              1 min read •
             {% else %}
-              {{ words | divided_by:180 }} min read
+              {{ words | divided_by:180 }} min read •
             {% endif %}
           </span>
           <time class="article__date"
-            datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}{{ post.date | date: date_format }}</time>
+            datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.date_format | default: "%b %-d, %Y" %}{{ post.date | date: date_format }}</time>
         </div>
         <h4 class="recent-posts__title"><a href="{{ post.url }}">{{ post.title }}</a></h4>
         <div class="article__bottom">
