@@ -156,9 +156,9 @@
     font-weight: 500;
     text-transform: lowercase;
     letter-spacing: -0.5px;
-    border: 2px solid rgba($white, 0.4);
+    border: 2px solid $white;
     border-radius: 24px;
-    color: $gray;
+    color: $white;
     &:hover {
       color: $white;
       border-color: $brand-color;
