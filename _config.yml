@@ -2,7 +2,7 @@
 # General Site Settings
 title: cassiomolin
 logo: # You can add own logo. For example '/images/logo.png'.
-description: I am a software engineer living, working and drinking in Ireland. And this is my coding blog.
+description: I am a software engineer living, working and drinking in Ireland. And this is my not-so-frequently-updated coding blog.
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "https://cassiomolin.com" # The base hostname & protocol for your site, e.g. http://example.com
 
@@ -18,7 +18,7 @@ author:
 # Hero Settings
 hero:
   title: Cassio Mazzochi Molin
-  description: I am a software engineer living, working and drinking in Ireland. And this is my coding blog.
+  description: I am a software engineer living, working and drinking in Ireland. And this is my not-so-frequently-updated coding blog.
   image: '/images/pages/home/cover.jpg'
 
 
