@@ -1,0 +1,19 @@
+/* About Page */
+
+.page__content {
+  .about__author {
+    text-align: center;
+    &-image {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      padding: 3px;
+      margin-bottom: 30px;
+      border: 2px solid $brand-color;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: transparent;
+    }
+  }
+}

@@ -5,21 +5,23 @@ permalink: /about/
 image: '/images/pages//about/cover.jpg'
 ---
 
-Hey! I'm Cassio and this is my coding blog!
+Hi there, my name is Cassio Mazzochi Molin and this is my coding blog.
 
-I'm a software engineer with over ten years of experience in analysis, architecture and software development. I'm familiar with agile methodologies and I have the expertise to design, implement, test and deploy web applications in Java and JavaScript with React.
+I am originally from Brazil, I descend from an Italian family and I've been living in Ireland since early 2015. I've been developing software for over 11 years now, mainly with Java, and I currently work as Technical Lead for AIB, one of the largest banks in Ireland.
 
-My skills include:
+If you would like know more about professional experience, please have a look at [CV][cv].
 
-- Strong understanding of the REST architectural style with HTTP, microservices and containers with Docker.
-- Solid background in systems architecture definition, best practices of software development, design patterns and testing.
-- Experience with relational databases.
+<div class="about__author">
+  <img class="about__author-image lazy" data-src="{{site.baseurl}}{{site.author.avatar}}" alt="{{site.author.name}}'s picture">
+</div>
 
-If you would like to check my professional experience, please have a look at [CV][cv]. I'm also open to freelancing, feel free to [get in touch][contact] and let's build something awesome!
+I've been active on [Stack Overflow][stackoverflow] for many years now, posting over 1,100 answers about HTTP, API design and Java in general. I currently sit on the top 0.1% users with the highest reputation and some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. And if you feel generous enough to reward me for my contributions, you can [buy me a coffee][paypal].
 
-I'm active on [Stack Overflow][stackoverflow], currently sitting on the top 0.1% users. Some posts you will find in this blog are based on my Stack Overflow [answers][stackoverflow.answers]. I frequently find myself answering about REST, HTTP, API design and Java in general. And if you feel generous enough to reward me for my contributions, check my [Amazon wish list][amazon.wish-list] or simply [buy me a coffee][paypal].
+---
 
-And, in case you are wondering, I currently live in Dublin, Ireland.
+Out of curiosity, over the past few years I developed such a great passion for tabletop games and I started collecting some titles I like the most. It's a great reason for gathering friends around the table or keeping myself entertained during the COVID-19 restrictions.
+
+---
 
 > Any fool can write code that a computer can understand. <br/>
 > Good programmers write code that humans can understand.
@@ -28,8 +30,6 @@ And, in case you are wondering, I currently live in Dublin, Ireland.
 
 
   [cv]: /cv
-  [contact]: /contact
   [stackoverflow]: https://stackoverflow.com/u/1426227
   [stackoverflow.answers]: https://stackoverflow.com/search?q=is%3Aanswer+user%3A1426227
-  [amazon.wish-list]: https://amazon.co.uk/hz/wishlist/ls/3KJP5Z1RDXLFO
   [paypal]: https://paypal.me/cassiomolin
