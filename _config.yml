@@ -2,7 +2,7 @@
 # General Site Settings
 title: cassiomolin
 logo: # You can add own logo. For example '/images/logo.png'.
-description: Norlin – A Beautiful Dark Blog Theme for Jekyll.
+description: I am a software engineer living, working and drinking in Ireland. And this is my coding blog.
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "" # The base hostname & protocol for your site, e.g. http://example.com
 
@@ -67,6 +67,8 @@ permalink: pretty
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-seo-tag
   - jekyll/tagging
 
 paginate: 8
