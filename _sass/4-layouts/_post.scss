@@ -104,7 +104,7 @@
     border: 2px solid rgba($white, 0.4);
     border-radius: 24px;
     color: $gray;
-
+    word-break: keep-all;
     &:hover {
       color: $white;
       border-color: $brand-color;

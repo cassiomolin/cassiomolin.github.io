@@ -159,6 +159,7 @@
     border: 2px solid $white;
     border-radius: 24px;
     color: $white;
+    word-break: keep-all;
     &:hover {
       color: $white;
       border-color: $brand-color;
