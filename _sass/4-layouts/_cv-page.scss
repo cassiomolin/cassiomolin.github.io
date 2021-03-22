@@ -62,21 +62,22 @@
   
     .timeline-content span.contractor {
       display: inline;
-      color: $light-gray;
-      font-size: 13px;
+      color: $white;
+      font-size: 10px;
       margin-left: .3em;
       position: relative;
-      top: -3px;
+      top: -4px;
     }
   
     .timeline-content span.contractor:before {
       content: 'contractor';
-      border: 1px solid $gray;
+      border: 1px solid $white;
       background-color: $dark;
       border-radius: 1em;
       padding: 2px 7px;
       vertical-align: middle;
       letter-spacing: 0px;
+      text-transform: uppercase;
     }
   
     .timeline-content p {
