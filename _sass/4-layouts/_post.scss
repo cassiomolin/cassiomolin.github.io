@@ -88,20 +88,20 @@
 
 .post__bottom {
   display: flex;
-  font-size: 13px;
-  line-height: 30px;
+  font-size: 14px;
+  line-height: 40px;
   font-weight: 500;
   color: $white;
 }
 
 .post-tags {
   .post__tag {
-    padding: 4px 8px;
+    padding: 6px 9px;
     margin: 2px 0;
-    font-size: 12px;
-    line-height: 10px;
-    font-weight: 700;
-    border: 2px solid rgba($white, 0.2);
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 500;
+    border: 2px solid rgba($white, 0.4);
     border-radius: 24px;
     color: $gray;
 
@@ -137,7 +137,7 @@
   }
 
   &-link {
-    font-size: 13px;
+    font-size: 14px;
     color: $white;
     &:hover {
       color: $white;
@@ -151,8 +151,8 @@
 
 .post__content,
 .page__content {
-  text-align: justify;
   color: $gray;
+  word-wrap: break-word;
   a {
     border-bottom: 1px solid rgba($text-color, .3);
     color: $white;
@@ -186,11 +186,6 @@
   }
   img {
     background-color: $white;
-  }
-
-  @media only screen and (max-width: $desktop) {
-    text-align: left;
-    word-wrap: break-word;
   }
 }
 
