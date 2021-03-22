@@ -10,7 +10,7 @@ And this is my (not so frequently updated) coding blog.
 
 I am originally from Brazil, I descend from an Italian family and I've been living in Ireland since early 2015. I've been developing software for over 11 years now, mainly with Java, and I currently work as Technical Lead for AIB, one of the largest banks in Ireland.
 
-If you would like know more about professional experience, please have a look at [CV][cv].
+If you would like to know more about my professional experience, please have a look at [CV][cv].
 
 <div class="about__author">
   <img class="about__author-image lazy" data-src="{{site.baseurl}}{{site.author.avatar}}" alt="{{site.author.name}}'s picture">
