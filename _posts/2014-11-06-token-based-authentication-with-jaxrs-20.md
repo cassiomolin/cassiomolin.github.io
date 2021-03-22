@@ -31,7 +31,7 @@ In a few words, an authentication scheme based on tokens follow these steps:
 7. Once the authentication has been performed, the server performs authorization.
 7. The server can provide an endpoint to refresh tokens.
 
-<sup>**Note:** The step 3 is not required if the server has issued a signed token (such as JWT, which allows you to perform *stateless* authentication).</sup>
+**Note:** The step 3 may not be required if the server has issued a signed token (such as JWT, which allows you to perform *stateless* authentication).
 
 ## What you can do with JAX-RS 2.0 (Jersey, RESTEasy and Apache CXF)
 

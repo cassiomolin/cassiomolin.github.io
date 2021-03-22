@@ -62,9 +62,9 @@ Suffixing a class name with **DTO** or **Dto** is not really meaningful and does
 
 ---
 
-<sup>**Note 1:** Whether acronyms or all capitalized words should be handled as words or not, I guess it's up to you. Check the [Java API][4] and you will find some stumbles like [`ZipInputStream`][5] / [`GZIPInputStream`][6]. Both classes are in the [same package][7] and the name convention is not consistent. [`HttpURLConnection`][8] doesn't show any consistency with acronyms either.</sup>
+**Note 1:** Whether acronyms or all capitalized words should be handled as words or not, I guess it's up to you. Check the [Java API][4] and you will find some stumbles like [`ZipInputStream`][5] / [`GZIPInputStream`][6]. Both classes are in the [same package][7] and the name convention is not consistent. [`HttpURLConnection`][8] doesn't show any consistency with acronyms either.
 
-<sup>**Note 2:** Some names listed above were borrowed from this [article][9] written by [Richard Dingwall][10] (the original article seems to be no longer available, so [here's a cached copy][11] from Web Archive).</sup>
+**Note 2:** Some names listed above were borrowed from this [article][9] written by [Richard Dingwall][10] (the original article seems to be no longer available, so [here's a cached copy][11] from Web Archive).<
 
 
   [1]: https://docs.oracle.com/javase/specs/index.html

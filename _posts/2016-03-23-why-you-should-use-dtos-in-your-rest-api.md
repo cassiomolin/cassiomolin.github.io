@@ -51,7 +51,7 @@ You also may want to consider [Lombok][13] to generate getters, setters, `equals
 
 ---
 
-<sup>**Related:** To give better names to your DTO classes, refer to this [post][14] or to this [answer][15] on Stack Overflow.</sup>
+**Related:** To give better names to your DTO classes, refer to this [post][14] or to this [answer][15] on Stack Overflow.
 
 
   [1]: https://en.wikipedia.org/wiki/Data_transfer_object
