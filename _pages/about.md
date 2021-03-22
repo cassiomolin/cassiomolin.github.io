@@ -5,7 +5,8 @@ permalink: /about/
 image: '/images/pages//about/cover.jpg'
 ---
 
-Hi there, my name is Cassio Mazzochi Molin and this is my coding blog.
+Hi there, my name is Cassio Mazzochi Molin.  
+And this is my (not so frequently updated) coding blog.
 
 I am originally from Brazil, I descend from an Italian family and I've been living in Ireland since early 2015. I've been developing software for over 11 years now, mainly with Java, and I currently work as Technical Lead for AIB, one of the largest banks in Ireland.
 
