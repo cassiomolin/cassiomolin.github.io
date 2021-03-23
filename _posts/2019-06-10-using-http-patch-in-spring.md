@@ -16,7 +16,6 @@ excerpt: This post demonstrates an approach to support HTTP PATCH in Spring.
 image: "/images/posts/2019-06-10-using-http-patch-in-spring/cover.jpg"
 redirect_from:
   - /using-http-patch-in-spring/
-featured: true
 ---
 
 This post demonstrates an approach to support HTTP `PATCH` with _JSON Patch_ and _JSON Merge Patch_ for performing partial modifications to resources in Spring. As I have seen lots of misunderstanding on how `PATCH` works, I aim to clarify its usage before diving into the actual solution.

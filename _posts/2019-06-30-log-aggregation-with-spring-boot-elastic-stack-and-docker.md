@@ -20,7 +20,6 @@ excerpt: This post demonstrates how to use Elastic Stack along with Docker to co
 image: "/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg"
 redirect_from:
   - /log-aggregation-with-spring-boot-elastic-stack-and-docker/
-featured: true
 ---
 
 
