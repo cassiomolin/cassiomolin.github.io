@@ -18,6 +18,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.
 image: "/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg"
+image_source: https://unsplash.com/photos/8tem2WpFPhM
 redirect_from:
   - /log-aggregation-with-spring-boot-elastic-stack-and-docker/
 ---

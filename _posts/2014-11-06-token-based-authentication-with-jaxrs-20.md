@@ -9,6 +9,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: How to perform authentication with tokens in JAX-RS applications.
 image: '/images/posts/2014-11-06-token-based-authentication-with-jaxrs-20/cover.jpg'
+image_source: https://unsplash.com/photos/WL8ePvjN75E
 redirect_from:
   - /token-based-authentication-with-jaxrs-20/
   - /token-based-authentication-with-jaxrs-2-0/

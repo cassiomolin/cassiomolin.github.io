@@ -8,6 +8,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: Jackson API makes it easy to covert Java objects to a map instance and vice versa.
 image: '/images/posts/2016-09-17-converting-pojo-map-vice-versa-with-jackson/cover.jpg'
+image_source: https://unsplash.com/photos/3lUtceZtmIs
 ---
 
 A quick look at how to convert a POJO from/to a [`Map<K, V>`][1] with Jackson:

@@ -11,6 +11,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: My insights on comparing JSON documents in Java.
 image: "/images/posts/2018-07-23-comparing-json-documents-in-java/cover.jpg"
+image_source: https://unsplash.com/photos/4AmyOdXZAQc
 ---
 
 I recently came across the challenge of comparing JSON documents in Java. This post describes in the details the approaches I have used to accomplish this task.

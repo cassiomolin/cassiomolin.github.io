@@ -9,6 +9,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates how to combine Jackson Streaming API and the data binding capabilities provided by ObjectMapper to parse JSON content.
 image: "/images/posts/2019-08-19-combining-jackson-streaming-api-with-objectmapper-for-parsing-json/cover.jpg"
+image_source: https://unsplash.com/photos/OJ74pFtrYi0
 redirect_from:
   - /2019/08/19/parsing-json-with-jackson-streaming-api-and-objectmapper/
   - /combining-jackson-streaming-api-with-objectmapper-for-parsing-json/

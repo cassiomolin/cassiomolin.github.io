@@ -9,6 +9,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: Why you should consider using Data Transfer Objects instead of persistence models in your REST API.
 image: '/images/posts/2016-03-23-why-you-should-use-dtos-in-your-rest-api/cover.jpg'
+image_source: https://unsplash.com/photos/Ai2TRdvI6gM
 redirect_from:
   - /why-you-should-use-dtos-in-your-rest-api/
 ---

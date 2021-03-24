@@ -8,6 +8,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: A compilation of some Maven commands for quick reference.
 image: "/images/posts/2017-12-12-maven-cheat-sheet/cover.jpg"
+image_source: https://unsplash.com/photos/VviFtDJakYk
 ---
 
 I've put together some Maven commands, properties and command line options.

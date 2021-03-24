@@ -8,6 +8,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: A summary of all types that can be injected with @Context in JAX-RS resources and providers.
 image: '/images/posts/2016-03-08-types-that-can-be-injected-with-context-in-jaxrs-20/cover.jpg'
+image_source: https://unsplash.com/photos/Ru3Ap8TNcsk
 ---
 
 The [`@Context`][1] annotation allows you to inject request/response context details into JAX-RS provider and resource classes. Injection can be performed into a class field, a bean property or a method parameter.

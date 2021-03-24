@@ -14,6 +14,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates an approach to support HTTP PATCH in Spring.
 image: "/images/posts/2019-06-10-using-http-patch-in-spring/cover.jpg"
+image_source: https://unsplash.com/photos/h3deFHhXFI4
 redirect_from:
   - /using-http-patch-in-spring/
 ---

@@ -10,6 +10,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: Using Jackson, a popular JSON parser for Java, in Jersey applications.
 image: '/images/posts/2016-08-10-using-jackson-as-json-provider-in-jersey-2x/cover.jpg'
+image_source: https://unsplash.com/photos/PNKwdJ8WetM
 ---
 
 When producing and consuming JSON in a Jersey application, will need a JSON provider, otherwise you'll see an error like this:
