@@ -10,7 +10,7 @@ layout: post
 author: Cassio Mazzochi Molin
 excerpt: Using Jackson with JAX-RS? See how to define a ContextResolver for ObjectMapper to customize serialization and deserialization.
 image: "/images/posts/2017-11-21-customizing-objectmapper-in-a-jaxrs-application/cover.jpg"
-image_source: https://unsplash.com/photos/dTSaC-S-7fs
+image_source: https://unsplash.com/photos/alS7ewQ41M8
 ---
 
 If you use Jackson as the JSON provider in your JAX-RS application, you may want to redefine the default Jackson behaviour or even fine-tune the serializarion and deserialization processes. 
