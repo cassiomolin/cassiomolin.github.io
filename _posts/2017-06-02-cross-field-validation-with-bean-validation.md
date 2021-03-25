@@ -7,7 +7,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Writing a custom validator to validate multiple fields.
-image: "/images/posts/2017-06-02-cross-field-validation-with-bean-validation/cover.jpg"
+image: "/assets/images/posts/2017-06-02-cross-field-validation-with-bean-validation/cover.jpg"
 image_source: https://unsplash.com/photos/z6CcN8rlftY
 ---
 

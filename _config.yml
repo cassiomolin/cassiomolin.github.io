@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
 title: cassiomolin
-logo: # You can add own logo. For example '/images/logo.png'.
+logo: # You can add own logo. For example '/assets/images/logo.png'.
 description: I am a software engineer living and working in Ireland. And this is my not-so-frequently-updated coding blog.
 baseurl: "" # The subpath of your site, e.g. /blog
 url: "https://cassiomolin.com" # The base hostname & protocol for your site, e.g. http://example.com
@@ -11,7 +11,7 @@ url: "https://cassiomolin.com" # The base hostname & protocol for your site, e.g
 # Author Settings
 author:
   name: cassiomolin
-  avatar: '/images/cassiomolin.jpg'
+  avatar: '/assets/images/cassiomolin.jpg'
 
 
 #-------------------------------
@@ -19,7 +19,7 @@ author:
 hero:
   title: Cassio Mazzochi Molin
   description: I am a software engineer living and working in Ireland. And this is my not-so-frequently-updated coding blog.
-  image: '/images/pages/home/cover.jpg'
+  image: '/assets/images/pages/home/cover.jpg'
   image_source: https://unsplash.com/photos/0UGfSS9Sanw
 
 

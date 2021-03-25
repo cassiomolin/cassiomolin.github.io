@@ -6,7 +6,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Still using the RFC 2616 as reference for the HTTP/1.1 protocol? Please stop!
-image: "/images/posts/2017-11-22-stop-using-the-rfc-2616/cover.jpg"
+image: "/assets/images/posts/2017-11-22-stop-using-the-rfc-2616/cover.jpg"
 image_source: https://unsplash.com/photos/_U-x3_FYxfI
 ---
 

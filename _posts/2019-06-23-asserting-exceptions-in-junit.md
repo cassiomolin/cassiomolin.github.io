@@ -8,7 +8,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post explores some techniques for asserting exceptions in Java with JUnit.
-image: "/images/posts/2019-06-23-asserting-exceptions-in-junit/cover.jpg"
+image: "/assets/images/posts/2019-06-23-asserting-exceptions-in-junit/cover.jpg"
 image_source: https://unsplash.com/photos/8lItGdbjB6o
 redirect_from:
   - /asserting-exceptions-in-junit/

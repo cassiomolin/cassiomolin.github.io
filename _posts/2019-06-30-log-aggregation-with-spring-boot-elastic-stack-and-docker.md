@@ -17,7 +17,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.
-image: "/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg"
+image: "/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg"
 image_source: https://unsplash.com/photos/8tem2WpFPhM
 redirect_from:
   - /log-aggregation-with-spring-boot-elastic-stack-and-docker/
@@ -492,17 +492,17 @@ To stop the containers, use `docker-compose down`. It's important to highlight t
 
 
 
-  [img.services]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services.png
-  [img.elastic-stack]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-elastic-stack.png
-  [img.elastic-stack-docker]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services-and-elastic-stack.png
-  [img.logstash-pipeline]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-logstash-pipeline.png
-  [img.screenshot-01]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-01.png
-  [img.screenshot-02]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-02.png
-  [img.screenshot-03]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-03.png
-  [img.screenshot-04]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-04.png
-  [img.screenshot-05]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-05.png
-  [img.screenshot-06]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-06.png
-  [img.screenshot-07]: /images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-07.png
+  [img.services]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services.png
+  [img.elastic-stack]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-elastic-stack.png
+  [img.elastic-stack-docker]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services-and-elastic-stack.png
+  [img.logstash-pipeline]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-logstash-pipeline.png
+  [img.screenshot-01]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-01.png
+  [img.screenshot-02]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-02.png
+  [img.screenshot-03]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-03.png
+  [img.screenshot-04]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-04.png
+  [img.screenshot-05]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-05.png
+  [img.screenshot-06]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-06.png
+  [img.screenshot-07]: /assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-07.png
 
   [12factor]: https://12factor.net
   [12factor.logs]: https://12factor.net/logs

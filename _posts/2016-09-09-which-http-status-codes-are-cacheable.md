@@ -6,7 +6,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: A summary of the HTTP status codes defined as cacheable, according to the RFC 7231.
-image: '/images/posts/2016-09-09-which-http-status-codes-are-cacheable/cover.jpg'
+image: '/assets/images/posts/2016-09-09-which-http-status-codes-are-cacheable/cover.jpg'
 image_source: https://unsplash.com/photos/Y7d265_7i08
 ---
 

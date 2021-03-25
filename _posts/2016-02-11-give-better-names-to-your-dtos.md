@@ -7,7 +7,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Some ideas of meaningful names for your DTOs.
-image: '/images/posts/2016-02-11-give-better-names-to-your-dtos/cover.jpg'
+image: '/assets/images/posts/2016-02-11-give-better-names-to-your-dtos/cover.jpg'
 image_source: https://unsplash.com/photos/Sc5RKXLBjGg
 ---
 

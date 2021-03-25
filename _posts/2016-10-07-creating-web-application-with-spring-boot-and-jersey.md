@@ -8,7 +8,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Example of how to create a standalone application with Jersey with Spring Boot.
-image: '/images/posts/2016-10-07-creating-web-application-with-spring-boot-and-jersey/cover.jpg'
+image: '/assets/images/posts/2016-10-07-creating-web-application-with-spring-boot-and-jersey/cover.jpg'
 image_source: https://unsplash.com/photos/O85h02qZ24w
 ---
 

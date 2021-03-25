@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-image: '/images/pages//about/cover.jpg'
+image: '/assets/images/pages//about/cover.jpg'
 image_source: https://unsplash.com/photos/YeUVDKZWSZ4
 ---
 

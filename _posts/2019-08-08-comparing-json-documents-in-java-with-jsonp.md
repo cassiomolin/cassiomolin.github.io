@@ -8,7 +8,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates how to compare JSON documents in Java with JSON-P.
-image: "/images/posts/2019-08-08-comparing-json-documents-in-java-with-jsonp/cover.jpg"
+image: "/assets/images/posts/2019-08-08-comparing-json-documents-in-java-with-jsonp/cover.jpg"
 image_source: https://unsplash.com/photos/FvTn9Dlv39A
 redirect_from:
   - /comparing-json-documents-in-java-with-jsonp/

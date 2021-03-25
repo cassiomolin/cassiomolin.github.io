@@ -13,7 +13,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: This post demonstrates an approach to support HTTP PATCH in Spring.
-image: "/images/posts/2019-06-10-using-http-patch-in-spring/cover.jpg"
+image: "/assets/images/posts/2019-06-10-using-http-patch-in-spring/cover.jpg"
 image_source: https://unsplash.com/photos/h3deFHhXFI4
 redirect_from:
   - /using-http-patch-in-spring/
@@ -352,7 +352,7 @@ It is worth it to mention that both JSON Patch and JSON Merge Patch operate over
 
 So, to apply the patch to a Java bean, we first need to convert the Java bean to a JSON-P type, such as [`JsonStructure`][javax.json.JsonStructure] or [`JsonValue`][javax.json.JsonValue]. Then we apply the patch to it and convert the patched document back to a Java bean:
 
-![Patch conversions](/images/posts/2019-06-10-using-http-patch-in-spring/diagram-patch-conversions.png "Patch conversions")
+![Patch conversions](/assets/images/posts/2019-06-10-using-http-patch-in-spring/diagram-patch-conversions.png "Patch conversions")
 
 
 These conversions could be handled by Jackson, which provides an [extension module][jackson-datatype-jsr353] to work with JSON-P types. With this extension module, we can read JSON as [`JsonValue`][javax.json.JsonValue]s and write [`JsonValue`][javax.json.JsonValue]s as JSON as part of normal Jackson processing, taking advantage of the powerful data-binding features that Jackson provides:

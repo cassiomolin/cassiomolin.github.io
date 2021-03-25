@@ -8,7 +8,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Example of how to use JSON Path with Jackson.
-image: '/images/posts/2016-07-13-using-jackson-and-json-pointer-to-query-and-parse-an-arbitrary-json-node/cover.jpg'
+image: '/assets/images/posts/2016-07-13-using-jackson-and-json-pointer-to-query-and-parse-an-arbitrary-json-node/cover.jpg'
 image_source: https://unsplash.com/photos/L75D18aVal8
 redirect_from:
   - /2016/07/13/using-jackson-and-json-path-to-query-and-parse-an-arbitrary-json-node/

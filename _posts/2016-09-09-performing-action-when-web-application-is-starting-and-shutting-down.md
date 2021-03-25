@@ -9,7 +9,7 @@ tags:
 layout: post
 author: Cassio Mazzochi Molin
 excerpt: Examples of how to execute operations when the application starts up or shuts down using Servlets, CDI and EJB.
-image: '/images/posts/2016-09-09-performing-action-when-web-application-is-starting-and-shutting-down/cover.jpg'
+image: '/assets/images/posts/2016-09-09-performing-action-when-web-application-is-starting-and-shutting-down/cover.jpg'
 image_source: https://unsplash.com/photos/MWaWwd7VxDQ
 ---
 
