@@ -67,7 +67,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
-  - jekyll-minifier
   - jekyll/tagging
 
 paginate: 8

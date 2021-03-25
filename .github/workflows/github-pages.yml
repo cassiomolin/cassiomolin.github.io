@@ -5,8 +5,6 @@ on:
 
 jobs:
   jekyll:
-    env:
-      JEKYLL_ENV: production
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
