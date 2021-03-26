@@ -23,10 +23,10 @@ At the time of writing, there are over 14 million users registered in Stack Over
 
 ![user-reputation](/assets/images/drafts/100k-reputation-points-on-stack-overflow/user-reputation.png "Users")
 
-But, at the end of the day, reputation points are just numbers. What really matters to me is how much I learned from this challenging (and addictive) experience. Answering on Stack Overflow contributed for me to become a better software engineer.
+But, at the end of the day, reputation points are just numbers. What really matters to me is how much I learned from this (addictive) experience. Answering on Stack Overflow contributed for me to become a better software engineer.
 
-Over the past few years, I dedicated hundreds of hours of my personal time on Stack Overflow. During that time, I asked 25 questions and answered over 1100 questions.
+Over the past few years, I dedicated hundreds of hours of my personal time on Stack Overflow. During that time, I asked 25 questions and answered over 1100 questions. And, in fairness, I haven't been able to answer much over the past year or so.
 
-To contrast with it, I cannot even count how many times Stack Overflow helped me out during my career and side projects over the years.
+To contrast with it, I cannot even count how many times Stack Overflow helped me out during my career and side projects over these years.
 
-To be honest, since the past year I have not as active in Stack Overflow as I used to be. But I feel proud of myself for this achievement and even more proud for the time spent sharing my knowledge with the community.
+While I feel proud of myself for this achievement, Stack Overflow has not simply been a quest for reputation. Answering on Stack Overflow has been about learning and helping other developers.
