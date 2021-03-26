@@ -21,6 +21,10 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ site.url }}/{{ site.baseurl }}/assets/images/favicon/favicon.ico" type="image/png" />
 
+  {% if site.google-analytics %}
+    {% include google-analytics.html %}
+  {% endif %}
+
   <style>
   {% capture include_to_scssify %}
     {% include main.scss %}
