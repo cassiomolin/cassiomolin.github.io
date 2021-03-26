@@ -87,6 +87,13 @@ tag_page_dir:         tag
 tag_page_layout:      tag_page
 tag_permalink_style:  pretty
 
+# SASS
 sass:
   sass_dir: _sass
   style: compressed
+
+# HTML Compression (see https://jch.penibelst.de)
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  profile: false
