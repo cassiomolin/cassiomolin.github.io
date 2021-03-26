@@ -38,9 +38,9 @@ contact:
 # Example of adding a new link to the footer - {icon: "lni-github-original", link: "https://github.com"}
 # Other icons can be found at https://lineicons.com/icons/
 social:
-- {icon: "lni-github-original", link: "https://github.com/cassiomolin"}
 - {icon: "lni-linkedin-original", link: "https://www.linkedin.com/in/cassiomolin"}
 - {icon: "lni-stackoverflow", link: "https://www.stackoverflow.com/u/1426227"}
+- {icon: "lni-github-original", link: "https://github.com/cassiomolin"}
 
 
 #-------------------------------
