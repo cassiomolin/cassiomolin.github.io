@@ -68,18 +68,4 @@ While the [`201`][5] status code indicates that a new resource has been created,
   [3]: https://tools.ietf.org/html/rfc7231#section-4.3.4
   [4]: https://tools.ietf.org/html/rfc7231#section-6.5.4
   [5]: https://tools.ietf.org/html/rfc7231#section-6.3.2
-  [6]: https://tools.ietf.org/html/rfc7231#section-7.1.2
-
-
-
-  [com.fasterxml.jackson.core.JsonFactory]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonFactory.html
-  [com.fasterxml.jackson.core.JsonParser]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonParser.html
-  [com.fasterxml.jackson.core.JsonParser.nextToken]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonParser.html#nextToken--
-  [com.fasterxml.jackson.core.JsonGenerator]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/JsonGenerator.html
-  [com.fasterxml.jackson.databind.ObjectMapper]: https://fasterxml.github.io/jackson-databind/javadoc/2.9/com/fasterxml/jackson/databind/ObjectMapper.html
-  [com.fasterxml.jackson.core.TreeNode]: https://fasterxml.github.io/jackson-core/javadoc/2.9/com/fasterxml/jackson/core/TreeNode.html
-  
-  [repo]: https://github.com/cassiomolin/using-jackson-streaming-api-with-objectmapper.git
-  
-  [stax]: https://docs.oracle.com/javase/tutorial/jaxp/stax/api.html
-  
+  [6]: https://tools.ietf.org/html/rfc7231#section-7.1.2  
