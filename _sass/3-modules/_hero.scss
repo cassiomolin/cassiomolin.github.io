@@ -50,7 +50,7 @@
 
 .hero__content {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%,-50%);
   z-index: 1;
@@ -70,8 +70,8 @@
   line-height: 1;
   color: $white;
   @media only screen and (max-width: $mobile) {
-    font-size: 43px;
-    margin: 0 0 5px;
+    font-size: 38px;
+    margin: 0 0 10px;
   }
 }
 
