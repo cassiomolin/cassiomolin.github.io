@@ -17,6 +17,19 @@
     margin-left: 32px;
   }
 
+  .no-image {
+    
+    &.row {
+      display: block;
+    }
+    
+    .post-head__box {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+  }
+
   @media only screen and (max-width: $desktop) {
     .post-head__box {
       margin-left: 16px;
@@ -33,7 +46,6 @@
       flex-direction: column;
     }
   }
-
 }
 
 .post-image {
