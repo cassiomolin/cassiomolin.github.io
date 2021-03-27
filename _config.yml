@@ -60,6 +60,7 @@ date_format: "%d %b %Y"
 
 #-------------------------------
 # Build settings
+incremental: true
 markdown: kramdown
 permalink: pretty
 plugins:
