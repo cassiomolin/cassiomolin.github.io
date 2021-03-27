@@ -61,6 +61,8 @@ date_format: "%d %b %Y"
 #-------------------------------
 # Build settings
 incremental: true
+exclude:
+  - README.md
 markdown: kramdown
 permalink: pretty
 plugins:
