@@ -64,6 +64,12 @@
   }
 }
 
+.home {
+  .hero__content {
+    top: calc(55% + 30px);
+  }
+}
+
 .hero__title {
   font-size: 58px;
   margin: 0 0 10px;
