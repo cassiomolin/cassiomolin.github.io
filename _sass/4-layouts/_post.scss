@@ -164,6 +164,7 @@
 .page__content {
   color: $gray;
   word-wrap: break-word;
+  margin-bottom: 80px;
   a {
     border-bottom: 1px solid rgba($text-color, .3);
     color: $white;
@@ -202,6 +203,11 @@
   }
   > ul {
     margin-left: 40px;
+  }
+  div {
+    &.mermaid {
+      background-color: $white;
+    }
   }
 }
 

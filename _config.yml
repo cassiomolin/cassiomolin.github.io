@@ -69,7 +69,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
-  - jekyll-spaceship
   - jekyll/tagging
 
 paginate: 8

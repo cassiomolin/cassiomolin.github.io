@@ -162,3 +162,8 @@ $(document).ready(function() {
   });
 
 });
+
+/* =======================
+// Mermaid Diagrams
+======================= */
+mermaid.initialize({startOnLoad:true});
