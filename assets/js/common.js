@@ -167,20 +167,39 @@ $(document).ready(function() {
 // Mermaid Diagrams
 //
 // Note: The theme can be customised using something like:
-//       themeVariables: { nodeBorder: '#ff7b7b'},
+//       themeVariables: { actorBorder: '#ff7b7b'},
 //       themeCSS: ".actor { stroke: #ff7b7b; }",
 //
 // See:  https://mermaid-js.github.io/mermaid/#/theming
 ======================= */
 var config = {
+
+  startOnLoad: true,
+  
+  // Theme
   theme: 'dark',
-  themeCSS: `
-    .actor,
-    .loopLine,
-    .labelBox {
-      stroke: #ff7b7b;
-    }
-  `,
-  startOnLoad: true
+  themeVariables: {    
+    
+    // Sequence diagram
+    actorBorder: '#ff7b7b',
+    labelBoxBorderColor: '#ff7b7b'
+  },
+
+  // Sequence diagram
+  sequence:{
+
+    // Actor
+    actorFontFamily: 'Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif',
+    actorFontSize: 18,
+    actorFontWeight: 700,
+    
+    // Note
+    noteFontFamily: 'Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif',
+    noteFontSize: 14,
+    
+    // Message
+    messageFontFamily: 'Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif',
+    messageFontSize: 14
+  }
 };
 mermaid.initialize(config);
