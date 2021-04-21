@@ -9,11 +9,17 @@ image: "/assets/images/drafts/mermaid-diagrams-test/cover.jpg"
 image_source: https://unsplash.com/photos/AFB6S2kibuk
 ---
 
-This is a test with Mermaid.
+This is a test with Mermaid:
 
 <div class="mermaid">
 sequenceDiagram
+    autonumber
     Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts!
     John-->>Alice: Great!
-    Alice-)John: See you later!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
 </div>

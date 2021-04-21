@@ -189,7 +189,7 @@
     }
   }
   pre {
-     background-color: $blue-dark;;
+     background-color: $blue-dark;
   }
   h1, h2, h3, h4, h5, h6 {
     code {
@@ -203,11 +203,12 @@
   }
   > ul {
     margin-left: 40px;
-  }
-  div {
+  } div {
     &.mermaid {
       text-align: center;
       border-radius: 16px;
+      background-color: $blue-dark;
+      padding: 16px;
     }
   }
 }
