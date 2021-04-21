@@ -202,4 +202,5 @@ var config = {
     messageFontSize: 14
   }
 };
+
 mermaid.initialize(config);
