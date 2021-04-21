@@ -166,4 +166,8 @@ $(document).ready(function() {
 /* =======================
 // Mermaid Diagrams
 ======================= */
-mermaid.initialize({startOnLoad:true});
+var config = {
+  theme: 'dark',
+  startOnLoad: true
+};
+mermaid.initialize(config);

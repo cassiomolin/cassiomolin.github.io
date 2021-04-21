@@ -206,7 +206,8 @@
   }
   div {
     &.mermaid {
-      background-color: $white;
+      text-align: center;
+      border-radius: 16px;
     }
   }
 }
