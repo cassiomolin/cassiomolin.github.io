@@ -5,8 +5,8 @@ tags:
 - personal
 layout: post
 author: Cassio Mazzochi Molin
-image: "/assets/images/drafts/100k-reputation-points-on-stack-overflow/cover.jpg"
-image_source: https://unsplash.com/photos/eA2t5EvcxU4
+image: "/assets/images/drafts/mermaid-diagrams-test/cover.jpg"
+image_source: https://unsplash.com/photos/AFB6S2kibuk
 ---
 
 This is a test with Mermaid.

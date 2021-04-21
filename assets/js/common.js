@@ -165,9 +165,13 @@ $(document).ready(function() {
 
 /* =======================
 // Mermaid Diagrams
+// Note: The theme can also be customised with CSS using something like:
+//       themeCSS: ".actor { stroke: #ff7b7b; }"
+// See:  https://mermaid-js.github.io/mermaid/#/theming
 ======================= */
 var config = {
   theme: 'dark',
+  themeVariables: { nodeBorder: '#ff7b7b'},
   startOnLoad: true
 };
 mermaid.initialize(config);
