@@ -1,6 +1,6 @@
 ---
 title: 100k reputation points on Stack Overflow
-date: 2021-03-26 10:00:00 Z
+date: 2021-04-26 10:00:00 Z
 tags:
 - personal
 layout: post
@@ -12,21 +12,15 @@ redirect_from:
   - /100k
 ---
 
-It has been a quite a while since I last posted something here, and I thought my most recent personal achievement deserves a post.
-
-This week I reached 100k reputation points on Stack Overflow, the largest online community for professional programmers and enthusiasts.
+Yesterday I reached 100,000 reputation points on Stack Overflow, the largest online community for professional programmers and enthusiasts.
 
 ![100k](/assets/images/drafts/100k-reputation-points-on-stack-overflow/100k.png "100k")
 
-In Stack Overflow terms, reputation points mean how much the content posted by a user is relevant and trusted by the community.
-At the time of writing, there are over 14 million users registered in Stack Overflow and I’m sitting among the 100? users with over 100k reputation points.
+In the Stack Overflow terms, reputation points indicate how much the content posted by a user is relevant and trusted by the community.
+At present, there are 14.5 million users registered in Stack Overflow, and I am the 1000th user to hit this milestone!
 
 ![user-reputation](/assets/images/drafts/100k-reputation-points-on-stack-overflow/user-reputation.png "Users")
 
-But, at the end of the day, reputation points are just numbers. What really matters to me is how much I learned from this (addictive) experience. Answering on Stack Overflow contributed for me to become a better software engineer.
+But, at the end of the day, reputation points are just numbers. While I am proud of my achievement, my participation on Stack Overflow was never a quest for reputation.
 
-Over the past few years, I dedicated hundreds of hours of my personal time on Stack Overflow. During that time, I asked 25 questions and answered over 1100 questions. And, in fairness, I haven't been able to answer much over the past year or so.
-
-To contrast with it, I cannot even count how many times Stack Overflow helped me out during my career and side projects over these years.
-
-While I feel proud of myself for this achievement, Stack Overflow has not simply been a quest for reputation. Answering on Stack Overflow has been about learning and helping other developers.
+What matters to me is how much I learned from this experience. The 1100+ answers I posted till now helped me to become a better software engineer. It's been all about learning and helping others.
