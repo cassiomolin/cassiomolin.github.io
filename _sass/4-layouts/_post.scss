@@ -112,9 +112,9 @@
     font-size: 14px;
     line-height: 14px;
     font-weight: 500;
-    border: 2px solid rgba($white, 0.4);
+    border: 2px solid $light-gray;
     border-radius: 24px;
-    color: $gray;
+    color: $light-gray;
     word-break: keep-all;
     &:hover {
       color: $white;
@@ -162,7 +162,7 @@
 
 .post__content,
 .page__content {
-  color: $gray;
+  color: $light-gray;
   word-wrap: break-word;
   margin-bottom: 80px;
   a {
