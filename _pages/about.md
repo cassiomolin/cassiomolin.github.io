@@ -17,7 +17,7 @@ I am originally from Brazil, I descend from an Italian family, and I have been i
 
 I've been developing software for over 11 years now, mainly with Java, and I currently work as Technical Lead for AIB, one of the largest banks in Ireland. If you would like to know more about my professional experience, please check out my [CV][cv].
 
-I have been active on [Stack Overflow][stackoverflow] for many years now, having posted over 1,100 answers about HTTP, API design and Java in general. I currently sit on the top 0.1% of the users with the highest reputation, and some of my Stack Overflow [answers][stackoverflow.answers] inspired some of the posts you find in this blog.
+I have been active on [Stack Overflow][stackoverflow] for many years now, having posted over 1,100 answers about HTTP, API design and Java in general. I currently sit on the [top 0.1% of the users with the highest reputation][100k], and some of my Stack Overflow [answers][stackoverflow.answers] inspired some of the posts you find in this blog.
 
 If you feel generous enough to reward me for my contributions, either here or on Stack Overflow, you can [buy me a coffee][paypal] :)
 
@@ -34,6 +34,7 @@ Away from the keyboard, I have a passion for tabletop games, and over the past f
 
 
   [cv]: /cv
+  [100k]: /100k
   [stackoverflow]: https://stackoverflow.com/u/1426227
   [stackoverflow.answers]: https://stackoverflow.com/search?q=is%3Aanswer+user%3A1426227
   [paypal]: https://paypal.me/cassiomolin
