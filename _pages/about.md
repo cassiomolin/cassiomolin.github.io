@@ -23,7 +23,13 @@ If you feel generous enough to reward me for my contributions, either here or on
 
 ---
 
-Away from the keyboard, I have a passion for tabletop games, and over the past few years, I started collecting some titles I like the most. Tabletop games are a good reason for gathering friends around the table or even keeping myself entertained during the COVID-19 restrictions.
+During my free time, I usually try to do things that keep me away from the keyboards:
+
+- I spend quite some time in the kitchen: fresh pasta, risottos, and homemade pizzas are some of the dishes I love preparing. Ah! It's been a few months since I baked my first sourdough bread, and I never stopped since then.
+
+- I enjoy playing tabletop games, and over the past few years, I started collecting some titles I like the most. If I could pick some favourites, they would probably be [Viticulture][viticulture], [Everdell][everdell], [Wingspan][wingspan] and [7 Wonders][7wonders].
+
+- I also have some interest in photography, and my [Fujifilm X-T3][xt3] paired with my beloved [35mm ƒ/2][35mm] never let me down :)
 
 ---
 
@@ -38,3 +44,10 @@ Away from the keyboard, I have a passion for tabletop games, and over the past f
   [stackoverflow]: https://stackoverflow.com/u/1426227
   [stackoverflow.answers]: https://stackoverflow.com/search?q=is%3Aanswer+user%3A1426227
   [paypal]: https://paypal.me/cassiomolin
+  [xt3]: https://fujifilm-x.com/global/products/cameras/x-t3/
+  [35mm]: https://fujifilm-x.com/global/products/lenses/xf35mmf2-r-wr/
+  [wingspan]: https://boardgamegeek.com/boardgame/266192
+  [viticulture]: https://boardgamegeek.com/boardgame/183394
+  [everdell]: https://boardgamegeek.com/boardgame/199792
+  [7wonders]: https://boardgamegeek.com/boardgame/316377
+  [raspberry-pi.4b]: https://www.raspberrypi.org/products/raspberry-pi-4-model-b/
