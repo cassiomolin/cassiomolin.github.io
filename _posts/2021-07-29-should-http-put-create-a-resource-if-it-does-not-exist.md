@@ -1,18 +1,16 @@
 ---
 title: Should HTTP PUT create a resource if it does not exist?
-date: 2021-03-26 10:00:00 Z
+date: 2021-07-29 17:00:00 Z
 tags:
 - http
 layout: post
 author: Cassio Mazzochi Molin
-excerpt: This post demonstrates how to combine Jackson Streaming API and the data binding capabilities provided by ObjectMapper to parse JSON content.
-image: "/assets/images/drafts/should-http-put-create-a-resource-if-it-does-not-exist/cover.jpg"
-image_source: https://unsplash.com/photos/aHhhdKUP77M
+excerpt: 
+image: "/assets/images/posts/2021-07-29-should-http-put-create-a-resource-if-it-does-not-exist/cover.jpg"
+image_source: https://unsplash.com/photos/5CzbWNlhaI0
 ---
 
-I first came across this [same question in Stack Overflow](https://stackoverflow.com/q/56240547/1426227) and I did provide an [answer](https://stackoverflow.com/a/56241060/1426227) to it. As my answer has been getting some upvotes recently, I thought it would deserve a cross-post here.
-
-So back to the question:
+I first came across this [question in Stack Overflow](https://stackoverflow.com/q/56240547/1426227) and I did provide an [answer](https://stackoverflow.com/a/56241060/1426227) to it. As my answer has been getting some upvotes recently, I thought it would deserve a cross-post here.
 
 > Should HTTP `PUT` create a resource if it does not exist?
 
@@ -23,7 +21,7 @@ The ultimate decision comes down to **how the resource identifiers are generated
 - If the server allows the client to generate resource identifiers, then it would be fine to use [`PUT`][3] for creating resources.
 - On the other hand, if the server generates resource identifiers on behalf of the client, then [`POST`][2] should be used instead of [`PUT`][3] for creating resources. 
 
-Some parts of the [`PUT`][3] method definition are quoted below and the last sentence suppors what I have just mentioned above (highlight is mine):
+Some parts of the [`PUT`][3] method definition are quoted below and the last sentence supports what I have just mentioned above (highlight is mine):
 
 > [**4.3.4.  PUT**][3]
 >
