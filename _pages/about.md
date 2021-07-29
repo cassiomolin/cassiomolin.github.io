@@ -25,9 +25,9 @@ If you feel generous enough to reward me for my contributions, either here or on
 
 During my free time, I usually try to do things that keep me away from the keyboards:
 
-- I spend quite some time in the kitchen: fresh pasta, risottos, and homemade pizzas are some of the dishes I love preparing. Ah! It's been a few months since I baked my first sourdough bread, and I never stopped since then.
+- I've been developing a sense of value in preparing good food. While everything seems rushed and moving so fast, I developed an appreciation for homemade food, mainly for food that takes time to prepare. It includes fresh pasta, risottos, long fermentation bread and pizzas (including sourdough). Good food is a way of bringing people together.
 
-- I enjoy playing tabletop games, and over the past few years, I started collecting some titles I like the most. If I could pick some favourites, they would probably be [Viticulture][viticulture], [Everdell][everdell], [Wingspan][wingspan] and [7 Wonders][7wonders].
+- I enjoy playing tabletop games and, over the past few years, I started collecting some titles I like the most. If I could pick some favourites, they would probably be [Viticulture][viticulture], [Everdell][everdell], [Wingspan][wingspan] and [7 Wonders][7wonders].
 
 - I also have some interest in photography, and my [Fujifilm X-T3][xt3] paired with my beloved [35mm ƒ/2][35mm] never let me down :)
 
