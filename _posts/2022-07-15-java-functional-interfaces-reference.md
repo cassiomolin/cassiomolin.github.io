@@ -32,8 +32,10 @@ Functional interfaces were introduced in Java 8, are associated with [lambda exp
 | [`Function<T,R>`][Function]                     | `R apply(T t)`                                    |              `T` | → | `R`         |
 | [`Predicate<T>`][Predicate]                     | `boolean test(T t)`                               |              `T` | → | `boolean`   |
 
-For variations on the input arguments and results, the following tables will come handy.
+For variations on the input arguments and results, the following tables will come handy:
 
+* TOC 
+{:toc} 
 
 ## Consumers
 
