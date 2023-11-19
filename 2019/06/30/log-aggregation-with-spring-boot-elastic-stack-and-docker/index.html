@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Log aggregation with Spring Boot, Elastic Stack and Docker | cassiomolin</title>
+  <meta name='description' content='I am a software engineer living and working in Ireland. And this is my not-so-frequently-updated coding blog.'>
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Log aggregation with Spring Boot, Elastic Stack and Docker | cassiomolin</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Log aggregation with Spring Boot, Elastic Stack and Docker" />
+<meta name="author" content="Cassio Mazzochi Molin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices." />
+<meta property="og:description" content="This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices." />
+<link rel="canonical" href="https://cassiomolin.com/2019/06/30/log-aggregation-with-spring-boot-elastic-stack-and-docker/" />
+<meta property="og:url" content="https://cassiomolin.com/2019/06/30/log-aggregation-with-spring-boot-elastic-stack-and-docker/" />
+<meta property="og:site_name" content="cassiomolin" />
+<meta property="og:image" content="https://cassiomolin.com/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-30T00:53:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://cassiomolin.com/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg" />
+<meta property="twitter:title" content="Log aggregation with Spring Boot, Elastic Stack and Docker" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Cassio Mazzochi Molin"},"dateModified":"2019-06-30T00:53:00+00:00","datePublished":"2019-06-30T00:53:00+00:00","description":"This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.","headline":"Log aggregation with Spring Boot, Elastic Stack and Docker","image":"https://cassiomolin.com/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://cassiomolin.com/2019/06/30/log-aggregation-with-spring-boot-elastic-stack-and-docker/"},"url":"https://cassiomolin.com/2019/06/30/log-aggregation-with-spring-boot-elastic-stack-and-docker/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="canonical" href="https://cassiomolin.com/2019/06/30/log-aggregation-with-spring-boot-elastic-stack-and-docker/">
+  <link rel="alternate" type="application/rss+xml" title="cassiomolin" href="/feed.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- LineIcons -->
+  <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+
+  <!-- Favicon and other icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icon//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icon//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69796629-3', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+
+  <style>
+  
+  /*!------------------------------------------------------------------
+[MAIN STYLESHEET]
+-------------------------------------------------------------------*/.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.show{display:block}.hide{display:none}.invisible{visibility:hidden}.list-reset{list-style-type:none;margin:0;padding:0}.clearfix::after,.clearfix ::before{content:"";display:table;clear:both}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;word-wrap:normal !important}/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,hr{margin:0;padding:0}li>ul,li>ol{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5,h6,ul,ol,dl,blockquote,p,address,hr,table,fieldset,figure,pre{margin-bottom:30px}ul,ol,dd{margin-left:20px}.highlight{border-radius:4px;color:#fff;background:#17151E;font-size:14px;border-radius:16px}.highlight code[class*="language-"],.highlight pre[class*="language-"]{color:#ccc;background:none;font-family:Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}.highlight pre[class*="language-"]{padding:1em;overflow:auto}.highlight :not(pre)>code[class*="language-"],.highlight pre[class*="language-"]{background:#17151E}.highlight :not(pre)>code[class*="language-"]{padding:.1em;border-radius:.3em;white-space:normal}.highlight .token.comment,.highlight .token.block-comment,.highlight .token.prolog,.highlight .token.doctype,.highlight .token.cdata{color:#999}.highlight .token.punctuation{color:#ccc}.highlight .token.tag,.highlight .token.attr-name,.highlight .token.namespace,.highlight .token.deleted{color:#e2777a}.highlight .token.function-name{color:#6196cc}.highlight .token.boolean,.highlight .token.number,.highlight .token.function{color:#f08d49}.highlight .token.property,.highlight .token.class-name,.highlight .token.constant,.highlight .token.symbol{color:#f8c555}.highlight .token.selector,.highlight .token.important,.highlight .token.atrule,.highlight .token.keyword,.highlight .token.builtin{color:#cc99cd}.highlight .token.string,.highlight .token.char,.highlight .token.attr-value,.highlight .token.regex,.highlight .token.variable{color:#7ec699}.highlight .token.operator,.highlight .token.entity,.highlight .token.url{color:#67cdcc}.highlight .token.important,.highlight .token.bold{font-weight:bold}.highlight .token.italic{font-style:italic}.highlight .token.entity{cursor:help}.highlight .token.inserted{color:green}.container{max-width:1340px;padding-left:20px;padding-right:20px;margin:0 auto}.container-big{max-width:1600px;padding-left:20px;padding-right:20px;margin:0 auto}.row{display:flex;flex-wrap:wrap;flex:0 1 auto;flex-direction:row;box-sizing:border-box;margin-left:-16px;margin-right:-16px}.col{padding-left:16px;padding-right:16px}[class^="col-"]{flex:auto}.col-0{width:0%}.col-1{width:8.3333333333%}.col-2{width:16.6666666667%}.col-3{width:25%}.col-4{width:33.3333333333%}.col-5{width:41.6666666667%}.col-6{width:50%}.col-7{width:58.3333333333%}.col-8{width:66.6666666667%}.col-9{width:75%}.col-10{width:83.3333333333%}.col-11{width:91.6666666667%}.col-12{width:100%}.push-0{margin-left:0%}.push-1{margin-left:8.3333333333%}.push-2{margin-left:16.6666666667%}.push-3{margin-left:25%}.push-4{margin-left:33.3333333333%}.push-5{margin-left:41.6666666667%}.push-6{margin-left:50%}.push-7{margin-left:58.3333333333%}.push-8{margin-left:66.6666666667%}.push-9{margin-left:75%}.push-10{margin-left:83.3333333333%}.push-11{margin-left:91.6666666667%}.push-12{margin-left:100%}.pull-0{margin-right:0%}.pull-1{margin-right:8.3333333333%}.pull-2{margin-right:16.6666666667%}.pull-3{margin-right:25%}.pull-4{margin-right:33.3333333333%}.pull-5{margin-right:41.6666666667%}.pull-6{margin-right:50%}.pull-7{margin-right:58.3333333333%}.pull-8{margin-right:66.6666666667%}.pull-9{margin-right:75%}.pull-10{margin-right:83.3333333333%}.pull-11{margin-right:91.6666666667%}.pull-12{margin-right:100%}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media (max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media (max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media (max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}img[data-action="zoom"]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:999;-webkit-transition:all 300ms;-o-transition:all 300ms;transition:all 300ms}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:#0f0e15;position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0;-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;transition:opacity 300ms}@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none){.zoom-overlay{-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);background:rgba(15,14,21,0.8)}}.zoom-overlay-open .zoom-overlay{opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}.animate{animation:animateElement cubic-bezier(0.3, 0.45, 0.45, 0.95) 0.75s;animation-duration:0.75s;animation-iteration-count:1}@keyframes animateElement{0%{opacity:0}100%{opacity:1}}*,*::after,*::before{box-sizing:border-box}@media only print{*,*::after,*::before{color:#000 !important}}body{font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:18px;line-height:1.7;color:#eee;background-color:#0f0e15;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}body.is-in::after{visibility:hidden;opacity:0;pointer-events:none}body::after{content:"";position:fixed;left:0;top:0;width:100%;height:100%;background-color:#09080f;z-index:999;transition:1s}body input,body textarea{border:1px solid #eee;outline:none}body.overlay-active{overflow:hidden}@media only screen and (max-width: 576px){body{font-size:16px;line-height:29px}}::placeholder{color:#aaa}*::selection{color:#fff;background-color:rgba(255,123,123,0.7)}h1,h2,h3,h4,h5,h6{font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-weight:700;line-height:1.4em;letter-spacing:-1px;color:#eee}h1{font-size:36px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}blockquote{position:relative;padding:50px 0px 30px 70px;margin-bottom:0;color:#fff}blockquote:before{content:'\201C';position:absolute;left:0;font-size:8em;line-height:0;color:#ff7b7b}blockquote p{margin-bottom:20px}blockquote cite{font-size:16px;font-style:normal;font-weight:700;color:#eee}blockquote cite:before{content:'\2014' '\00a0'}@media only screen and (max-width: 576px){blockquote{padding:50px 0px 30px 60px}}pre{overflow:auto;padding:20px;font-size:14px;white-space:pre-wrap;word-wrap:break-word;word-break:break-all}img,.zoom-img-wrap{max-width:100%;height:auto;vertical-align:middle}img+em,.zoom-img-wrap+em{display:inline-block;width:100%;padding:20px 0 0;font-size:12px;font-style:normal;line-height:1;text-align:center;color:#eee}a{text-decoration:none;color:#eee;transition:all 0.2s}a:hover{color:#ff7b7b}hr{display:block;width:100%;margin:40px 0 80px 0;border:0;text-align:center}hr:after{content:"* * *";font-size:2em}.table-container{display:block;max-width:100%;overflow-x:auto}table{font-size:12px;color:rgba(238,238,238,0.7);width:100%;border-width:1px;border-color:#09080f;border-collapse:collapse}table th{padding:12px;font-size:16px;text-align:left;border:1px solid #09080f;color:#fff;background-color:#17151E}table tr{background-color:#09080f;transition:all .3s ease}table tr:nth-child(even){background-color:transparent}table tr:hover{color:#fff}table td{padding:12px;font-size:14px;border:1px solid #09080f}.gallery-box{margin-bottom:30px}.gallery-box em{display:inline-block;width:100%;padding:20px 0 0;font-size:12px;font-style:normal;line-height:1;text-align:center;color:#eee}.gallery-box em a{border-bottom:2px solid rgba(238,238,238,0.1)}.gallery-box em a:hover{border-color:#ff7b7b;color:#eee;text-decoration:none}.gallery{display:grid;grid-template-columns:repeat(3, auto);justify-content:center;align-content:center;grid-gap:10px}.gallery img{width:100%;height:auto}.lazy{opacity:0;transition:0.4s ease}.lazy.loaded{opacity:1}.hero{position:relative;margin-bottom:32px;overflow:hidden;background-color:#09080f}@media only screen and (max-width: 576px){.hero{box-shadow:none}}.hero__inner::before{content:"";display:block;position:absolute;top:0;bottom:0;left:0;right:0;z-index:1;background:linear-gradient(180deg, rgba(15,14,21,0.6) 0%, #0f0e15 100%)}.hero__image{min-height:664px;user-select:none;background-color:#09080f}.hero__image img{position:absolute;top:0px;width:100%;height:100%;object-fit:cover}@media only screen and (max-width: 992px){.hero__image{min-height:620px}}@media only screen and (max-width: 768px){.hero__image{min-height:500px}}@media only screen and (max-width: 576px){.hero__image{min-height:400px}}.hero__content{position:absolute;top:55%;left:50%;transform:translate(-50%, -50%);z-index:1;width:100%;max-width:650px;padding:0 20px;text-align:center}.hero__content .social{margin-top:30px}.home .hero__content{top:calc(55% + 30px)}.hero__title{font-size:58px;margin:0 0 10px;line-height:1;color:#fff}@media only screen and (max-width: 576px){.hero__title{font-size:32px;margin:0 0 10px}}.hero__desc{font-size:20px;color:#aaa;margin:0}@media only screen and (max-width: 576px){.hero__desc{font-size:16px;line-height:21px}}.hero-without-image{margin:192px 0 96px}.hero-without-image .hero-inner{display:flex;align-items:center;justify-content:center}.hero-without-image .hero-content{width:100%;max-width:650px;padding:0 20px;text-align:center}@media only screen and (max-width: 576px){.hero-without-image{margin:144px 0 48px}}.top{position:fixed;bottom:25px;right:-100px;z-index:5;width:40px;height:40px;line-height:40px;text-align:center;border-radius:8px;background-color:#09080f;color:#fff;cursor:pointer;transition:all .25s ease}.top:hover{color:#09080f;background:#ff7b7b}.top.is-active{right:30px}@media only screen and (max-width: 768px){.top{bottom:15px}.top.is-active{right:25px}}.header{width:100%;margin:60px 0 120px;transition:all 0.2s;color:#fff}.header.header--top{position:absolute;top:0;z-index:100}@media only screen and (max-width: 992px){.header{margin:30px 0 60px}}.header__inner{position:relative;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}.logo__link{font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:28px;line-height:1;font-weight:900;vertical-align:middle;color:#eee;text-decoration:none;letter-spacing:-1px}.logo__link:hover{color:#ff7b7b}.logo__image{max-height:40px}.main-nav{width:100%;max-width:1300px;margin:0 auto}.main-nav__box{display:flex;align-items:center;width:80%;padding-top:200px;margin:0 auto}.main-nav__box .nav__icon-close{position:absolute;top:32px;right:20px;z-index:5;display:flex;align-items:center;justify-content:center;font-size:30px;text-align:center;line-height:40px;color:rgba(255,255,255,0.5);transition:all .25s ease;cursor:pointer}.main-nav__box .nav__icon-close:hover{color:#fff}@media only screen and (max-width: 768px){.main-nav__box{padding-top:100px}.main-nav__box .nav__icon-close{top:32px;right:20px}}@media only screen and (max-width: 576px){.main-nav__box{width:90%}}.navigation{display:flex;align-items:center}.top-nav .nav__list .nav__item{display:inline-block;margin-right:40px}.top-nav .nav__list .nav__item:last-child{margin-right:0}.top-nav .nav__list .nav__item .nav__link{position:relative;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:#eee}.top-nav .nav__list .nav__item .nav__link:hover{color:#ff7b7b}@media only screen and (max-width: 992px){.top-nav{display:none}}.mobile-nav .nav__list .nav__item{display:block;margin-bottom:36px;text-align:center}.mobile-nav .nav__list .nav__item:last-child{margin-bottom:0}.mobile-nav .nav__list .nav__item .nav__link{position:relative;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#eee}.mobile-nav .nav__list .nav__item .nav__link:hover{color:#ff7b7b}@media only screen and (max-width: 576px){.mobile-nav .nav__list .nav__item{margin-bottom:28px}}.nav-buttons{display:flex;align-items:center;font-size:24px;color:#eee}.nav-buttons .search-button{display:flex;align-items:center;cursor:pointer;transition:all 0.2s}.nav-buttons .search-button span{transition:all 0.2s}.nav-buttons .search-button:hover span{color:#ff7b7b}.nav-buttons .search-button span{display:block;margin-left:8px;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase}@media only screen and (max-width: 992px){.nav-buttons .search-button span{display:none}}.nav-buttons .nav__icon-menu{display:none;margin-left:20px}@media only screen and (max-width: 992px){.nav-buttons .nav__icon-menu{display:block}}.nav-buttons .nav__icon{cursor:pointer}.menu-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;opacity:0;visibility:hidden;background-color:#09080f;transition:all 0.5s ease-in-out}.menu-overlay.is-open{opacity:1;visibility:visible}@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none){.menu-overlay{-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);background-color:rgba(9,8,15,0.9)}}@media only screen and (min-width: 992px){.menu-overlay{display:none}}.nav-grid{width:100%;height:75vh;overflow-y:auto}.nav-grid__item{margin-bottom:30px}@media only screen and (max-width: 768px){.nav-grid__item{height:auto}}.nav-grid__title{position:relative;margin-bottom:48px;padding-bottom:15px;font-size:40px;text-align:center;color:#eee}.nav-grid__title::after{content:"";position:absolute;left:50%;bottom:0;transform:translate(-50%, -50%);display:block;width:25px;height:2px;background-color:#fff}@media only screen and (max-width: 768px){.nav-grid__title{margin-bottom:30px}}.search{position:fixed;top:0;left:0;right:0;bottom:0;z-index:100;overflow:auto;opacity:0;visibility:hidden;background-color:#09080f;transition:all 0.5s ease-in-out}.search.is-visible{opacity:1;visibility:visible}@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none){.search{-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px);background-color:rgba(9,8,15,0.9)}}.search__box{position:relative;max-width:540px;width:100%;margin:0 auto;padding-top:140px}.search__box .search__close{position:absolute;top:50%;right:24px;transform:translateY(-50%);font-size:30px;line-height:1;color:rgba(238,238,238,0.5);transition:all .25s;cursor:pointer}.search__box .search__close:hover{color:#eee}@media only screen and (max-width: 768px){.search__box{width:80%;padding-top:100px}}@media only screen and (max-width: 576px){.search__box{width:90%}}.search__group{position:relative;margin-bottom:64px}.search__group .search__text{width:100%;height:auto;padding:16px 24px;font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:24px;font-weight:900;line-height:42px;border-radius:8px;border:4px solid rgba(238,238,238,0.1);transition:all .3s;color:#fff;background-color:transparent}.search__group .search__text::-webkit-input-placeholder{font-weight:900;color:rgba(238,238,238,0.8)}.search__group .search__text::placeholder{font-weight:900;color:rgba(238,238,238,0.8)}.search__group .search__text::-ms-clear{display:none}.search__group .search__text:focus{color:#eee;background:#09080f}@media only screen and (max-width: 576px){.search__group .search__text{font-size:26px}}.search-results-list .no-results{width:100%;list-style:none}.search-results-list .no-results h3{font-size:28px;text-align:center}.load-more{margin:0 auto}.load-more-section{margin:30px auto;text-align:center}@media only screen and (max-width: 576px){.load-more-section{margin:20px auto}}.footer-widgets{padding:64px 0 32px}.footer-widgets .row .col{flex-grow:1}@media only screen and (max-width: 768px){.footer-widgets{padding:48px 0 0}}.widget{margin-bottom:40px}@media only screen and (max-width: 768px){.widget{margin-bottom:64px}}.widget__title{position:relative;padding-left:8px;margin-bottom:36px;font-size:24px;line-height:1;color:#fff}.widget__title::after{content:"";position:absolute;left:0;top:50%;z-index:-1;transform:translateY(-50%);display:block;width:106px;height:38px;border-radius:4px 0px 0px 4px;background:linear-gradient(90deg, #ff7b7b -5.19%, rgba(15,14,21,0) 100%)}@media only screen and (max-width: 992px){.widget__title{font-size:24px}}.recent-posts{display:flex;align-items:center;margin-bottom:20px}.recent-posts:last-child{margin-bottom:0}@media only screen and (max-width: 360px){.recent-posts{flex-wrap:wrap;margin-bottom:32px}}.recent-posts__image{position:relative;display:block;width:100%;max-width:135px;height:144px;margin-right:20px;border-radius:16px;overflow:hidden;background:#09080f}.recent-posts__image img{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;object-fit:cover}@media only screen and (max-width: 360px){.recent-posts__image{height:auto;max-width:100%;padding-top:56.6%;margin:0 0 20px}}.recent-posts__content .recent-posts__title{font-size:18px;margin:8px 0}.recent-posts__content .article__author-image{width:28px;height:28px}.tag__cloud{display:flex;flex-wrap:wrap}.tag__cloud a{display:inline-block;padding:6px 9px;margin:0 5px 5px 0;font-size:14px;line-height:14px;font-weight:500;text-transform:lowercase;border:2px solid rgba(255,255,255,0.4);border-radius:24px;color:#aaa;word-break:keep-all}.tag__cloud a:hover{border-color:#ff7b7b;color:#fff}.subscribe-subtitle{width:100%;margin-bottom:24px;font-size:16px;line-height:24px;color:#aaa}.subscribe-group-top{display:flex;align-items:center}.subscribe-group-top .subscribe-email{position:relative;width:100%;height:56px;padding:20px;font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:14px;line-height:20px;font-weight:700;border-radius:8px;color:#fff;background-color:#17151E;border:2px solid transparent;outline:0;-webkit-appearance:none;box-sizing:border-box;transition:border-color .2s ease-in-out;cursor:text}.subscribe-group-top .subscribe-email::placeholder{color:#eee}.subscribe-group-top .subscribe-email:focus{color:#fff;border-color:#ff7b7b}.subscribe-group-top .subscribe-button{margin-left:10px}.footer{position:relative;padding:64px 0;border-top:2px solid #09080f}.footer .footer__inner{display:flex;justify-content:space-between;align-items:center}@media only screen and (max-width: 992px){.footer .footer__inner{flex-direction:column}.footer .footer__inner .copyright{order:1}}@media only screen and (max-width: 768px){.footer .footer__inner{align-items:flex-start}}.copyright{font-size:15px;color:#aaa}.copyright a{font-weight:500;color:#fff}.copyright a:hover{color:#ff7b7b}.social{text-align:center}.social .social__list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}.social .social__item{display:inline-block;margin-left:8px}.social .social__item:first-child{margin-left:0}.social .social__link{display:flex;justify-content:center;align-items:center;width:40px;height:40px;font-size:20px;line-height:40px;border-radius:8px;color:#fff}.social .social__link:hover{color:#ff7b7b}@media only screen and (max-width: 992px){.social{margin-bottom:5px}.social .social__item{margin-bottom:10px}}.button{display:inline-block;white-space:nowrap;vertical-align:middle;font:inherit;border:none;border-radius:8px;outline:none;-webkit-appearance:none;text-align:center;text-decoration:none;color:#fff;transition:all 0.2s ease;cursor:pointer}.button:hover{color:#fff}.button--primary{padding:20px 40px;font-size:16px;font-weight:700;line-height:1;background-color:#17151E}.button--primary:hover{color:#09080f;background-color:#ff6262}.button--middle{position:relative;padding:24px 48px;width:100%;max-width:412px;font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .2s ease;background-color:#09080f}.button--middle:hover{background-color:#17151E}.button--big{display:block;width:100%}.article{align-items:stretch;flex-grow:1;min-height:340px;margin-bottom:32px;transition:transform .2s ease}.article::after{content:"";display:table;padding-top:25%}.article--big::after{padding-top:35%}@media only screen and (max-width: 992px){.article--big::after{padding-top:25%}}@media only screen and (max-width: 576px){.article{min-height:280px}}.article__inner{position:relative;display:flex;width:100%;height:100%;border-radius:16px;overflow:hidden;box-shadow:0 5px 10px 0 rgba(0,0,0,0.5);background-color:#09080f}.article__inner .featured-post{position:absolute;top:20px;right:20px;z-index:10;padding:4px 6px;font-size:20px;border-radius:4px;color:#aaa;background:rgba(255,255,255,0.08);pointer-events:none}@media only screen and (max-width: 576px){.article__inner .featured-post{right:20px}}.article__title{margin:12px 0 12px;font-size:28px;line-height:1}.article__title a{color:#eee}@media only screen and (max-width: 576px){.article__title{font-size:24px}}.article__excerpt{margin-bottom:12px;font-size:14px;line-height:17px;color:#aaa}@media only screen and (max-width: 576px){.article__excerpt{font-size:13px}}.article__image{position:absolute;display:block;width:100%;height:100%;overflow:hidden;user-select:none;background-color:#09080f}.article__image::after{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(0deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.02) 100%, rgba(255,255,255,0.725928) 100%);pointer-events:none}.article__image a,.article__image img{position:absolute;top:0;width:100%;height:100%;object-fit:cover;border-radius:16px;pointer-events:none}.article__content{z-index:1;width:100%;margin-top:auto;padding:0 32px 32px;pointer-events:none}@media only screen and (max-width: 576px){.article__content{padding:20px}}.article__meta{line-height:14px}.article__meta .article__date,.article__meta .article__minutes{font-size:14px;line-height:1;font-weight:500}.article__bottom{display:flex;font-size:14px;font-weight:500;color:#fff}.article__bottom a{pointer-events:all}.article__bottom-meta{padding-top:2px}.article-tags .article__tag{display:inline-block;padding:6px 9px;margin:2px 0;font-size:14px;line-height:12px;font-weight:500;text-transform:lowercase;letter-spacing:-0.5px;border:2px solid #fff;border-radius:24px;color:#fff;word-break:keep-all}.article-tags .article__tag:hover{color:#fff;border-color:#ff7b7b}.article__author{float:left;flex-shrink:0}.article__author-image{position:relative;display:inline-block;width:36px;height:36px;padding:3px;margin-right:8px;border:2px solid #ff7b7b;border-radius:50%;overflow:hidden}.article__author-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.article__author-link{font-size:14px;color:#fff}.article__author-link:hover{color:#fff}.article__author span{color:rgba(255,255,255,0.8)}.post,.page{position:relative;max-width:760px;margin:0 auto}.post-head{margin-bottom:64px}.post-head .row{align-items:center}.post-head .post-head__box{margin-left:32px}.post-head .no-image.row{display:block}.post-head .no-image .post-head__box{position:relative;max-width:760px;margin:0 auto}@media only screen and (max-width: 992px){.post-head .post-head__box{margin-left:16px}}@media only screen and (max-width: 768px){.post-head{margin-bottom:40px}.post-head .post-head__box{margin-left:0}.post-head .row{flex-direction:column}}.post-image{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:16px;object-fit:cover}.image-box{position:relative;padding-top:90%;min-height:280px;border-radius:16px;overflow:hidden;box-shadow:0 5px 10px 0px rgba(0,0,0,0.15);background-color:#09080f}@media only screen and (max-width: 768px){.image-box{padding-top:65%;margin-bottom:40px}}.post__meta{line-height:13px}.post__meta .post__date,.post__meta .post__minutes{line-height:1;font-weight:500}.post__title{margin:20px 0 20px;font-size:56px;line-height:1}@media only screen and (max-width: 1200px){.post__title{font-size:40px}}@media only screen and (max-width: 576px){.post__title{font-size:32px}}.post__bottom{display:flex;font-size:14px;line-height:40px;font-weight:500;color:#fff}.post-tags .post__tag{padding:6px 9px;margin:2px 0;font-size:14px;line-height:14px;font-weight:500;border:2px solid #eee;border-radius:24px;color:#eee;word-break:keep-all}.post-tags .post__tag:hover{color:#fff;border-color:#ff7b7b}.post__author{float:left;flex-shrink:0}.post__author-image{position:relative;display:inline-block;width:36px;height:36px;padding:3px;margin-right:8px;border:2px solid #ff7b7b;border-radius:50%;overflow:hidden}.post__author-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.post__author-link{font-size:14px;color:#fff}.post__author-link:hover{color:#fff}.post__author span{color:rgba(255,255,255,0.8)}.post__content,.page__content{color:#eee;word-wrap:break-word;margin-bottom:80px}.post__content a,.page__content a{border-bottom:1px solid rgba(238,238,238,0.3);color:#fff}.post__content a:hover,.page__content a:hover{color:#ff7b7b;border-color:#ff7b7b;text-decoration:none}.post__content p code,.post__content p kbd,.post__content p samp,.post__content li code,.post__content li kbd,.post__content li samp,.page__content p code,.page__content p kbd,.page__content p samp,.page__content li code,.page__content li kbd,.page__content li samp{font-size:14px;font-family:Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace}.post__content table td code,.post__content table td kbd,.post__content table td samp,.page__content table td code,.page__content table td kbd,.page__content table td samp{font-size:12px}.post__content pre,.page__content pre{background-color:#17151E}.post__content h1 code,.post__content h2 code,.post__content h3 code,.post__content h4 code,.post__content h5 code,.post__content h6 code,.page__content h1 code,.page__content h2 code,.page__content h3 code,.page__content h4 code,.page__content h5 code,.page__content h6 code{font-size:85%}.post__content img,.page__content img{background-color:#fff;margin:0 auto;display:block}.post__content>ul,.page__content>ul{margin-left:40px}.post__content div.mermaid,.page__content div.mermaid{text-align:center;border-radius:16px;background-color:#17151E;padding:16px}.post__share{display:flex;justify-content:center;margin:64px 0}.post__share .share__list{display:inline-flex;justify-content:center;align-items:center;border-radius:16px;background:#17151E}.post__share .share__list .share__link{position:relative;display:flex;justify-content:center;align-items:center;padding:28px 24px;font-size:20px;color:#eee;transition:all .2s}.post__share .share__list .share__link:first-child{padding-left:48px}.post__share .share__list .share__link:first-child::after{content:none}.post__share .share__list .share__link:last-child{padding-right:48px}.post__share .share__list .share__link::after{content:"";position:absolute;left:0;display:block;width:1px;height:12px;background:rgba(238,238,238,0.08)}.post__share .share__list .share__link:hover{color:#ff7b7b}@media only screen and (max-width: 576px){.post__share{margin:48px 0}.post__share .share__list .share__link{padding:24px 20px}.post__share .share__list .share__link:first-child{padding-left:40px}.post__share .share__list .share__link:last-child{padding-right:40px}}.post__navigation{display:flex;justify-content:space-between;margin-bottom:64px;box-shadow:0 5px 10px 0 rgba(0,0,0,0.5);border-radius:16px}.post__navigation .prev,.post__navigation .prev img{border-radius:16px 0 0 16px}.post__navigation .next,.post__navigation .next img{border-radius:0 16px 16px 0}.post__navigation .prev,.post__navigation .next{position:relative;display:flex;align-items:flex-end;width:100%;min-height:240px;padding:0 32px 32px;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat;user-select:none}.post__navigation .prev::after,.post__navigation .next::after{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(0deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.02) 100%, rgba(255,255,255,0.725928) 100%);pointer-events:none;transition:.25s}.post__navigation .prev .post__nav,.post__navigation .next .post__nav{display:inline-block;margin-bottom:8px;font-size:12px;font-weight:500;text-transform:uppercase;color:#eee}.post__navigation .prev .post__nav-image,.post__navigation .next .post__nav-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}.post__navigation .prev .post__nav-box,.post__navigation .next .post__nav-box{position:relative;z-index:1;width:100%}.post__navigation .prev .post__nav__prev i,.post__navigation .next .post__nav__prev i{margin-right:4px}.post__navigation .prev .post__nav__next i,.post__navigation .next .post__nav__next i{margin-left:4px}.post__navigation .prev .post__nav__title,.post__navigation .next .post__nav__title{margin-bottom:0;font-size:24px;line-height:1}.post__navigation .prev .post__nav__title a,.post__navigation .next .post__nav__title a{color:#eee}.post__navigation .next{text-align:right;margin-left:auto}@media only screen and (max-width: 768px){.post__navigation{flex-wrap:wrap;box-shadow:none}.post__navigation .prev,.post__navigation .next{width:100%;border-radius:16px;box-shadow:0 5px 10px 0 rgba(0,0,0,0.5)}.post__navigation .prev img,.post__navigation .next img{border-radius:16px}.post__navigation .prev{margin-bottom:20px}}@media only screen and (max-width: 576px){.post__navigation{margin-bottom:48px}}.related-posts{display:none}.related-posts.is-related{display:block}.related-posts .related-title{position:relative;padding-left:8px;margin-bottom:36px;font-size:24px;line-height:1;color:#fff}.related-posts .related-title::after{content:"";position:absolute;left:0;top:50%;z-index:-1;transform:translateY(-50%);display:block;width:106px;height:38px;border-radius:4px 0px 0px 4px;background:linear-gradient(90deg, #ff7b7b -5.19%, rgba(15,14,21,0) 100%)}@media only screen and (max-width: 992px){.related-posts .related-title{font-size:24px}}.disqus-inner{border-radius:16px;background:#17151E}.post-comments{max-width:824px;padding:64px 32px;margin:0 auto}@media only screen and (max-width: 576px){.post-comments{padding:48px 32px}}.archive-box{position:relative;margin:50px 0 80px;text-align:center}@media only screen and (max-width: 576px){.archive-box{margin:20px 0 50px}}.archive-meta{font-size:16px;color:rgba(238,238,238,0.6)}.archive-title{position:relative;margin:0;font-size:47px;line-height:57px;text-transform:lowercase}@media only screen and (max-width: 576px){.archive-title{font-size:40px;line-height:52px}}.archive-description{max-width:600px;margin:10px auto 0;font-size:16px;line-height:32px}@media only screen and (max-width: 576px){.archive-description{margin:5px auto 0;line-height:28px}}.contact-form .form__group{margin-bottom:20px}.contact-form .form__input{width:100%;padding:20px;font-family:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",sans-serif;font-size:16px;font-weight:700;border:2px solid transparent;border-radius:8px;color:#eee;background:#17151E;transition:border-color .2s ease-in-out}.contact-form .form__input::placeholder{color:#fff}.contact-form .form__input:focus{border-color:#ff7b7b}.contact-form textarea{resize:vertical}.contact-form button[type="submit"]{border-radius:10px;will-change:transform;transition:all .1s ease;cursor:pointer;color:#fff;outline:none;text-align:center}.contact-form button.submitting[type="submit"]{cursor:wait;font-size:0;padding:0;width:50px;height:50px;border-radius:25px;background:transparent;border:2px solid #ff7b7b;border-right:2px solid #fff;animation:loader .4s linear infinite}@keyframes loader{0%{transform:rotateZ(0)}100%{transform:rotateZ(360deg)}}.contact-form .message-sent{text-align:center;display:none}.cv .timeline{position:relative;margin:3em 0}.cv .timeline:before{content:'';position:absolute;top:8px;left:50%;margin-left:2px;width:2px;height:100%;background:#aaa;z-index:1;left:8px;width:2px}.cv .timeline:after{content:'';border-bottom:2px solid #aaa;width:22px;display:block;top:9px;position:relative}.cv .timeline-block{display:block;margin-bottom:2.5em;padding-left:2.5em}.cv .marker{width:25px;height:25px;border-radius:100%;border:2px solid #ff7b7b;background:#ff7b7b;z-index:99;display:block;position:absolute;left:-1px;margin-top:6px}.cv .timeline-content h3{margin-bottom:0px;font-size:1.4em;font-weight:500}.cv .timeline-content span{font-size:1em;display:block}.cv .timeline-content span.contractor{display:inline;color:#fff;font-size:10px;margin-left:.3em;position:relative;top:-4px}.cv .timeline-content span.contractor:before{content:'contract';border:1px solid #fff;background-color:#09080f;border-radius:1em;padding:2px 7px;vertical-align:middle;letter-spacing:0.5px;text-transform:uppercase}.cv .timeline-content p{margin-bottom:0px}.cv .timeline-content p.company-summary{margin-top:1em}.cv .timeline-content p.company-name,.cv .timeline-content p.date{color:#fff}.cv .timeline-content ul{padding:1em 0 0 1em}.cv .timeline-content ul li{margin-bottom:.4em}@media only screen and (max-width: 800px){.cv .marker{width:17px;height:17px;left:3px}.cv .timeline-block{padding-left:2em}.cv .timeline-content h3{font-size:1.3em}}@media only screen and (max-width: 600px){.cv .timeline-content h3{font-size:1.25em}}.page__content .about__author{text-align:center}.page__content .about__author-image{position:relative;display:inline-block;width:200px;height:200px;padding:3px;margin-bottom:30px;border:2px solid #ff7b7b;border-radius:50%;overflow:hidden;background-color:transparent}
+
+  </style>
+</head>
+
+<body>
+
+  
+
+<!-- begin header -->
+<header class="header ">
+  <div class="container">
+    <div class="row">
+      <div class="header__inner col col-12">
+
+      <div class="logo">
+        <a class="logo__link" href="/">
+        
+          cassiomolin
+        
+        </a>
+      </div>
+        
+      <div class="menu-overlay">
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <i class="lni lni-close"></i>
+            </div>
+            <div class="nav-grid">
+              <div class="nav-grid__item">
+                <h2 class="nav-grid__title">Menu</h2>
+                <div class="mobile-nav">
+                  <ul class="nav__list list-reset">
+  <li class="nav__item">
+    <a href="/" class="nav__link">Home</a>
+  </li>
+  
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/about/" class="nav__link">About</a>
+      </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/contact/" class="nav__link">Contact Me</a>
+      </li>
+      
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/cv/" class="nav__link">CV</a>
+      </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="navigation">
+        <div class="top-nav">
+          <ul class="nav__list list-reset">
+  <li class="nav__item">
+    <a href="/" class="nav__link">Home</a>
+  </li>
+  
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/about/" class="nav__link">About</a>
+      </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/contact/" class="nav__link">Contact Me</a>
+      </li>
+      
+    
+  
+    
+      
+      <li class="nav__item">
+        <a href="/cv/" class="nav__link">CV</a>
+      </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+</ul>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <div class="search-button">
+          <i class="nav__icon nav__icon-search lni lni-search-alt"></i>
+          <span>Search</span>
+        </div>
+        <i class="nav__icon nav__icon-menu lni lni-menu"></i>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->
+
+<!-- begin search -->
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="lni lni-close"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row search-results-list" id="js-results-container"></div>
+  </div>
+
+</div>
+<!-- end search -->
+
+  <!-- begin content -->
+  <main class="content" aria-label="Content">
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col col-6 col-t-12">
+        <div class="image-box">
+          <img class="post-image lazy" data-src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/cover.jpg" alt="Log aggregation with Spring Boot, Elastic Stack and Docker">
+        </div>
+      </div>
+      
+  
+      <div class="col col-6 col-t-12">
+        <div class="post-head__box">
+        
+          <div class="post__meta">
+            <span class="post__minutes">
+              
+              
+                22 min read •
+              
+              <time class="post__date"
+                datetime="2019-06-30T00:53:00+00:00">30 Jun 2019</time>
+            </span>
+          </div>
+        
+          <h2 class="post__title">Log aggregation with Spring Boot, Elastic Stack and Docker</h2>
+        
+          <div class="post__bottom">
+        
+            <div class="post__author">
+              <a href="/about/" aria-label="cassiomolin"><img class="post__author-image"
+                  src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+            </div>
+        
+            <div class="post__bottom-meta">
+              <a href="/about/" class="post__author-link">cassiomolin</a>
+              
+              <span>in</span>
+              <span class="post-tags">
+                
+                <a href="/tag/java" class="post__tag">java</a>
+                
+                <a href="/tag/log" class="post__tag">log</a>
+                
+                <a href="/tag/spring-boot" class="post__tag">spring-boot</a>
+                
+                <a href="/tag/docker" class="post__tag">docker</a>
+                
+                <a href="/tag/elasticsearch" class="post__tag">elasticsearch</a>
+                
+                <a href="/tag/beats" class="post__tag">beats</a>
+                
+                <a href="/tag/logstash" class="post__tag">logstash</a>
+                
+                <a href="/tag/kibana" class="post__tag">kibana</a>
+                
+                <a href="/tag/json" class="post__tag">json</a>
+                
+                <a href="/tag/slf4j" class="post__tag">slf4j</a>
+                
+                <a href="/tag/logback" class="post__tag">logback</a>
+                
+                <a href="/tag/elastic-stack" class="post__tag">elastic-stack</a>
+                
+              </span>
+              
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- begin post -->
+<div class="container">
+  <article class="post animate">
+
+    <div class="post__content">
+      <p>In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls, which can be pretty challenging to debug. Things, however, can be easier when the logs of all microservices are centralized and each log event contains details that allow us to trace the interactions between the applications.</p>
+
+<p>This post demonstrates how to use Elastic Stack along with Docker to collect, process, store, index and visualize logs of Spring Boot microservices.</p>
+
+<p>An example of the approach described in this post is available on <a href="https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack">GitHub</a>.</p>
+
+<!--more-->
+
+<h5 class="no_toc" id="table-of-contents">Table of contents</h5>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-elastic-stack" id="markdown-toc-what-is-elastic-stack">What is Elastic Stack?</a>    <ul>
+      <li><a href="#elasticsearch" id="markdown-toc-elasticsearch">Elasticsearch</a></li>
+      <li><a href="#kibana" id="markdown-toc-kibana">Kibana</a></li>
+      <li><a href="#beats" id="markdown-toc-beats">Beats</a></li>
+      <li><a href="#logstash" id="markdown-toc-logstash">Logstash</a></li>
+      <li><a href="#putting-the-pieces-together" id="markdown-toc-putting-the-pieces-together">Putting the pieces together</a></li>
+    </ul>
+  </li>
+  <li><a href="#logs-as-streams-of-events" id="markdown-toc-logs-as-streams-of-events">Logs as streams of events</a></li>
+  <li><a href="#logging-with-logback-and-slf4j" id="markdown-toc-logging-with-logback-and-slf4j">Logging with Logback and SLF4J</a>    <ul>
+      <li><a href="#enhancing-log-events-with-tracing-details" id="markdown-toc-enhancing-log-events-with-tracing-details">Enhancing log events with tracing details</a></li>
+      <li><a href="#logging-in-json-format" id="markdown-toc-logging-in-json-format">Logging in JSON format</a></li>
+    </ul>
+  </li>
+  <li><a href="#running-on-docker" id="markdown-toc-running-on-docker">Running on Docker</a></li>
+  <li><a href="#example" id="markdown-toc-example">Example</a>    <ul>
+      <li><a href="#building-the-applications-and-creating-docker-images" id="markdown-toc-building-the-applications-and-creating-docker-images">Building the applications and creating Docker images</a></li>
+      <li><a href="#spinning-up-the-containers" id="markdown-toc-spinning-up-the-containers">Spinning up the containers</a></li>
+      <li><a href="#visualizing-logs-in-kibana" id="markdown-toc-visualizing-logs-in-kibana">Visualizing logs in Kibana</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="what-is-elastic-stack">What is Elastic Stack?</h2>
+
+<p>Elastic Stack is a group of open source applications from Elastic designed to take data from any source and in any format and then search, analyze, and visualize that data in real time. It was formerly known as <a href="https://www.elastic.co/elk-stack"><em>ELK Stack</em></a>, in which the letters in the name stood for the applications in the group: <a href="https://www.elastic.co/products/elasticsearch"><em>Elasticsearch</em></a>, <a href="https://www.elastic.co/products/logstash"><em>Logstash</em></a> and <a href="https://www.elastic.co/products/kibana"><em>Kibana</em></a>. A fourth application, <a href="https://www.elastic.co/products/beats"><em>Beats</em></a>, was subsequently added to the stack, rendering the potential acronym to be unpronounceable. So ELK Stack became Elastic Stack.</p>
+
+<p>Let’s have a quick look at each component of Elastic Stack.</p>
+
+<h3 id="elasticsearch">Elasticsearch</h3>
+
+<p><a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> is a real-time, distributed storage, JSON-based search, and analytics engine designed for horizontal scalability, maximum reliability, and easy management. It can be used for many purposes, but one context where it excels is indexing streams of semi-structured data, such as logs or decoded network packets.</p>
+
+<h3 id="kibana">Kibana</h3>
+
+<p><a href="https://www.elastic.co/products/kibana">Kibana</a> is an open source analytics and visualization platform designed to work with Elasticsearch. Kibana can be used to search, view, and interact with data stored in Elasticsearch indices, allowing advanced data analysis and visualizing data in a variety of charts, tables, and maps.</p>
+
+<h3 id="beats">Beats</h3>
+
+<p><a href="https://www.elastic.co/products/beats">Beats</a> are open source data shippers that can be installed as agents on servers to send operational data directly to Elasticsearch or via Logstash, where it can be further processed and enhanced. There’s a number of Beats for different purposes:</p>
+
+<ul>
+  <li><a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a>: Log files</li>
+  <li><a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a>: Metrics</li>
+  <li><a href="https://www.elastic.co/products/beats/packetbeat">Packetbeat</a>: Network data</li>
+  <li><a href="https://www.elastic.co/products/beats/heartbeat">Heartbeat</a>: Uptime monitoring</li>
+  <li>And <a href="https://www.elastic.co/products/beats">more</a>.</li>
+</ul>
+
+<p>As we intend to ship log files, <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a> will be our choice.</p>
+
+<h3 id="logstash">Logstash</h3>
+
+<p><a href="https://www.elastic.co/products/logstash">Logstash</a> is a powerful tool that integrates with a wide variety of deployments. It offers a large selection of plugins to help you parse, enrich, transform, and buffer data from a variety of sources. If the data requires additional processing that is not available in Beats, then Logstash can be added to the deployment.</p>
+
+<h3 id="putting-the-pieces-together">Putting the pieces together</h3>
+
+<p>The following illustration shows how the components of Elastic Stack interact with each other:</p>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-elastic-stack.png" alt="Elastic Stack" /></p>
+
+<p>In a few words:</p>
+
+<ul>
+  <li>Filebeat collects data from the log files and sends it to Logststash.</li>
+  <li>Logstash enhances the data and sends it to Elasticsearch.</li>
+  <li>Elasticsearch stores and indexes the data.</li>
+  <li>Kibana displays the data stored in Elasticsearch.</li>
+</ul>
+
+<h2 id="logs-as-streams-of-events">Logs as streams of events</h2>
+
+<p>The <a href="https://12factor.net">Twelve-Factor App methodology</a>, a set of best practices for building <em>software as a service</em> applications, define logs as <em>a stream of aggregated, time-ordered events collected from the output streams of all running processes and backing services</em> which <em>provide visibility into the behavior of a running app.</em> This set of best practices recommends that <a href="https://12factor.net/logs">logs should be treated as <em>event streams</em></a>:</p>
+
+<blockquote class="long">
+  <p>A twelve-factor app never concerns itself with routing or storage of its output stream. It should not attempt to write to or manage logfiles. Instead, each running process writes its event stream, unbuffered, to <code class="language-plaintext highlighter-rouge">stdout</code>. During local development, the developer will view this stream in the foreground of their terminal to observe the app’s behavior.</p>
+
+  <p>In staging or production deploys, each process’ stream will be captured by the execution environment, collated together with all other streams from the app, and routed to one or more final destinations for viewing and long-term archival. These archival destinations are not visible to or configurable by the app, and instead are completely managed by the execution environment.</p>
+</blockquote>
+
+<p>With that in mind, the log event stream for an application can be routed to a file, or watched via realtime <code class="language-plaintext highlighter-rouge">tail</code> in a terminal or, preferably, sent to a log indexing and analysis system such as Elastic Stack.</p>
+
+<h2 id="logging-with-logback-and-slf4j">Logging with Logback and SLF4J</h2>
+
+<p>When creating Spring Boot applications that depends on the <code class="language-plaintext highlighter-rouge">spring-boot-starter-web</code> artifact, <a href="https://logback.qos.ch/">Logback</a> will be pulled as a transitive dependency and will be used default logging system. Logback is a mature and flexible logging system and that can be used directly or, preferable, with <a href="https://www.slf4j.org/">SLF4J</a></p>
+
+<p>SLF4J a logging facade or abstraction for various logging frameworks. For logging with SLF4J, we first have to obtain a <a href="https://www.slf4j.org/api/org/slf4j/Logger.html"><code class="language-plaintext highlighter-rouge">Logger</code></a> instance using <a href="https://www.slf4j.org/api/org/slf4j/LoggerFactory.html"><code class="language-plaintext highlighter-rouge">LoggerFactory</code></a>, as shown below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">Example</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>To be less verbose and avoid repeating ourselves in all classes we want to perform logging, we can use <a href="https://projectlombok.org/">Lombok</a>. It provides the <a href="https://projectlombok.org/api/lombok/extern/slf4j/Slf4j.html"><code class="language-plaintext highlighter-rouge">@Slf4j</code></a> annotation for generating the logger field for us. The class shown above is is equivalent to the class shown below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Once we get the logger instance, we can perform logging:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">log</span><span class="o">.</span><span class="na">trace</span><span class="o">(</span><span class="s">"Logging at TRACE level"</span><span class="o">);</span>
+<span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"Logging at DEBUG level"</span><span class="o">);</span>
+<span class="n">log</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Logging at INFO level"</span><span class="o">);</span>
+<span class="n">log</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">"Logging at WARN level"</span><span class="o">);</span>
+<span class="n">log</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Logging at ERROR level"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Parametrized messages with the <code class="language-plaintext highlighter-rouge">{}</code> syntax can also be used. This approach is preferable over string concatenation, as it doesn’t incur the cost of the parameter construction in case the log level is disabled:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"Found {} results"</span><span class="o">,</span> <span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>In Spring Boot applications, Logback can be <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-logback-for-logging">configured</a> in the <code class="language-plaintext highlighter-rouge">logback-spring.xml</code> file, located under the <code class="language-plaintext highlighter-rouge">resources</code> folder. In this configuration file, we can take advantage of Spring profiles and the templating features provided by Spring Boot.</p>
+
+<h3 id="enhancing-log-events-with-tracing-details">Enhancing log events with tracing details</h3>
+
+<p>In a microservices architecture, a single business operation might trigger a chain of downstream microservice calls and such interactions between the services can be challenging to debug. To make things easier, we can use <a href="https://spring.io/projects/spring-cloud-sleuth">Spring Cloud Sleuth</a> to enhance the application logs with tracing details.</p>
+
+<p>Spring Cloud Sleuth is a distributed tracing solution for Spring Cloud and it adds a <em>trace id</em> and a <em>span id</em> to the logs:</p>
+
+<ul>
+  <li>The <em>span</em> represents a basic unit of work, for example sending an HTTP request.</li>
+  <li>The <em>trace</em> contains a set of spans, forming a tree-like structure. The trace id will remain the same as one microservice calls the next.</li>
+</ul>
+
+<p>With this information, when visualizing the logs, we’ll be able to get all events for a given trace or span id, providing visibility into the behavior of the chain of interactions between the services.</p>
+
+<p>Once the Spring Cloud Sleuth dependency is added to the classpath, all interactions with the downstream services will be instrumented automatically and the trace and span ids will be added to the SLF4J’s <a href="https://www.slf4j.org/manual.html#mdc">Mapped Diagnostic Context</a> (MDC), which will be included in the logs.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencyManagement&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-cloud-sleuth<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>${spring-cloud-sleuth.version}<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>import<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/dependencyManagement&gt;</span>
+
+<span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-sleuth<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div>
+
+<h3 id="logging-in-json-format">Logging in JSON format</h3>
+
+<p>Logback, by default, will produce logs in plain text. But as we intend our log events to be indexed in Elasticsearch, which stores JSON documents, it would be a good idea to produce log events in JSON format instead of having to parse plain text log events in Logstash.</p>
+
+<p>To accomplish it, we can use the <a href="https://github.com/logstash/logstash-logback-encoder">Logstash Logback Encoder</a>, which provides Logback encoders, layouts, and appenders to log in JSON. The Logstash Logback Encoder was originally written to support output in Logstash’s JSON format, but has evolved into a general-purpose, highly-configurable, structured logging mechanism for JSON and other dataformats.</p>
+
+<p>And, instead of managing log files directly, our microservices could log to the standard output using the <code class="language-plaintext highlighter-rouge">ConsoleAppender</code>. As the microservices will run in Docker containers, we can leave the responsibility of writing the log files to Docker. We will see more details about the Docker in the next section.</p>
+
+<p>For a simple and quick configuration, we could use <code class="language-plaintext highlighter-rouge">LogstashEncoder</code>, which comes with a <a href="https://github.com/logstash/logstash-logback-encoder#standard-fields">pre-defined set of providers</a>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+
+    <span class="nt">&lt;springProperty</span> <span class="na">scope=</span><span class="s">"context"</span> <span class="na">name=</span><span class="s">"application_name"</span> <span class="na">source=</span><span class="s">"spring.application.name"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"jsonConsoleAppender"</span> <span class="na">class=</span><span class="s">"ch.qos.logback.core.ConsoleAppender"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;encoder</span> <span class="na">class=</span><span class="s">"net.logstash.logback.encoder.LogstashEncoder"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+
+    <span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"INFO"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"jsonConsoleAppender"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/root&gt;</span>
+    
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<p>The above configuration will produce the following log output (just bear in mind that the actual output is a single line, but it’s been formatted below for better visualization):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"@timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-29T23:01:38.967+01:00"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"@version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding details of post with id 1"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"logger_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.cassiomolin.logaggregation.post.service.PostService"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"thread_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http-nio-8001-exec-3"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"level_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"application_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post-service"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"traceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"spanId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"spanExportable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"X-Span-Export"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"X-B3-SpanId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"X-B3-TraceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This encoder includes the values stored in MDC by default. When Spring Cloud Sleuth is in the classpath, the following properties will added to MDC and will be logged: <code class="language-plaintext highlighter-rouge">traceId</code>, <code class="language-plaintext highlighter-rouge">spanId</code>, <code class="language-plaintext highlighter-rouge">spanExportable</code>, <code class="language-plaintext highlighter-rouge">X-Span-Export</code>, <code class="language-plaintext highlighter-rouge">X-B3-SpanId</code> and <code class="language-plaintext highlighter-rouge">X-B3-TraceId</code>.</p>
+
+<p>If we need more flexibility in the JSON format and in data included in log, we can use <code class="language-plaintext highlighter-rouge">LoggingEventCompositeJsonEncoder</code>. The composite encoder has no providers configured by default, so we must add the <a href="https://github.com/logstash/logstash-logback-encoder#providers-for-loggingevents">providers</a> we want to customize the output:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+
+    <span class="nt">&lt;springProperty</span> <span class="na">scope=</span><span class="s">"context"</span> <span class="na">name=</span><span class="s">"application_name"</span> <span class="na">source=</span><span class="s">"spring.application.name"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"jsonConsoleAppender"</span> <span class="na">class=</span><span class="s">"ch.qos.logback.core.ConsoleAppender"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;encoder</span> <span class="na">class=</span><span class="s">"net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;providers&gt;</span>
+                <span class="nt">&lt;timestamp&gt;</span>
+                    <span class="nt">&lt;timeZone&gt;</span>UTC<span class="nt">&lt;/timeZone&gt;</span>
+                <span class="nt">&lt;/timestamp&gt;</span>
+                <span class="nt">&lt;version/&gt;</span>
+                <span class="nt">&lt;logLevel/&gt;</span>
+                <span class="nt">&lt;message/&gt;</span>
+                <span class="nt">&lt;loggerName/&gt;</span>
+                <span class="nt">&lt;threadName/&gt;</span>
+                <span class="nt">&lt;context/&gt;</span>
+                <span class="nt">&lt;pattern&gt;</span>
+                    <span class="nt">&lt;omitEmptyFields&gt;</span>true<span class="nt">&lt;/omitEmptyFields&gt;</span>
+                    <span class="nt">&lt;pattern&gt;</span>
+                        {
+                            "trace": {
+                                "trace_id": "%mdc{X-B3-TraceId}",
+                                "span_id": "%mdc{X-B3-SpanId}",
+                                "parent_span_id": "%mdc{X-B3-ParentSpanId}",
+                                "exportable": "%mdc{X-Span-Export}"
+                            }
+                        }
+                    <span class="nt">&lt;/pattern&gt;</span>
+                <span class="nt">&lt;/pattern&gt;</span>
+                <span class="nt">&lt;mdc&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>traceId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>spanId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>parentId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>spanExportable<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>X-B3-TraceId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>X-B3-SpanId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>X-B3-ParentSpanId<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                    <span class="nt">&lt;excludeMdcKeyName&gt;</span>X-Span-Export<span class="nt">&lt;/excludeMdcKeyName&gt;</span>
+                <span class="nt">&lt;/mdc&gt;</span>
+                <span class="nt">&lt;stackTrace/&gt;</span>
+            <span class="nt">&lt;/providers&gt;</span>
+        <span class="nt">&lt;/encoder&gt;</span>
+    <span class="nt">&lt;/appender&gt;</span>
+
+    <span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"INFO"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"jsonConsoleAppender"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/root&gt;</span>
+    
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<p>Find below a sample of the log output for the above configuration. Again, the actual output is a single line, but it’s been formatted for better visualization:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">  
+   </span><span class="nl">"@timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-29T22:01:38.967Z"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"@version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding details of post with id 1"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"logger_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.cassiomolin.logaggregation.post.service.PostService"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"thread_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http-nio-8001-exec-3"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"application_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post-service"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"trace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+      </span><span class="nl">"trace_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"span_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c52d9ff782fa8f6e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exportable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="running-on-docker">Running on Docker</h2>
+
+<p>We’ll run Elastic Stack applications along with our Spring Boot microservices in <a href="https://docs.docker.com/">Docker</a> containers:</p>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services-and-elastic-stack.png" alt="Docker containers" /></p>
+
+<p>As we will have multiple containers, we will use <a href="https://docs.docker.com/compose/">Docker Compose</a> to manage them. With Compose, application’s services are configured in a YAML file. Then, with a single command, we create and start all the services from our configuration. Pretty cool stuff!</p>
+
+<p>Have a look at how the services are defined and configured in the <a href="https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack/blob/master/docker-compose.yml"><code class="language-plaintext highlighter-rouge">docker-compose.yml</code></a>. What’s important to highlight is the fact that <em>labels</em> have been added to some services. Labels are simply metadata that only have meaning for who’s using them. Let’s have a quick looks at the labels that have been defined for the services:</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">collect_logs_with_filebeat</code>: When set to <code class="language-plaintext highlighter-rouge">true</code>, indicates that Filebeat should collect the logs produced by the Docker container.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">decode_log_event_to_json_object</code>: Filebeat collects and stores the log event as a string in the <code class="language-plaintext highlighter-rouge">message</code> property of a JSON document. If the events are logged as JSON (which is the case when using the appenders defined above), the value of this label can be set to <code class="language-plaintext highlighter-rouge">true</code> to indicate that Filebeat should decode the JSON string stored in the <code class="language-plaintext highlighter-rouge">message</code> property to an actual JSON object.</p>
+  </li>
+</ul>
+
+<p>Both post and comment services will produce logs to the standard output (<code class="language-plaintext highlighter-rouge">stdout</code>). By default, Docker captures the standard output (and standard error) of all your containers, and writes them to files in JSON format, using the <code class="language-plaintext highlighter-rouge">json-file</code> driver. The logs files are stored in the <code class="language-plaintext highlighter-rouge">/var/lib/docker/containers</code> directory and each log file contains information about only one container.</p>
+
+<p>When applications run on containers, they become moving targets to the monitoring system. So we’ll use the <a href="https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover.html">autodiscover</a> feature from Filebeat, which allows it to track the containers and adapt settings as changes happen. By defining configuration templates, the autodiscover subsystem can monitor services as they start running. So, in the <a href="https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack/blob/master/filebeat/filebeat.docker.yml"><code class="language-plaintext highlighter-rouge">filebeat.docker.yml</code></a> file, Filebeat is configured to:</p>
+
+<ul>
+  <li>Autodiscover the Docker containers that have the label <code class="language-plaintext highlighter-rouge">collect_logs_with_filebeat</code> set to <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li>Collect logs from the containers that have been discovered</li>
+  <li>Decode the <code class="language-plaintext highlighter-rouge">message</code> field to a JSON object when the log event was produced by a container that have the label <code class="language-plaintext highlighter-rouge">decode_log_event_to_json_object</code> set to <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li>Send the log events to Logstash which runs on the port <code class="language-plaintext highlighter-rouge">5044</code></li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">filebeat.autodiscover</span><span class="pi">:</span>
+  <span class="na">providers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">docker</span>
+      <span class="na">labels.dedot</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">templates</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">condition</span><span class="pi">:</span>
+            <span class="na">contains</span><span class="pi">:</span>
+              <span class="na">container.labels.collect_logs_with_filebeat</span><span class="pi">:</span> <span class="s2">"</span><span class="s">true"</span>
+          <span class="na">config</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">container</span>
+              <span class="na">format</span><span class="pi">:</span> <span class="s">docker</span>
+              <span class="na">paths</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="s2">"</span><span class="s">/var/lib/docker/containers/${data.docker.container.id}/*.log"</span>
+              <span class="na">processors</span><span class="pi">:</span>
+                <span class="pi">-</span> <span class="na">decode_json_fields</span><span class="pi">:</span>
+                    <span class="na">when.equals</span><span class="pi">:</span>
+                      <span class="na">docker.container.labels.decode_log_event_to_json_object</span><span class="pi">:</span> <span class="s2">"</span><span class="s">true"</span>
+                    <span class="na">fields</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">message"</span><span class="pi">]</span>
+                    <span class="na">target</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+                    <span class="na">overwrite_keys</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="na">output.logstash</span><span class="pi">:</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">logstash:5044"</span>
+</code></pre></div></div>
+
+<p>The above configuration uses a single processor. If we need, we could add more processors, which will be <em>chained</em> and executed in the order they are defined in the configuration file. Each processor receives an event, applies a defined action to the event, and the processed event is the input of the next processor until the end of the chain.</p>
+
+<p>Once the log event is collected and processed by Filebeat, it is sent to Logstash, which provides a rich set of plugins for further processing the events.</p>
+
+<p>The Logstash pipeline has two required elements, <code class="language-plaintext highlighter-rouge">input</code> and <code class="language-plaintext highlighter-rouge">output</code>, and one optional element, <code class="language-plaintext highlighter-rouge">filter</code>. The <a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html">input plugins</a> consume data from a source, the <a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html">filter plugins</a> modify the data as we specify, and the <a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html">output plugins</a> write the data to a destination.</p>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-logstash-pipeline.png" alt="Logstash pipeline" /></p>
+
+<p>In the <a href="https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack/blob/master/logstash/pipeline/logstash.conf"><code class="language-plaintext highlighter-rouge">logstash.conf</code></a> file, Logstash is configured to:</p>
+
+<ul>
+  <li>Receive events coming from Beats in the port <code class="language-plaintext highlighter-rouge">5044</code></li>
+  <li>Process the events by adding the tag <code class="language-plaintext highlighter-rouge">logstash_filter_applied</code></li>
+  <li>Send the processed events to Elasticsearch which runs on the port <code class="language-plaintext highlighter-rouge">9200</code></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">input</span> <span class="o">{</span>
+  <span class="n">beats</span> <span class="o">{</span>
+    <span class="n">port</span> <span class="o">=&gt;</span> <span class="mi">5044</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">filter</span> <span class="o">{</span>
+  <span class="n">mutate</span> <span class="o">{</span>
+    <span class="n">add_tag</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="s">"logstash_filter_applied"</span> <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">output</span> <span class="o">{</span>
+  <span class="n">elasticsearch</span> <span class="o">{</span>
+    <span class="n">hosts</span> <span class="o">=&gt;</span> <span class="s">"elasticsearch:9200"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Elasticsearch will store and index the log events and, finally, we will be able to visualize the logs in Kibana, which exposes a UI in the port <code class="language-plaintext highlighter-rouge">5601</code>.</p>
+
+<h2 id="example">Example</h2>
+
+<p>For this example, let’s consider we are creating a blog engine and we have the following microservices:</p>
+
+<ul>
+  <li><em>Post service</em>: Manages details related to posts.</li>
+  <li><em>Comment service</em>: Manages details related to the comments of each post.</li>
+</ul>
+
+<p>Each microservice is a Spring Boot application, exposing a HTTP API. As we intend to focus on <em>log aggregation</em>, let’s keep it simple when it comes to the services architecture: One service will simply invoke the other service directly.</p>
+
+<p>And, for demonstration purposes, all data handled by the services is stored in memory and only <code class="language-plaintext highlighter-rouge">GET</code> requests are supported. When a representation of post is requested, the post service will perform a <code class="language-plaintext highlighter-rouge">GET</code> request to the comment service to get a representation of the comments for that post. The post service will aggregate the results and return a representation of the post with comments to the client.</p>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/diagram-services.png" alt="Post and comment services" /></p>
+
+<p>Let’s see how to build the source code, spin up the Docker containers, produce some log data and then visualize the logs in Kibana.</p>
+
+<p>Before starting, ensure you at least Java 11, Maven 3.x and Docker set up. Then clone the <a href="https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack">repository</a> from GitHub:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/cassiomolin/log-aggregation-spring-boot-elastic-stack.git
+</code></pre></div></div>
+
+<h3 id="building-the-applications-and-creating-docker-images">Building the applications and creating Docker images</h3>
+
+<p>Both post and comment services use the <a href="https://github.com/spotify/dockerfile-maven"><code class="language-plaintext highlighter-rouge">dockerfile-maven</code></a> plugin from Spotify to make the Docker build process integrate with the Maven build process. So when we build a Spring Boot artifact, we’ll also build a Docker image for it. For more details, check the <code class="language-plaintext highlighter-rouge">Dockerfile</code> and the <code class="language-plaintext highlighter-rouge">pox.xml</code> of each service.</p>
+
+<p>To build the Spring Boot applications and their Docker images:</p>
+
+<ul>
+  <li>Change to the <code class="language-plaintext highlighter-rouge">comment-service</code> folder: <code class="language-plaintext highlighter-rouge">cd comment-service</code></li>
+  <li>Build the application and create a Docker image: <code class="language-plaintext highlighter-rouge">mvn clean install</code></li>
+  <li>
+    <p>Change back to the parent folder: <code class="language-plaintext highlighter-rouge">cd ..</code></p>
+  </li>
+  <li>Change to the <code class="language-plaintext highlighter-rouge">post-service</code> folder: <code class="language-plaintext highlighter-rouge">cd post-service</code></li>
+  <li>Build the application and create a Docker image: <code class="language-plaintext highlighter-rouge">mvn clean install</code></li>
+  <li>Change back to the parent folder: <code class="language-plaintext highlighter-rouge">cd ..</code></li>
+</ul>
+
+<h3 id="spinning-up-the-containers">Spinning up the containers</h3>
+
+<p>In the root folder of our project, where the <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> resides, spin up the Docker containers running <code class="language-plaintext highlighter-rouge">docker-compose up</code>.</p>
+
+<h3 id="visualizing-logs-in-kibana">Visualizing logs in Kibana</h3>
+
+<ul>
+  <li>
+    <p>Open Kibana in your favourite browser: <code class="language-plaintext highlighter-rouge">http://localhost:5601</code>. When attempting to to access Kibana while it’s starting, a message saying that Kibana is not ready yet will be displayed in the browser. Enhance your calm, give it a minute or two and then you are good to go.</p>
+  </li>
+  <li>
+    <p>In the first time you access Kibana, a welcome page will be displayed. Kibana comes with sample data in case we want to play with it. To explore the data generate by our applications, click the <em>Explore on my own</em> link.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-01.png" alt="Welcome page" /></p>
+
+<ul>
+  <li>On the left hand side, click the <em>Discover</em> icon.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-02.png" alt="Home" /></p>
+
+<ul>
+  <li>
+    <p>Kibana uses index patterns for retrieving data from Elasticsearch. As it’s the first time we are using Kibana, we must create an index pattern to explore our data. We should see an index that has been created by Logstash. So create a pattern for matching the Logstash indexes using <code class="language-plaintext highlighter-rouge">logstash-*</code> and then click the <em>Next step</em> button.</p>
+  </li>
+  <li>
+    <p>Kibana uses <em>index patterns</em> for retrieving data from Elasticsearch. So, to get started, you must create an index pattern. In this page, you should see an index that has been created by Logstash. To create a pattern for matching this index, enter <code class="language-plaintext highlighter-rouge">logstash-*</code> and then click the <em>Next step</em> button.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-03.png" alt="Creating index pattern" /></p>
+
+<ul>
+  <li>Then pick a field for filtering the data by time. Choose <code class="language-plaintext highlighter-rouge">@timestamp</code> and click the <em>Create index pattern</em> button.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-04.png" alt="Picking a field for filtering data by time" /></p>
+
+<ul>
+  <li>The index pattern will be created. Click again in the <em>Discover</em> icon and the log events of both post and comment services start up will be shown:</li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-05.png" alt="Viewing the log events" /></p>
+
+<ul>
+  <li>To filter log events from the post service, for example, enter <code class="language-plaintext highlighter-rouge">application_name : "post-service"</code> in the search box. Click the <em>Update</em> button and now you’ll see log events from the post service only.</li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-06.png" alt="Filtering logs by application name" /></p>
+
+<ul>
+  <li>
+    <p>Clean the filter input and click the <em>Update</em> button to view all logs.</p>
+  </li>
+  <li>
+    <p>Perform a <code class="language-plaintext highlighter-rouge">GET</code> request to <code class="language-plaintext highlighter-rouge">http://localhost:8001/posts/1</code> to generate some log data. Wait a few seconds and then click the <em>Refresh</em> button. You will be able to see logs from the requests. The logs will contain tracing details, such as <em>trace.trace_id</em> and <em>trace.span id</em>.</p>
+  </li>
+  <li>
+    <p>In the left-hand side, there’s a list of fields available. Hover over the list of fields and an <em>Add</em> button will be shown for each field. Add a few fields such as <code class="language-plaintext highlighter-rouge">application_name</code>, <code class="language-plaintext highlighter-rouge">trace.trace_id</code>, <code class="language-plaintext highlighter-rouge">trace.span_id</code> and <code class="language-plaintext highlighter-rouge">message</code>.</p>
+  </li>
+  <li>
+    <p>Now let’s see how to trace a request. Pick a trace id from the logs and, in the filter box, input <code class="language-plaintext highlighter-rouge">trace.trace_id: "&lt;value&gt;"</code> where <code class="language-plaintext highlighter-rouge">&lt;value&gt;</code> is the trace id you want to use as filter criteria. Then click the <em>Update</em> button and you will able to see logs that match that trace id.</p>
+  </li>
+  <li>
+    <p>As can be seen in the image below, the trace id is the same for the entire operation, which started in the post service. And the log events resulted from a call to the comment service haven been assigned a different span id.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/2019-06-30-log-aggregation-with-spring-boot-elastic-stack-and-docker/screenshot-07.png" alt="Filtering logs by trace id" /></p>
+
+<p>To stop the containers, use <code class="language-plaintext highlighter-rouge">docker-compose down</code>. It’s important to highlight that both Elasticsearch indices and the Filebeat tracking data are stored in the host, under the <code class="language-plaintext highlighter-rouge">./elasticseach/data</code> and <code class="language-plaintext highlighter-rouge">./filebeat/data</code> folders. It means that, if you destroy the containers, the data will be lost.</p>
+
+
+    </div>
+
+    <div class="post__navigation">
+      
+      <a class="prev" href="/2019/06/23/asserting-exceptions-in-junit/">
+        <img class="post__nav-image lazy" data-src="/assets/images/posts/2019-06-23-asserting-exceptions-in-junit/cover.jpg" alt="Asserting exceptions in JUnit">
+        <div class="post__nav-box">
+          <div class="post__nav post__nav__prev"><i class="lni lni-chevron-left"></i> Previous Post</div>
+          <h4 class="post__nav__title">Asserting exceptions in JUnit</h4>
+        </div>
+      </a>
+      
+      
+      <a class="next" href="/2019/08/08/comparing-json-documents-in-java-with-jsonp/">
+        <img class="post__nav-image lazy" data-src="/assets/images/posts/2019-08-08-comparing-json-documents-in-java-with-jsonp/cover.jpg" alt="Comparing JSON documents in Java with JSON-P">
+        <div class="post__nav-box">
+          <div class="post__nav post__nav__next">Next Post <i class="lni lni-chevron-right"></i></div>
+          <h4 class="post__nav__title">Comparing JSON documents in Java with JSON-P</h4>
+        </div>
+      </a>
+      
+    </div>
+
+  </article>
+</div>
+<!-- end post -->
+
+
+
+
+
+
+
+<div class="container">
+  <div class="related-posts is-related">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h3 class="related-title">You may also like</h3>
+          <div class="row grid">
+
+          
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/2022/07/15/java-functional-interfaces-reference/">
+                  <img class="lazy" data-src="/assets/images/posts/2022-07-15-java-functional-interfaces-reference/cover.jpg" alt="Java functional interfaces reference">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        8 min read •
+                      
+                      <time class="article__date" datetime="2022-07-15T17:00:00+00:00">15 Jul 2022</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Java functional interfaces reference</h2>
+
+                  <p class="article__excerpt"></p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="cassiomolin"><img class="article__author-image lazy" data-src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">cassiomolin</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/java" class="article__tag">java</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+              
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/2019/08/19/combining-jackson-streaming-api-with-objectmapper-for-parsing-json/">
+                  <img class="lazy" data-src="/assets/images/posts/2019-08-19-combining-jackson-streaming-api-with-objectmapper-for-parsing-json/cover.jpg" alt="Combining the Jackson Streaming API with ObjectMapper for parsing JSON">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        7 min read •
+                      
+                      <time class="article__date" datetime="2019-08-19T17:00:00+00:00">19 Aug 2019</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Combining the Jackson Streaming API with ObjectMapper for parsing JSON</h2>
+
+                  <p class="article__excerpt"></p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="cassiomolin"><img class="article__author-image lazy" data-src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">cassiomolin</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/java" class="article__tag">java</a>
+                        
+                          <a href="/tag/jackson" class="article__tag">jackson</a>
+                        
+                          <a href="/tag/json" class="article__tag">json</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+              
+            
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/2019/08/08/comparing-json-documents-in-java-with-jsonp/">
+                  <img class="lazy" data-src="/assets/images/posts/2019-08-08-comparing-json-documents-in-java-with-jsonp/cover.jpg" alt="Comparing JSON documents in Java with JSON-P">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        9 min read •
+                      
+                      <time class="article__date" datetime="2019-08-08T23:00:00+00:00">08 Aug 2019</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Comparing JSON documents in Java with JSON-P</h2>
+
+                  <p class="article__excerpt"></p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="cassiomolin"><img class="article__author-image lazy" data-src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">cassiomolin</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/java" class="article__tag">java</a>
+                        
+                          <a href="/tag/json" class="article__tag">json</a>
+                        
+                          <a href="/tag/javax-json" class="article__tag">javax-json</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+                  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- begin comments -->
+<div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <div class="disqus-inner">
+        <div id="disqus_thread" class="post-comments">
+          <div id="disqus_empty"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function load_disqus() {
+    var disqus_shortname = 'cassiomolin',
+      is_disqus_empty = document.getElementById('disqus_empty'),
+      disqus_target = document.getElementById('disqus_thread'),
+      disqus_embed = document.createElement('script'),
+      disqus_hook = (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]);
+
+    if (disqus_target && is_disqus_empty) {
+      disqus_embed.type = 'text/javascript';
+      disqus_embed.async = true;
+      disqus_embed.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      disqus_hook.appendChild(disqus_embed);
+      is_disqus_empty.remove();
+    }
+  }
+
+  window.addEventListener('scroll', function (e) {
+    var currentScroll = document.scrollingElement.scrollTop;
+    var disqus_target = document.getElementById('disqus_thread');
+
+    if (disqus_target && (currentScroll > disqus_target.getBoundingClientRect().top - 150)) {
+      load_disqus('disqus_shortname');
+    }
+  }, false);
+
+</script>
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
+  </main> 
+  <!-- end content -->
+  
+  <div class="top" title="Top"><i class="lni lni-chevron-up"></i></div>
+  <!-- begin footer-widgets -->
+<section class="footer-widgets">
+  <div class="container">
+    <div class="row">
+      <div class="col col-6 col-d-6 col-t-12">
+  <div class="widget widget-recent">
+
+    <div class="widget__head">
+      <h3 class="widget__title">Latest Posts</h3>
+    </div>
+
+    
+    <div class="recent-posts">
+      
+      <a class="recent-posts__image" href="/2022/07/15/java-functional-interfaces-reference/"><img class="lazy" data-src="/assets/images/posts/2022-07-15-java-functional-interfaces-reference/cover.jpg" alt="Java functional interfaces reference"></a>
+      
+      <div class="recent-posts__content">
+        <div class="article__meta">
+          <span class="article__minutes">
+            
+            
+              8 min read •
+            
+          </span>
+          <time class="article__date"
+            datetime="2022-07-15T17:00:00+00:00">15 Jul 2022</time>
+        </div>
+        <h4 class="recent-posts__title"><a href="/2022/07/15/java-functional-interfaces-reference/">Java functional interfaces reference</a></h4>
+        <div class="article__bottom">
+          <div class="article__author">
+            <a href="/about/" aria-label="cassiomolin"><img class="article__author-image lazy" data-src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+          </div>
+          <div class="article__bottom-meta">
+            <a href="/about/" class="article__author-link">cassiomolin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="recent-posts">
+      
+      <a class="recent-posts__image" href="/2021/07/29/should-http-put-create-a-resource-if-it-does-not-exist/"><img class="lazy" data-src="/assets/images/posts/2021-07-29-should-http-put-create-a-resource-if-it-does-not-exist/cover.jpg" alt="Should HTTP PUT create a resource if it does not exist?"></a>
+      
+      <div class="recent-posts__content">
+        <div class="article__meta">
+          <span class="article__minutes">
+            
+            
+              3 min read •
+            
+          </span>
+          <time class="article__date"
+            datetime="2021-07-29T17:00:00+00:00">29 Jul 2021</time>
+        </div>
+        <h4 class="recent-posts__title"><a href="/2021/07/29/should-http-put-create-a-resource-if-it-does-not-exist/">Should HTTP PUT create a resource if it does not exist?</a></h4>
+        <div class="article__bottom">
+          <div class="article__author">
+            <a href="/about/" aria-label="cassiomolin"><img class="article__author-image lazy" data-src="/assets/images/cassiomolin.jpg" alt="cassiomolin's Picture"></a>
+          </div>
+          <div class="article__bottom-meta">
+            <a href="/about/" class="article__author-link">cassiomolin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
+      
+<div class="col col-6 col-d-6 col-t-12">
+  <div class="widget widget-tag-cloud">
+    <div class="widget__head">
+      <h3 class="widget__title">Explore Tags</h3>
+    </div>
+    <div class="tag__cloud">
+      <a href="/tag/arquillian/" class="set-1">arquillian</a> <a href="/tag/authentication/" class="set-1">authentication</a> <a href="/tag/bean-validation/" class="set-1">bean-validation</a> <a href="/tag/beats/" class="set-1">beats</a> <a href="/tag/cdi/" class="set-1">cdi</a> <a href="/tag/docker/" class="set-1">docker</a> <a href="/tag/dto/" class="set-1">dto</a> <a href="/tag/ejb/" class="set-1">ejb</a> <a href="/tag/elastic-stack/" class="set-1">elastic-stack</a> <a href="/tag/elasticsearch/" class="set-1">elasticsearch</a> <a href="/tag/gson/" class="set-1">gson</a> <a href="/tag/guava/" class="set-1">guava</a> <a href="/tag/http/" class="set-1">http</a> <a href="/tag/jackson/" class="set-2">jackson</a> <a href="/tag/java/" class="set-5">java</a> <a href="/tag/javax-json/" class="set-1">javax-json</a> <a href="/tag/jax-rs/" class="set-1">jax-rs</a> <a href="/tag/jersey/" class="set-1">jersey</a> <a href="/tag/json/" class="set-3">json</a> <a href="/tag/junit/" class="set-1">junit</a> <a href="/tag/kibana/" class="set-1">kibana</a> <a href="/tag/log/" class="set-1">log</a> <a href="/tag/logback/" class="set-1">logback</a> <a href="/tag/logstash/" class="set-1">logstash</a> <a href="/tag/maven/" class="set-1">maven</a> <a href="/tag/patch/" class="set-1">patch</a> <a href="/tag/personal/" class="set-1">personal</a> <a href="/tag/rest/" class="set-1">rest</a> <a href="/tag/servlet/" class="set-1">servlet</a> <a href="/tag/slf4j/" class="set-1">slf4j</a> <a href="/tag/spring-boot/" class="set-1">spring-boot</a> <a href="/tag/test/" class="set-1">test</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+<!-- end footer-widgets -->
+
+<!-- begin footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+      <div class="footer__inner">
+        <div class="copyright">
+          2023 &copy; <a href="/">cassiomolin</a>. Written with <i class="lni lni-heart-filled"></i> in Ireland.<br/>
+          Powered by <a target="_blank" href="https://jekyllrb.com">Jekyll</a> and hosted on <a target="_blank" href="https://pages.github.com">GitHub Pages</a>.
+        </div>
+        
+<div class="social">
+  <ul class="social__list list-reset">
+    
+    <li class="social__item">
+      <a class="social__link" href="https://www.linkedin.com/in/cassiomolin" aria-label="social icon"><i class="lni lni-linkedin-original"></i></a>
+    </li>
+    
+    <li class="social__item">
+      <a class="social__link" href="https://www.stackoverflow.com/u/1426227" aria-label="social icon"><i class="lni lni-stackoverflow"></i></a>
+    </li>
+    
+    <li class="social__item">
+      <a class="social__link" href="https://github.com/cassiomolin" aria-label="social icon"><i class="lni lni-github-original"></i></a>
+    </li>
+    
+  </ul>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+  <script src="/assets/js/vendors/jquery-3.5.1.min.js"></script>
+<script src="/assets/js/vendors/simple-jekyll-search.min.js"></script>
+<script src="/assets/js/vendors/jquery.fitvids.js"></script>
+<script src="/assets/js/vendors/lazyload.min.js"></script>
+<script src="/assets/js/vendors/transition.js"></script>
+<script src="/assets/js/vendors/zoom.min.js"></script>
+<script src="/assets/js/vendors/prism.js"></script>
+<script src="/assets/js/vendors/mermaid.min.js"></script>
+<script src="/assets/js/common.js"></script>
+<script>
+  var base_url = "",
+    pagination_next_url = base_url + '/page2',
+    pagination_next_page_number = '',
+    pagination_available_pages_number = '';
+</script>
+</body>
+
+</html>
