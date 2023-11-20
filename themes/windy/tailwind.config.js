@@ -219,7 +219,7 @@ module.exports = {
           // Code blocks
           pre: {
             // color: 'var(--tw-prose-pre-code)',
-            fontSize: theme('fontSize.xs')[0],
+            fontSize: theme('fontSize.sm')[0],
             fontWeight: theme('fontWeight.medium'),
             backgroundColor: 'var(--tw-prose-pre-bg)',
             borderRadius: theme('borderRadius.lg'),
