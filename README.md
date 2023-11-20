@@ -2,13 +2,13 @@ This is the source code of my personal website, deployed on GitHub Pages.
 
 ## Developing locally
 
-Install package:
+Install packages:
 
 ```shell
 $ npm --prefix themes/windy install themes/windy
 ```
 
-In a terminal window, start the Tailwind CLI build process:
+Start the Tailwind CLI build process:
 
 ```shell
 $ npm run --prefix themes/windy start:tailwindcss
