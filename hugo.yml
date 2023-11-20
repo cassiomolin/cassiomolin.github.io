@@ -28,9 +28,9 @@ params:
     title: Software engineer and enthusiast photographer
     headline: Hey, I'm Cassio Molin. I'm a software engineer and photography enthusiast living in Dublin, Ireland. This is my website, where I share my thoughts and photos.
   social:
-    linkedin: https://www.linkedin.com/in/cassiomolin
+    linkedin: https://linkedin.com/in/cassiomolin
     github: https://github.com/cassiomolin
-    stackoverflow: https://stackoverflow.com/users/1426227/cassiomolin
+    stackoverflow: https://stackoverflow.com/u/1426227
   contact:
     form:
       url: https://script.google.com/macros/s/AKfycbzunPZvyXcwHWULmwejUDULxBviv6NqWcIX6KZAupX_MsySK9rQ/exec
