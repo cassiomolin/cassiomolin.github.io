@@ -5,9 +5,9 @@ target:
 
   path: ""
   delete-content: true
-  skip-if-exists: true
+  skip-if-exists: false
 
-  quality: 90
+  quality: 70
   max-size:
     width: 4000
     height: 4000
