@@ -11,3 +11,5 @@ In a _different terminal window_, start the Hugo webserver:
 ```shell
 $ hugo serve --bind=0.0.0.0 --buildDrafts --minify
 ```
+
+This should be deployed in GitHub Pages.
