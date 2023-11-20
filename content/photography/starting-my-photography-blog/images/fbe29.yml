@@ -1,0 +1,24 @@
+metadata_version: 0.0.1
+date_time: '2021-09-26 07:34:03'
+aspect_ratio: 1203:1805
+dominant_colour: '#2d3234'
+original_file:
+  name: DSCF0151.jpg
+  size: 5001208
+  size_human_friendly: 4.8 MiB
+  sha256: fbe2940758ee58ff6a88b78aee12fa129661ba6153dc098d38b9cbe4970ed57e
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Pixelmator Pro 3.4.3
+lens:
+  manufacturer: FUJIFILM
+  model: XF16-55mmF2.8 R LM WR
+  specification: 16-55mm f/2.8
+  focal_length: 35.3mm
+  focal_length_in_35mm_format: 53mm
+exposure:
+  f_number: f/5.6
+  shutter_speed: 1/160
+  iso: '500'
+  exposure_compensation: '+0.7'

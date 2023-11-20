@@ -1,33 +1,13 @@
-# cassiomolin.com
+This intends to be a new version of my personal website.
 
-This is the source code of my [blog](https://cassiomolin.com).
+In a terminal window, start the Tailwind CLI build process:
 
-Written with ♥ in Ireland, powered by [Jekyll](https://jekyllrb.com/), and hosted on [GitHub Pages](https://pages.github.com/).
-
-Using images from [Unsplash](https://unsplash.com) resized and optimised with [Squoosh](https://squoosh.app).
-
-Using DNS from [Cloudflare](https://cloudflare.com).
-
-
----
-
-## Running it locally
-
-Before running, make sure to install the dependencies:
-
-```bash
-bundle install
+```shell
+$ npm run --prefix themes/windy start:tailwindcss
 ```
 
-And then run:
+In a _different terminal window_, start the Hugo webserver:
 
+```shell
+$ hugo serve --bind=0.0.0.0 --buildDrafts --minify
 ```
-bundle exec jekyll serve --host=0.0.0.0
-```
-
-The website should then be available at `http://localhost:4000`.
-
-Other options can be used:
-
-- `--draft`: Enable drafts
-- `--incremental`: Enable incremental builds

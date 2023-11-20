@@ -1,0 +1,55 @@
+baseURL: https://cassiomolin.com
+languageCode: en-gb
+title: cassiomolin
+theme: windy
+
+menu:
+  main:
+  - name: Programming
+    pageRef: /programming
+    weight: 10
+  - name: Photography
+    pageRef: /photography
+    weight: 20
+  - name: About
+    pageRef: /about
+    weight: 30
+  - name: CV
+    pageRef: /cv
+    weight: 40
+  - name: Contact
+    pageRef: /contact
+    weight: 50
+
+params:
+  title: cassiomolin
+  author: Cássio Mazzochi Molin
+  hero:
+    title: Software engineer and enthusiast photographer
+    headline: Hey, I'm Cassio Molin. I'm a software engineer and photography enthusiast living in Dublin, Ireland. This is my website, where I share my thoughts and photos.
+  social:
+    linkedin: https://www.linkedin.com/in/cassiomolin
+    github: https://github.com/cassiomolin
+    stackoverflow: https://stackoverflow.com/users/1426227/cassiomolin
+  contact:
+    form:
+      url: https://script.google.com/macros/s/AKfycbzunPZvyXcwHWULmwejUDULxBviv6NqWcIX6KZAupX_MsySK9rQ/exec
+
+enableRobotsTXT: true
+
+markup:
+  tableOfContents:
+    endLevel: 4
+    ordered: false
+    startLevel: 2
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false # This requires a stylesheet for syntax highlighting
+                     #
+                     # This can be used to generate a stylesheet for syntax highlighting:
+                     # hugo gen chromastyles --style=monokai > syntax.css
+                     #
+                     # Available styles: https://xyproto.github.io/splash/docs/
+                     # These also seem to work just fine: https://swapoff.org/chroma/playground/

@@ -1,0 +1,24 @@
+metadata_version: 0.0.1
+date_time: '2023-01-07 15:44:52'
+aspect_ratio: '3:2'
+dominant_colour: '#3b4f61'
+original_file:
+  name: XT4A0367.jpg
+  size: 6338416
+  size_human_friendly: 6.0 MiB
+  sha256: ef4cdf512bd2da33ce6b8d6365baea0eac737e8a44e0546e35f35d3ccb7cdb4e
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Pixelmator Pro 3.4.3
+lens:
+  manufacturer: FUJIFILM
+  model: XF100-400mmF4.5-5.6 R LM OIS WR
+  specification: 100-400mm f/4.5-5.6
+  focal_length: 400mm
+  focal_length_in_35mm_format: 600mm
+exposure:
+  f_number: f/5.6
+  shutter_speed: 1/500
+  iso: '2500'
+  exposure_compensation: '0'

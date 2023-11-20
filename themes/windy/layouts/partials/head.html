@@ -1,0 +1,29 @@
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}Home - {{ else }}{{ if .Page.Title }}{{ .Page.Title }} | {{ end }}{{ end }}{{ .Site.Title }}</title>
+
+  {{ $style := resources.Get "css/style.css" }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  <link rel="stylesheet" href="/photoswipe/photoswipe.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css">
+
+
+  {{/*
+
+   TODO: Add RSS feed stuff
+
+   <link
+          rel="alternate"
+          type="application/rss+xml"
+          href="/rss/feed.xml"
+
+    <link
+          rel="alternate"
+          type="application/rss+json"
+          href="/rss/feed.json"
+
+  */}}
+
+</head>

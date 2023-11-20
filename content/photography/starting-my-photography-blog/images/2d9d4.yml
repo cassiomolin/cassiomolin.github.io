@@ -1,0 +1,41 @@
+metadata_version: 0.0.1
+date_time: '2022-04-23 13:59:41'
+aspect_ratio: '2:3'
+dominant_colour: '#8c827a'
+original_file:
+  name: XT4B0269.JPG
+  size: 11559510
+  size_human_friendly: 11.0 MiB
+  sha256: 2d9d4d8ae7126aef495c589fbafd17deb60ac9b3ad5c476a9c14932a573ce861
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Digital Camera X-T4 Ver1.25
+lens:
+  manufacturer: FUJIFILM
+  model: XF50-140mmF2.8 R LM OIS WR
+  specification: 50-140mm f/2.8
+  focal_length: 129.2mm
+  focal_length_in_35mm_format: 194mm
+exposure:
+  f_number: f/2.8
+  shutter_speed: 1/340
+  iso: '160'
+  exposure_compensation: '0'
+fujifilm_jpeg:
+  film_simulation: Classic Chrome
+  grain_effect: 'Off'
+  grain_size: 'Off'
+  colour_chrome_effect: 'Off'
+  colour_chrome_effect_blue: 'Off'
+  white_balance: Auto
+  white_balance_shift:
+    red: '0'
+    blue: '0'
+  dynamic_range: 100%
+  highlights: '0'
+  shadows: '0'
+  colour: '+2'
+  sharpness: '0'
+  noise_reduction: '-1'
+  clarity: '0'

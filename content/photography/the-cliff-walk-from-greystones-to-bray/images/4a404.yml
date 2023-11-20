@@ -1,0 +1,25 @@
+metadata_version: 0.0.1
+date_time: '2023-06-24 11:50:23'
+aspect_ratio: '2:3'
+dominant_colour: '#8db5c8'
+original_file:
+  name: 144C0CC5-36E0-4EDA-9056-0481080F711F-39290-00001032293AD645.jpg
+  size: 983318
+  size_human_friendly: 960.3 KiB
+  sha256: 4a404d159ec6b7fd0afc6d43af868ce1b31a3e60893d11706be8e4b1af77b2cb
+camera:
+  manufacturer: FUJIFILM
+  model: X100V
+  software: Photomator 3.0.7
+lens:
+  specification: 23mm f/2
+  focal_length: 23mm
+exposure:
+  f_number: f/5
+  shutter_speed: 1/1800
+  iso: '640'
+  exposure_compensation: '+1'
+gps:
+  altitude: 23m
+  latitude: "53\xB09'38.96\"N"
+  longitude: "6\xB04'35.81\"W"

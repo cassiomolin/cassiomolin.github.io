@@ -1,0 +1,45 @@
+metadata_version: 0.0.1
+date_time: '2023-07-29 15:17:59'
+aspect_ratio: '3:2'
+dominant_colour: '#a8c3d4'
+original_file:
+  name: XT4A0450.JPG
+  size: 9996642
+  size_human_friendly: 9.5 MiB
+  sha256: f8d6e3b0e7067d0b80a6e57e0f288e0f8e693e1015eb71a04c88c5b40db91716
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Digital Camera X-T4 Ver2.00
+lens:
+  manufacturer: FUJIFILM
+  model: XF100-400mmF4.5-5.6 R LM OIS WR
+  specification: 100-400mm f/4.5-5.6
+  focal_length: 218.7mm
+  focal_length_in_35mm_format: 328mm
+exposure:
+  f_number: f/5.6
+  shutter_speed: 1/1000
+  iso: '160'
+  exposure_compensation: '+1'
+gps:
+  altitude: 7m
+  latitude: "53\xB012'0.973\"N"
+  longitude: "6\xB05'43.888\"W"
+fujifilm_jpeg:
+  film_simulation: Classic Chrome
+  grain_effect: 'Off'
+  grain_size: 'Off'
+  colour_chrome_effect: 'Off'
+  colour_chrome_effect_blue: 'Off'
+  white_balance: Auto
+  white_balance_shift:
+    red: '0'
+    blue: '0'
+  dynamic_range: 100%
+  highlights: '0'
+  shadows: '0'
+  colour: '0'
+  sharpness: '0'
+  noise_reduction: '0'
+  clarity: '0'

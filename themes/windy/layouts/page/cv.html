@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+<div class="bg-white pt-28 pb-10 sm:pt-48 px-6 lg:px-8">
+
+  <div class="mx-auto max-w-2xl text-base leading-7 text-gray-700">
+
+    <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">{{ .Page.Title }}</h1>
+
+    {{ with .Params.introduction }}
+    <div class="mt-12">
+      {{ range . }}
+      <p class="mt-6 text-l leading-8">{{ . }}</p>
+      {{ end }}
+    </div>
+    {{end}}
+
+    {{ with .Params.experience }}
+    <div class="mt-12 space-y-12">
+
+      {{ range .content }}
+
+      <div class="mb-10">
+
+        {{ with .employment }}
+        <h3 class="text-xl leading-6 font-semibold">{{ .title }} {{ if eq .type "contract" }}<span class="inline relative top-[-.2rem] ml-1 rounded-md bg-gray-100 px-1.5 py-1 text-[.6rem] font-normal text-gray-600">Contract</span>{{ end }}</h3>
+        {{ end }}
+
+        {{ with .company }}
+        <p class="text-base text-gray-600">{{ .name }}{{ if .location }} · {{ .location }}{{ end }}</p>
+        {{ end }}
+
+        {{ with .period }}
+        <p class="text-base text-gray-600">{{ .start }} – {{ .end }}</p>
+        {{ end }}
+
+        {{ with .description}}
+        <ul class="list-disc ml-6 text-sm mt-2">
+            {{ range . }}
+            <li class="mt-2">{{ . }}</li>
+            {{ end }}
+        </ul>
+        {{ end }}
+
+      </div>
+
+      {{ end }}
+
+    </div>
+    {{end}}
+
+  </div>
+</div>
+
+{{ end }}

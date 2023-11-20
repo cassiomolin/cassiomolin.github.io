@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+  x-data="{ isMobileMenuOpen: false }"
+  :class="{
+    'overflow-y-scroll': isMobileMenuOpen,
+    'lg:overflow-y-visible': isMobileMenuOpen }"
+  class="h-full w-full antialiased">
+
+    {{- partial "head.html" . -}}
+
+    <body
+      :class="{
+        'fixed': isMobileMenuOpen,
+        'lg:static': isMobileMenuOpen,
+        'overflow-y-hidden': isMobileMenuOpen,
+        'lg:overflow-y-visible': isMobileMenuOpen }"
+      {{/* TODO: Investigate if this helps fixing the layout shifting when the scroll bar is visible  style="scrollbar-gutter: stable;"  */}}
+      @keydown.escape="isMobileMenuOpen = false"
+      class="h-full w-full bg-white">
+
+        <div class="flex flex-col h-full">
+
+          {{- partial "header.html" . -}}
+
+          <main class="flex-grow flex flex-col">
+          {{- block "main" . }}{{- end }}
+          </main>
+
+          {{- partial "footer.html" . -}}
+
+          {{- partial "scroll-to-top-button.html" . -}}
+
+          {{- partial "photoswipe-script.html" . -}}
+          {{- partial "alpinejs-script.html" . -}}
+          {{- block "scripts" . -}}{{- end -}}
+
+        </div>
+    </body>
+</html>

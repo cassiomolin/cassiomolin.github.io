@@ -1,0 +1,33 @@
+{{ define "main" }}
+
+<div class="bg-white pt-28 pb-10 sm:pt-48 px-6 lg:px-8">
+
+  <div class="mx-auto max-w-2xl text-base leading-7 text-gray-700">
+
+    <div class="gap-x-4 text-s">
+
+      {{if .Date }}
+      <time datetime='{{ .Date.Format "2006-01-02" }}' class="text-gray-500">{{ .Date.Format "02 January 2006" }}</time>
+      <span class="ml-2 inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">{{ .Section | title }}</span>
+      {{ end }}
+
+      {{ if .Draft }}
+      <span class="inline-flex items-center rounded-md bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-600">Draft</span>
+      {{ end }}
+
+    </div>
+
+    <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">{{ .Page.Title }}</h1>
+
+    <div class="mt-14 prose lg:prose-l dark:prose-invert">
+      {{/* Wrap tables */}}
+      {{/* See https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/4 */}}
+      {{ $wrappedTable := printf "<div class='block overflow-x-auto'>${1}</div>" }}
+      {{ .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+    </div>
+
+  </div>
+
+</div>
+
+{{ end }}

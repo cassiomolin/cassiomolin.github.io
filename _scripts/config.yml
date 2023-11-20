@@ -1,0 +1,17 @@
+source:
+  path: ""
+
+target:
+
+  path: ""
+  delete-content: true
+  skip-if-exists: true
+
+  quality: 90
+  max-size:
+    width: 4000
+    height: 4000
+
+  # The shorter, the higher the risk of collision
+  # 15^5 = 1,048,576 -> Seems good enough for this case
+  identifier-length: 5

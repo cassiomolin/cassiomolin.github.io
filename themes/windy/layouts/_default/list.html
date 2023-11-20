@@ -1,0 +1,73 @@
+{{ define "main" }}
+<div class="bg-white pt-28 pb-10 sm:pt-48 px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-2xl">
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">{{ .Page.Title }}</h1>
+      <p class="mt-2 text-lg leading-8 text-gray-600">{{ .Page.Summary }}</p>
+
+      <div class="relative mt-20 sm:pb-12 sm:ml-[calc(2rem+1px)] md:ml-[calc(3.5rem+1px)] ">
+
+        <div class="hidden absolute top-3 bottom-0 right-full mr-7 md:mr-[3.25rem] w-px bg-slate-200 dark:bg-slate-800 sm:block"></div>
+
+        <div class="sm:space-y-28">
+
+          {{ range .Pages.ByPublishDate.Reverse }}
+
+          <article class="relative group border-t border-gray-900/10 sm:py-0 py-12 sm:border-none">
+
+            <div class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl sm:group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50">
+            </div>
+
+            <svg viewBox="0 0 9 9" class="hidden absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block">
+              <circle cx="4.5" cy="4.5" r="4.5" stroke="currentColor" class="fill-white dark:fill-slate-900" stroke-width="2"></circle>
+            </svg>
+
+            <div class="relative">
+
+              <div class="pb-4">
+
+                <span class="mr-2 relative whitespace-nowrap text-sm leading-6 text-gray-600 dark:text-slate-400">
+                  <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format "02 January 2006" }}</time>
+                </span>
+
+                {{ if .Draft }}
+                <span class="inline-flex items-center rounded-md bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-600">Draft</span>
+                {{ end }}
+
+              </div>
+
+              <h3 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-200 lg:pt-0">{{ .Title }}</h3>
+
+              <div class="mt-4 mb-4 line-clamp-2 text-gray-600">
+                {{ .Summary }}
+              </div>
+
+              {{ $coverImage := .Resources.Get "cover" }}
+              {{ if $coverImage }}
+              <div class="relative mt-4 mb-4 aspect-[2/1] sm:aspect-[2/1]">
+                <img src="{{ $coverImage.RelPermalink }}" alt="" class="absolute inset-0 h-full w-full rounded-xl bg-gray-50 object-cover">
+                <div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
+              </div>
+              {{ end }}
+
+            </div>
+            <a class="flex items-center text-sm text-slate-500 font-medium" href="{{ .RelPermalink }}">
+              <span class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl"></span>
+              <span class="relative">Read more<span class="sr-only">{{ .Title }}</span></span>
+              <svg class="relative mt-px overflow-visible ml-2.5 text-slate-300 dark:text-slate-700"
+                width="3" height="6" viewBox="0 0 3 6" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0 0L3 3L0 6"></path>
+              </svg>
+            </a>
+          </article>
+          {{ end }}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{ end }}

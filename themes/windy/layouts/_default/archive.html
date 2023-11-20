@@ -1,0 +1,61 @@
+{{/* https://www.thedroneely.com/posts/generating-archive-pages-with-hugo/ */}}
+{{ define "main" }}
+
+{{ $type := .Type }}
+{{ $.Scratch.Set "count" 1 }}
+
+<div class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl">
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">{{ .Page.Title }}</h1>
+      <p class="mt-2 text-lg leading-8 text-gray-600">{{ .Page.Summary }}</p>
+
+      <div class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
+
+        {{ range (.Site.RegularPages.GroupByDate "2006") }}
+        {{ if and (gt .Key 1) (gt (where .Pages "Type" $type) 0) }}
+
+          {{ range (where .Pages "Type" $type) }}
+            {{ if (eq ($.Scratch.Get "count") 1) }}
+              {{ $.Scratch.Set "count" 0 }}
+              <div class=>
+                <h2 class="text-4xl font-bold leading-10 tracking-tight text-gray-900">{{ .Date.Format "2006" }}</h2>
+              </div>
+            {{ end }}
+          {{ end }}
+
+          {{ $.Scratch.Set "count" 1 }}
+
+          {{ range (where .Pages "Type" $type) }}
+
+          {{ if (ne .Params.hidden true) }}
+          <div class="mb-12">
+
+            <div class="flex items-center gap-x-4 text-xs">
+              <time datetime="2020-03-16" class="text-gray-500">{{ .Date.Format "02 January 2006" }}</time>
+              {{ if .Draft }}
+              <span class="inline items-center rounded-md bg-red-100 px-1.5 py-0.5 text-[.6rem] font-normal text-red-700">Draft</span>
+              {{ end }}
+            </div>
+
+            <div class="group relative">
+              <h3 class="mt-3 text-xl font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                <a href="{{ .RelPermalink }}">
+                  <span class="absolute inset-0"></span>
+                  {{ .Title }}
+                </a>
+              </h3>
+            </div>
+
+          </div>
+          {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}

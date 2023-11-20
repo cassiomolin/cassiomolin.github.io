@@ -1,0 +1,42 @@
+metadata_version: 0.0.1
+date_time: '2023-06-24 14:19:12'
+aspect_ratio: '3:2'
+dominant_colour: '#9dc7eb'
+original_file:
+  name: 36386024-81F7-4C99-BD8D-ED0F91322E52-39290-0000102E899C13A7.JPG
+  size: 1118089
+  size_human_friendly: 1.1 MiB
+  sha256: 10c7c5342c4e99f4c0f66b39b951682a767ae32146f0566a7cb35d44bcad6c68
+camera:
+  manufacturer: FUJIFILM
+  model: X100V
+  software: Digital Camera X100V Ver3.00
+lens:
+  specification: 23mm f/2
+  focal_length: 23mm
+exposure:
+  f_number: f/5
+  shutter_speed: 1/2400
+  iso: '640'
+  exposure_compensation: '+1'
+gps:
+  altitude: 57m
+  latitude: "53\xB010'53.386\"N"
+  longitude: "6\xB04'34.123\"W"
+fujifilm_jpeg:
+  film_simulation: Classic Negative
+  grain_effect: 'Off'
+  grain_size: 'Off'
+  colour_chrome_effect: Weak
+  colour_chrome_effect_blue: 'Off'
+  white_balance: Auto
+  white_balance_shift:
+    red: '-1'
+    blue: '0'
+  dynamic_range: 400%
+  highlights: '-2'
+  shadows: '-1'
+  colour: '+3'
+  sharpness: '0'
+  noise_reduction: '-4'
+  clarity: '2'

@@ -1,0 +1,41 @@
+metadata_version: 0.0.1
+date_time: '2021-12-12 15:06:34'
+aspect_ratio: '2:3'
+dominant_colour: '#5c5b53'
+original_file:
+  name: XT4A0010.JPG
+  size: 16412823
+  size_human_friendly: 15.7 MiB
+  sha256: 6784ef82c46d95af49c1f41402c2c8abb28bd5ba48bce1d225b4531dcf61cf2e
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Digital Camera X-T4 Ver1.25
+lens:
+  manufacturer: FUJIFILM
+  model: XF16-55mmF2.8 R LM WR
+  specification: 16-55mm f/2.8
+  focal_length: 50mm
+  focal_length_in_35mm_format: 75mm
+exposure:
+  f_number: f/8
+  shutter_speed: 1/75
+  iso: '2000'
+  exposure_compensation: '+0.3'
+fujifilm_jpeg:
+  film_simulation: Classic Chrome
+  grain_effect: 'Off'
+  grain_size: 'Off'
+  colour_chrome_effect: Strong
+  colour_chrome_effect_blue: Strong
+  white_balance: Auto
+  white_balance_shift:
+    red: '+3'
+    blue: '-5'
+  dynamic_range: 200%
+  highlights: '-1'
+  shadows: '0'
+  colour: '+4'
+  sharpness: '+1'
+  noise_reduction: '-4'
+  clarity: '0'

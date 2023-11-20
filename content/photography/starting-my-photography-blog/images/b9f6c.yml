@@ -1,0 +1,41 @@
+metadata_version: 0.0.1
+date_time: '2021-09-26 08:54:44'
+aspect_ratio: '3:2'
+dominant_colour: '#b3b4bd'
+original_file:
+  name: DSCF0338a.JPG
+  size: 14750173
+  size_human_friendly: 14.1 MiB
+  sha256: b9f6c1a6daedc217ca48c60b4180a78bab0feb676ab8568a5ca1298bd2d26b77
+camera:
+  manufacturer: FUJIFILM
+  model: X-T4
+  software: Digital Camera X-T4 Ver1.22
+lens:
+  manufacturer: FUJIFILM
+  model: XF16-55mmF2.8 R LM WR
+  specification: 16-55mm f/2.8
+  focal_length: 24.2mm
+  focal_length_in_35mm_format: 36mm
+exposure:
+  f_number: f/8
+  shutter_speed: 1/160
+  iso: '320'
+  exposure_compensation: '+0.3'
+fujifilm_jpeg:
+  film_simulation: Classic Negative
+  grain_effect: 'Off'
+  grain_size: 'Off'
+  colour_chrome_effect: Strong
+  colour_chrome_effect_blue: Strong
+  white_balance: Auto
+  white_balance_shift:
+    red: '0'
+    blue: '0'
+  dynamic_range: 100%
+  highlights: '0'
+  shadows: '0'
+  colour: '+2'
+  sharpness: '+3'
+  noise_reduction: '-4'
+  clarity: '0'

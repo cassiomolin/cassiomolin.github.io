@@ -1,0 +1,73 @@
+{{ $imageId := .Get "id" }}
+{{ $isForceFullWidth := default "false" (.Get "force-full-width") }}
+
+{{ $image := .Page.Resources.GetMatch (print "images/" $imageId ".jpg" ) }}
+{{ $metadata := .Page.Resources.GetMatch (print "images/" $imageId ".yml" ) }}
+
+{{ if $metadata }}
+    {{ $metadata = $metadata.Content }}
+    {{ $metadata = $metadata | unmarshal }}
+{{ else }}
+    {{ $metadata = dict }}
+{{ end }}
+
+{{- with .Parent -}}
+
+{{ $minItemHeight := 300 }}
+{{ with .Get "min-item-height" }}
+  {{ $minItemHeight = . }}
+{{ end }}
+
+
+{{ $style := "" }}
+{{ $style = $style | print "--image-width: " $image.Width ";" }}
+{{ $style = $style | print "--image-height: " $image.Height ";" }}
+{{ $style = $style | print "--dominant-color: " $metadata.dominant_colour ";" }}
+{{ $style = $style | print "--min-height: " $minItemHeight ";" }}
+
+{{ if eq $isForceFullWidth "true" }}
+    {{ $style = $style | print "width: 100%;" }}
+{{ end }}
+
+
+<div class="photograph relative rounded-lg shadow-[0_0_10px_0_rgba(204,204,204,1)] bg-[var(--dominant-color)] w-[calc(var(--image-width)*var(--min-height)/var(--image-height)*1px)] flex-grow-[calc(var(--image-width)*var(--min-height)/var(--image-height))]" style="{{ $style | safeCSS }}">
+
+    {{ if not hugo.IsProduction }}
+    <span class="absolute z-10 top-1 right-1 inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600 font-mono opacity-80">{{ $imageId }}</span>
+    {{ end }}
+
+    <i class="block pb-[calc(var(--image-height)/var(--image-width)*100%)]"></i>
+
+    <a href="{{ $image.RelPermalink }}"
+       data-pswp-src="{{ $image.RelPermalink }}"
+       data-pswp-width="{{ $image.Width }}"
+       data-pswp-height="{{ $image.Height }}">
+
+       <img class="absolute top-0 transition-opacity ease-in-out duration-1000 opacity-0"
+             src="{{ $image.RelPermalink }}"
+             loading="lazy"
+             onload="this.classList.remove('opacity-0')">
+    </a>
+
+    <div class="pswp-caption-content">
+      {{ $metadata.caption }}
+    </div>
+
+</div>
+
+{{- else -}}
+
+<div class="photograph rounded-lg shadow-[0_0_10px_0_rgba(204,204,204,1)] bg-[var(--dominant-color)]"
+     style="--image-width: {{ $image.Width }}; --image-height: {{ $image.Height }}; --dominant-color: {{ $metadata.dominant_colour }};">
+
+  <a href="{{ $image.RelPermalink }}">
+
+    <img class="transition-opacity ease-in-out duration-1000 opacity-0"
+         src="{{ $image.RelPermalink }}"
+         loading="lazy"
+         onload="this.classList.remove('opacity-0')">
+  </a>
+</div>
+
+{{- end -}}
+

@@ -1,0 +1,2 @@
+{{/* See https://gohugo.io/templates/render-hooks/ */}}
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }} <a href="#{{ .Anchor | safeURL }}">#</a></h{{ .Level }}>

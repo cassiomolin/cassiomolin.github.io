@@ -1,0 +1,12 @@
+<div x-data="{scrollBackTop: false}" x-cloak>
+  <button
+    x-show="scrollBackTop"
+    x-on:scroll.window="scrollBackTop = (window.pageYOffset > window.outerHeight * 0.5) ? true : false"
+    x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})"
+    aria-label="Back to top"
+    class="fixed bottom-0 right-0 p-2 mx-10 my-10 rounded-lg text-white bg-gray-800 hover:bg-gray-700 focus:outline-none z-20">
+    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144" />
+    </svg>
+  </button>
+</div>
