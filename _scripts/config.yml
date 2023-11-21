@@ -1,9 +1,9 @@
 source:
-  path: ""
+  path: "/Users/cassiomolin/Desktop/starting-my-photography-blog"
 
 target:
 
-  path: ""
+  path: "/Users/cassiomolin/Development/cassiomolin.github.io/content/photography/starting-my-photography-blog/images"
   delete-content: true
   skip-if-exists: false
 
