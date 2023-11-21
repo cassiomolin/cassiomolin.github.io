@@ -469,7 +469,7 @@ In the root folder of our project, where the `docker-compose.yml` resides, spin 
 
 ![Filtering logs by trace id][img.screenshot-07]
 
-- To stop the containers, use `docker-compose down`. It's important to highlight that both Elasticsearch indices and the Filebeat tracking data are stored in the host, under the `./elasticseach/data` and `./filebeat/data` folders. It means that, if you destroy the containers, the data will be lost.
+- To stop the containers, use `docker-compose down`. It's important to highlight that both Elasticsearch indices and the Filebeat tracking data are stored in the host, under the `./elasticsearch/data` and `./filebeat/data` folders. It means that, if you destroy the containers, the data will be lost.
 
 
 
