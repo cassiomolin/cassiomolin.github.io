@@ -81,11 +81,19 @@ def process_image(image_path, target_config):
 
     metadata = image_metadata_reader.extract_metadata(image)
     image_identifier = create_image_identifier(metadata, target_config['identifier-length'])
-
     create_metadata_file(metadata, target_config['path'], image_identifier, skip_if_exists=target_config['skip-if-exists'])
 
-    max_size=(target_config['max-size']['width'], target_config['max-size']['height'])
-    image_resizer.create_resized_image(image, target_config['path'], image_identifier, append_width_to_file_name=False, quality=target_config['quality'], max_size=max_size, skip_if_exists=target_config['skip-if-exists'])
+    max_sizes = target_config['max-sizes']
+
+    if (len(max_sizes) == 1):
+        max_size=(max_sizes[0], max_sizes[0])
+        image_resizer.create_resized_image(image, target_config['path'], image_identifier, append_width_to_file_name=False, quality=target_config['quality'], max_size=max_size, skip_if_exists=target_config['skip-if-exists'])
+
+    else:
+
+        for max_size in max_sizes:
+            max_size=(max_size, max_size)
+            image_resizer.create_resized_image(image, target_config['path'], image_identifier, append_width_to_file_name=True, quality=target_config['quality'], max_size=max_size, skip_if_exists=target_config['skip-if-exists'])
 
     return image_identifier
 

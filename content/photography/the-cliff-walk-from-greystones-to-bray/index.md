@@ -14,17 +14,6 @@ This photos were taken with my X100V.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra finibus tellus vitae dictum. Suspendisse ornare lacinia magna eget vulputate. Pellentesque a velit sed turpis tempus molestie quis ac urna.
 
-{{< photography-gallery min-item-height="150">}}
-  {{< photograph id="f9c7d" >}}
-  {{< photograph id="b39dd" >}}
-  {{< photograph id="4a404" >}}
-  {{< photograph id="a6188" force-full-width="true" >}}
-  {{< photograph id="314f9" >}}
-  {{< photograph id="55286" >}}
-  {{< photograph id="7e092" >}}
-  {{< photograph id="10c7c" >}}
-{{< /photography-gallery >}}
-
 Suspendisse eu ultrices nibh, at pulvinar nunc. Vivamus imperdiet odio vitae ipsum gravida, vel consectetur orci lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus porta mauris et tincidunt convallis. Integer vitae urna eu dolor egestas efficitur. Etiam euismod augue at sem porta tincidunt a eget nulla. Cras leo arcu, sagittis lobortis nisl at, pretium facilisis sem.
 
 Suspendisse eu ultrices nibh, at pulvinar nunc. Vivamus imperdiet odio vitae ipsum gravida, vel consectetur orci lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus porta mauris et tincidunt convallis. Integer vitae urna eu dolor egestas efficitur. Etiam euismod augue at sem porta tincidunt a eget nulla. Cras leo arcu, sagittis lobortis nisl at, pretium facilisis sem.
@@ -47,9 +36,3 @@ Suspendisse eu ultrices nibh, at pulvinar nunc. Vivamus imperdiet odio vitae ips
 | EV compensation         | +1 for a high key style                     |
 
 Suspendisse eu ultrices nibh, at pulvinar nunc. Vivamus imperdiet odio vitae ipsum gravida, vel consectetur orci lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus porta mauris et tincidunt convallis. Integer vitae urna eu dolor egestas efficitur. Etiam euismod augue at sem porta tincidunt a eget nulla. Cras leo arcu, sagittis lobortis nisl at, pretium facilisis sem.
-
-{{< photography-gallery min-item-height="200">}}
-  {{< photograph id="f9c7d" >}}
-  {{< photograph id="b39dd" >}}
-  {{< photograph id="4a404" >}}
-{{< /photography-gallery >}}

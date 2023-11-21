@@ -8,9 +8,11 @@ target:
   skip-if-exists: false
 
   quality: 70
-  max-size:
-    width: 4000
-    height: 4000
+  max-sizes:
+   - 500
+   - 800
+   - 1500
+   - 4000
 
   # The shorter, the higher the risk of collision
   # 15^5 = 1,048,576 -> Seems good enough for this case

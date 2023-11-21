@@ -21,9 +21,3 @@ def create_resized_image(original_image, target_directory, identifier="", qualit
 
     image.save(file_path, quality=quality)
     print(f'Created resized image: {file_path}')
-
-
-def create_resized_images(original_image, target_directory, identifier="", quality=90, max_sizes=[(3000,3000)]):
-
-    for max_size in max_sizes:
-        create_resized_image(original_image, target_directory, identifier, quality, max_size)
