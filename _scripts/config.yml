@@ -7,7 +7,7 @@ target:
   delete-content: true
   skip-if-exists: false
 
-  quality: 70
+  quality: 75
   max-sizes:
    - 500
    - 800
