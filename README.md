@@ -19,3 +19,7 @@ In a _different_ terminal window, start the Hugo webserver:
 ```shell
 $ hugo serve --bind=0.0.0.0 --buildDrafts --minify
 ```
+
+## Favicon
+
+The favicon was generated using [favicon.io](https://favicon.io/favicon-generator/) using the _Inria Sans_ font.
