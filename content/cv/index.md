@@ -12,6 +12,16 @@ experience:
   content:
 
     - employment:
+        title: Senior Software Engineer
+        type: contract 
+      company:
+        name: Optum
+        location: Dublin, Ireland
+      period:
+        start: January 2024
+        end: Present
+
+    - employment:
         title: Lead Software Engineer
         type: contract 
       company:
@@ -19,7 +29,7 @@ experience:
         location: Dublin, Ireland
       period:
         start: September 2022
-        end: Present
+        end: December 2023
     
     - employment:
         title: Senior Software Engineer
