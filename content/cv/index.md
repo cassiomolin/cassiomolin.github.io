@@ -3,9 +3,11 @@ title: Cassio Mazzochi Molin
 layout: cv
 
 introduction:
-    - Software engineer with over 13 years of experience in commercial software development. Proficient in designing, implementing, testing, and delivering applications with Java, Spring Boot, Kafka, Docker, Kubernetes, and cloud technologies.
-    - Skilled in agile methodologies, microservices, event-driven architectures, containers, REST over HTTP, API security, CI/CD, and testing. Strong communicator, long-term contributor to Stack Overflow, experienced in leading teams, performing code reviews, mentoring team members, and driving the adoption of best practices to improve software development processes.
-    - Based in Dublin, holds both Italian and Irish citizenships, and no visas are required to work in the EU/EEA/UK.
+    - Software engineer with over 14 years of experience in commercial software development.
+    - Proficient in designing, implementing, testing, and delivering applications with Java, Spring Boot, Kafka, Docker, and cloud technologies. Skilled in Python for scripting and data processing. Experienced in microservices, event-driven architectures, containers, REST over HTTP, API security, CI/CD, and testing.
+    - A strong communicator and a long-term contributor to Stack Overflow, experienced in leading teams, performing code reviews, mentoring team members, and driving the adoption of best practices to enhance the software development processes.
+    - Based in Dublin, holding both Italian and Irish citizenships, with no visas required to work in the EU/EEA/UK.
+
 
 experience:
   title: 
